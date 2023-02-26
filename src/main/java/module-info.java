@@ -3,6 +3,7 @@ module wayout.files {
     requires javafx.fxml;
     requires MaterialFX;
     requires com.jfoenix;
+    requires java.sql;
 
 
     opens wayout.files to javafx.fxml;

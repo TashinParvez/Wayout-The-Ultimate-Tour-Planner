@@ -29,8 +29,8 @@
       <MFXTextField fx:id="lNameBox" floatMode="BORDER" floatingText="  Last name" layoutX="855.0" layoutY="192.0" prefHeight="50.0" prefWidth="170.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
       <MFXPasswordField fx:id="passwordBox" floatMode="BORDER" floatingText="  Password" layoutX="675.0" layoutY="393.0" prefHeight="50.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
       <MFXPasswordField fx:id="cPasswordBox" floatMode="BORDER" floatingText="  Confirm password" layoutX="675.0" layoutY="462.0" prefHeight="50.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-      <MFXDatePicker fx:id="dateofBirth" floatMode="BORDER" floatingText="  Date of birth" layoutX="675.0" layoutY="325.0" prefHeight="50.0" prefWidth="170.0" />
-      <MFXComboBox fx:id="gender" floatMode="BORDER" floatingText="  Gender" layoutX="855.0" layoutY="325.0" prefHeight="50.0" prefWidth="170.0" />
+      <MFXDatePicker fx:id="dateofBirth" floatMode="BORDER" floatingText="  Date of birth" layoutX="675.0" layoutY="325.0" prefHeight="50.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <MFXComboBox fx:id="gender" floatMode="BORDER" floatingText="  Gender" layoutX="855.0" layoutY="325.0" prefHeight="50.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
       <MFXButton fx:id="signUP" layoutX="675.0" layoutY="541.0" onAction="#signUPClicked" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #ffca40;" text="Sign up">
          <font>
             <Font name="System Bold" size="15.0" />
