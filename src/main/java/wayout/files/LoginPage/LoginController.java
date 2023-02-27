@@ -73,7 +73,7 @@ public class LoginController {
         String mail=EmailorUsernameBox.getText();
         String pass=passwordBox.getText();
 
-        String url = "jdbc:mysql://127.0.0.1/wayout_project";
+        String url = "jdbc:mysql://127.0.0.1/wayout";
         String username = "root";
         String password = "";
 
@@ -87,24 +87,31 @@ public class LoginController {
 
         try{
 
-            String chk="Select * from User_accounts where email=?";
+            String chk1="Select * from accountinfo where email=?";
+            String chk2="Select * from accountinfo where username=?";
             Connection con;
-            PreparedStatement pst;
+            PreparedStatement pst1,pst2;
 
             con= DriverManager.getConnection(url, username, password);
-            pst=con.prepareStatement(chk);
-            pst.setString(1,mail);
-            ResultSet rs;
-            rs=pst.executeQuery();
 
-            if(rs.next()){
-                String pas=rs.getString("pass");
+            pst1=con.prepareStatement(chk1);
+            pst2=con.prepareStatement(chk2);
+
+            pst1.setString(1,mail);
+            pst2.setString(1,mail);
+
+            ResultSet rs1,rs2;
+            rs1=pst1.executeQuery();
+            rs2=pst2.executeQuery();
+
+            if(rs1.next()){
+                String pas=rs1.getString("password");
                 if(pas.equals(pass)){
-                    String fullName=rs.getString("name");
-                    String em=rs.getString("email");
-                    String datofBirth=rs.getString("dob");
-                    String gend=rs.getString("gender");
-                    String usern=rs.getString("username");
+                    String fullName=rs1.getString("fullName");
+                    String em=rs1.getString("email");
+                    String datofBirth=rs1.getString("dob");
+                    String gend=rs1.getString("gender");
+                    String usern=rs1.getString("username");
 
                     Alert alert=new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Welcome");
@@ -119,7 +126,30 @@ public class LoginController {
                     alert.setContentText("Please enter your password correctly!");
                     alert.showAndWait();
                 }
-            }else{
+            } else if (rs2.next()) {
+                String pas=rs2.getString("password");
+                if(pas.equals(pass)){
+                    String fullName=rs2.getString("fullName");
+                    String em=rs2.getString("email");
+                    String datofBirth=rs2.getString("dob");
+                    String gend=rs2.getString("gender");
+                    String usern=rs2.getString("username");
+
+                    Alert alert=new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Welcome");
+                    alert.setHeaderText("Login Successful");
+                    alert.setContentText("Name: "+fullName+"\nEmail: "+em+"\nDate of Birth: "+datofBirth+"\nGender: "+gend+"\nUsername: "+usern);
+                    alert.showAndWait();
+
+                }else {
+                    Alert alert=new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Wrong password");
+                    alert.setContentText("Please enter your password correctly!");
+                    alert.showAndWait();
+                }
+
+            } else{
                 Alert alert=new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Wrong email/password");
