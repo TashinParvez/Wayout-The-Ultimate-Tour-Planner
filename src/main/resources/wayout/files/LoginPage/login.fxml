@@ -6,6 +6,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,24 +22,24 @@
             <Image url="@../images/Login.png" />
          </image>
       </ImageView>
-      <MFXButton fx:id="SignIn" layoutX="676.0" layoutY="402.0" onAction="#signInClicked" prefHeight="60.0" prefWidth="350.0" rippleAnimateShadow="true" rippleColor="#5b5b5b" rippleRadiusMultiplier="4.0" style="-fx-background-color: #ffca40; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Sign in" textAlignment="CENTER">
+      <MFXButton fx:id="SignIn" layoutX="676.0" layoutY="403.0" onAction="#signInClicked" prefHeight="60.0" prefWidth="350.0" rippleAnimateShadow="true" rippleColor="#5b5b5b" rippleRadiusMultiplier="4.0" style="-fx-background-color: #ffca40; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Sign in as Traveler" textAlignment="CENTER">
          <font>
             <Font name="Calibri Bold" size="16.0" />
          </font></MFXButton>
-      <MFXTextField fx:id="EmailorUsernameBox" floatMode="BORDER" floatingText="  Email/Username" floatingTextGap="10.0" graphicTextGap="15.0" layoutX="676.0" layoutY="216.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css%20library/loginpage.css" />
-      <MFXPasswordField fx:id="passwordBox" allowPaste="true" floatMode="BORDER" floatingText="  Password" graphicTextGap="15.0" hideCharacter="*" layoutX="676.0" layoutY="290.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css%20library/loginpage.css" />
+      <MFXTextField fx:id="EmailorUsernameBox" floatMode="BORDER" floatingText="  Email/Username" floatingTextGap="10.0" graphicTextGap="15.0" layoutX="676.0" layoutY="217.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css%20library/loginpage.css" />
+      <MFXPasswordField fx:id="passwordBox" allowPaste="true" floatMode="BORDER" floatingText="  Password" graphicTextGap="15.0" hideCharacter="*" layoutX="676.0" layoutY="291.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css%20library/loginpage.css" />
       <MFXButton fx:id="signinGoogle" layoutX="676.0" layoutY="535.0" onAction="#signinGoogleClicked" prefHeight="60.0" prefWidth="350.0" rippleAnimateShadow="true" rippleColor="#5b5b5b" rippleRadiusMultiplier="4.0" style="-fx-background-color: #ffca40; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="     Sign in with Google" textAlignment="CENTER">
          <font>
             <Font name="Corbel Bold" size="12.0" />
          </font>
       </MFXButton>
-      <Hyperlink fx:id="createAcc" layoutX="847.0" layoutY="653.0" onAction="#createAccClicked" text="Create an account" textFill="#004eff">
+      <Hyperlink fx:id="createAcc" layoutX="844.0" layoutY="653.0" onAction="#createAccClicked" text="Create an account." textFill="#6db784">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Hyperlink>
-      <JFXCheckBox fx:id="remember" layoutX="676.0" layoutY="366.0" onAction="#rememberMeSelected" text="Remember me" />
-      <Hyperlink fx:id="forgotPass" layoutX="929.0" layoutY="364.0" onAction="#forgotPassClicked" text="Forgot password" textFill="RED" />
+      <JFXCheckBox fx:id="remember" layoutX="676.0" layoutY="367.0" onAction="#rememberMeSelected" text="Remember me" />
+      <Hyperlink fx:id="forgotPass" layoutX="929.0" layoutY="364.0" onAction="#forgotPassClicked" text="Forgot password" textFill="RED" underline="true" />
       <FontAwesomeIconView glyphName="GOOGLE" layoutX="779.0" layoutY="572.0" size="17.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startY="0.6350710900473934">
@@ -56,5 +57,15 @@
                </stops>
             </LinearGradient>
          </fill></FontAwesomeIconView>
+      <Label layoutX="685.0" layoutY="630.0" text="Are you a Guide? " textFill="#c7c4c4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="GuideLogin" layoutX="802.0" layoutY="626.0" onAction="#GuideLoginClicked" text="Guide Login." textFill="#6db784">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

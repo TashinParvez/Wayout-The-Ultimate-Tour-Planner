@@ -17,15 +17,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class LoginController {
+public class GuideLoginController {
 
     @FXML
     private MFXTextField EmailorUsernameBox;
 
     @FXML
-    private Hyperlink GuideLogin;
-    @FXML
     private MFXButton SignIn;
+    @FXML
+    private Hyperlink TravelaerLogin;
 
     @FXML
     private Hyperlink createAcc;
@@ -46,14 +46,13 @@ public class LoginController {
     private Parent root;
 
     @FXML
-    void GuideLoginClicked(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("guideLogin.fxml"));
+    void TravelerLoginClicked(ActionEvent event) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource("login.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML
     void createAccClicked(ActionEvent event) throws IOException {
         Parent root= FXMLLoader.load(getClass().getResource("signUP.fxml"));
@@ -178,6 +177,5 @@ public class LoginController {
     void signinGoogleClicked(ActionEvent event) {
 
     }
-
 
 }
