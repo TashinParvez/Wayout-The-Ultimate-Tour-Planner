@@ -9,8 +9,11 @@ public class TemporaryData{
     static String email_z;
     static String c_password;
     static String generated_code;
+    static String generated_code2;
     TemporaryData() {
     }
+    static String authcode;
+    static String emal_2;
 
 
 }

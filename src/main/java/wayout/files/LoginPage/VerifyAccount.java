@@ -27,8 +27,8 @@ public class VerifyAccount extends TemporaryData {
         PreparedStatement pst;
 
         String url = "jdbc:mysql://127.0.0.1:3306/wayout";
-        String username = "limon";
-        String password = "1122334455";
+        String username = "root";
+        String password = "";
 
         System.out.println("Connecting database...");
 

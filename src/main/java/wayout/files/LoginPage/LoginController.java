@@ -7,17 +7,82 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.sql.*;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import javafx.scene.shape.Circle;
+import java.util.ResourceBundle;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.oauth2.Oauth2;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.oauth2.Oauth2;
+import com.google.api.services.oauth2.model.Userinfo;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.oauth2.Oauth2;
+import com.google.api.services.oauth2.model.Userinfo;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class LoginController {
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.security.GeneralSecurityException;
+import java.util.Arrays;
+import java.util.Arrays;
+
+import javax.swing.*;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class LoginController implements Initializable {
 
     @FXML
     private MFXTextField EmailorUsernameBox;
@@ -174,10 +239,79 @@ public class LoginController {
 
     }
 
+    // google api properties
+    private static final String CLIENT_ID = "156066230892-j88hek91hj3h39bcqt1aqh1d176i76o5.apps.googleusercontent.com";
+    private static final String CLIENT_SECRET = "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";
+    private static final String REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob";
+
+    private static final String SCOPE = "email profile";
+
+
+    private GoogleAuthorizationCodeFlow flow;
+
+
     @FXML
-    void signinGoogleClicked(ActionEvent event) {
+    void signinGoogleClicked(ActionEvent event) throws GeneralSecurityException, IOException, URISyntaxException {
+        // Generate the Google Authorization URL
+        String authorizationUrl = flow.newAuthorizationUrl()
+                .setRedirectUri(REDIRECT_URI)
+                .build();
+
+        // Open the Authorization URL in the user's default browser
+        Desktop.getDesktop().browse(new URI(authorizationUrl));
+
+        // Prompt the user to enter the authorization code
+        String authorizationCode = JOptionPane.showInputDialog("Enter the authorization code:");
+
+
+        // Exchange the authorization code for an access token and a refresh token
+        GoogleTokenResponse response = flow.newTokenRequest(authorizationCode)
+                .setRedirectUri(REDIRECT_URI)
+                .execute();
+
+        // Use the access token to fetch the user's profile data
+        GoogleCredential credential = new GoogleCredential.Builder()
+                .setTransport(GoogleNetHttpTransport.newTrustedTransport())
+                .setJsonFactory(new GsonFactory())
+                .setClientSecrets(CLIENT_ID, CLIENT_SECRET)
+                .build()
+                .setAccessToken(response.getAccessToken())
+                .setRefreshToken(response.getRefreshToken());
+
+        Oauth2 oauth2 = new Oauth2.Builder(
+                GoogleNetHttpTransport.newTrustedTransport(),
+                new GsonFactory(),
+                credential)
+                .build();
+
+        Userinfo userinfo = oauth2.userinfo().get().execute();
+        // Print the user's profile data to the console
+        System.out.println("User ID: " + userinfo.getId());
+        System.out.println("Email: " + userinfo.getEmail());
+        System.out.println("Name: " + userinfo.getName());
+        System.out.println("Given Name: " + userinfo.getGivenName());
+        System.out.println("Gender: "+userinfo.getGender());
+        System.out.println("Image: "+userinfo.getPicture());
 
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            flow = new GoogleAuthorizationCodeFlow.Builder(
+                    GoogleNetHttpTransport.newTrustedTransport(),
+                    new GsonFactory(),
+                    CLIENT_ID,
+                    CLIENT_SECRET,
+                    Collections.singleton(SCOPE))
+                    .setAccessType("offline")
+                    .build();
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

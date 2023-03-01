@@ -1,5 +1,6 @@
 package wayout.files.LoginPage;
 
+import io.github.palexdev.materialfx.beans.NumberRange;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
@@ -17,9 +18,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Random;
 import java.util.ResourceBundle;
 import wayout.files.LoginPage.LoginRunner;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
+import javafx.util.Callback;
 
 import java.io.IOException;
 
@@ -54,6 +59,8 @@ public class SignUpController extends TemporaryData implements Initializable{
     private Stage stage;
     private Scene scene, scene2;
     private Parent root,root2;
+
+
     @FXML
     void backButtonClicked(ActionEvent event) throws Exception {
         root= FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -85,31 +92,22 @@ public class SignUpController extends TemporaryData implements Initializable{
             password_T=a6;
             c_password=a7;
 
-
             Random random=new Random();
 
             int sixLengthRandomNumber = random.nextInt(100000, 1000000);
             System.out.println(sixLengthRandomNumber);
             generated_code=""+sixLengthRandomNumber;
 
-            root2= FXMLLoader.load(getClass().getResource("verifyAccount.fxml"));
-            stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene2=new Scene(root2);
-            stage.setScene(scene2);
-            stage.show();
-
             EmailVerifier emailVerifier=new EmailVerifier();
-            emailVerifier.verifyEmail(a3);
+            emailVerifier.verifyEmail(a3,event);
         }else {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Please enter all the data correctly");
             alert.showAndWait();
         }
 
-
-
-
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -118,5 +116,6 @@ public class SignUpController extends TemporaryData implements Initializable{
                 "Female",
                 "Custom"
         );
+        dateofBirth.setYearsRange(NumberRange.of(1970,2023)); // limitations for future dates
     }
 }
