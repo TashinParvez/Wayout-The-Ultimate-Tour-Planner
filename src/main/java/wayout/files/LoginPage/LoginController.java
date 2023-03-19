@@ -13,73 +13,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.*;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import javafx.scene.shape.Circle;
+
 import java.util.ResourceBundle;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.oauth2.Oauth2;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.gson.GsonFactory;
-import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Userinfo;
-import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.gson.GsonFactory;
-import com.google.api.services.oauth2.Oauth2;
-import com.google.api.services.oauth2.model.Userinfo;
-import io.github.palexdev.materialfx.controls.MFXButton;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URI;
 import java.security.GeneralSecurityException;
-import java.util.Arrays;
-import java.util.Arrays;
 
-import javax.swing.*;
-import java.io.IOException;
-import java.util.Arrays;
+import javafx.scene.web.WebView;
+
 import java.util.Collections;
 
 public class LoginController implements Initializable {
@@ -103,6 +60,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXCheckBox remember;
+    @FXML
+    private WebView web;
 
     @FXML
     private MFXButton signinGoogle;
@@ -312,6 +271,43 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
+        // webview property
+        WebEngine webEngine=web.getEngine();
+        webEngine.loadContent("<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Document</title>\n" +
+
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "    <div id=\"header\">\n" +
+                "        <div class=\"container\">\n" +
+                "            <div class=\"header-text\">\n" +
+                "                <h2><span class=\"auto-input\"></span></h2>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "    </div>\n" +
+                "    <script src=\"https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js\"></script>\n" +
+                "    <script>\n" +
+                "        var typed = new Typed(\".auto-input\", {\n" +
+                "            strings: [\"Welcome to wayout !\"],\n" +
+                "            typeSpeed: 70,\n" +
+                "            backSpeed: 70,\n" +
+                "            loop: true\n" +
+                "        })\n" +
+                "    </script>\n" +
+                "</body>\n" +
+                "\n" +
+                "</html>");
+        webEngine.setUserStyleSheetLocation(String.valueOf(getClass().getResource("style.css")));
+
     }
 
 }
