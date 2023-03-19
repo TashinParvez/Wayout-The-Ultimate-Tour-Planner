@@ -19,5 +19,11 @@ module wayout.files {
     opens wayout.files.LoginPage to javafx.fxml;
     exports wayout.files.LoginPage;
 
+    opens wayout.files.Homepage to javafx.fxml;
+    exports wayout.files.Homepage;
+
+    opens wayout.files.Dashboard to javafx.fxml;
+    exports wayout.files.Dashboard;
+
 
 }
