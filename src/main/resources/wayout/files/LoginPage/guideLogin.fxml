@@ -26,8 +26,8 @@
             <font>
                 <Font name="Calibri Bold" size="16.0" />
             </font></MFXButton>
-        <MFXTextField fx:id="EmailorUsernameBox" floatMode="BORDER" floatingText="  Email/Username" floatingTextGap="10.0" graphicTextGap="15.0" layoutX="676.0" layoutY="217.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css%20library/loginpage.css" />
-        <MFXPasswordField fx:id="passwordBox" allowPaste="true" floatMode="BORDER" floatingText="  Password" graphicTextGap="15.0" hideCharacter="*" layoutX="676.0" layoutY="291.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css%20library/loginpage.css" />
+        <MFXTextField fx:id="EmailorUsernameBox" floatMode="BORDER" floatingText="  Email/Username" floatingTextGap="10.0" graphicTextGap="15.0" layoutX="676.0" layoutY="217.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css library/loginpage.css" />
+        <MFXPasswordField fx:id="passwordBox" allowPaste="true" floatMode="BORDER" floatingText="  Password" graphicTextGap="15.0" hideCharacter="*" layoutX="676.0" layoutY="291.0" prefHeight="60.0" prefWidth="350.0" styleClass="text-field" stylesheets="@../Css library/loginpage.css" />
         <MFXButton fx:id="signinGoogle" layoutX="676.0" layoutY="535.0" onAction="#signinGoogleClicked" prefHeight="60.0" prefWidth="350.0" rippleAnimateShadow="true" rippleColor="#5b5b5b" rippleRadiusMultiplier="4.0" style="-fx-background-color: #ffca40; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="     Sign in with Google" textAlignment="CENTER">
             <font>
                 <Font name="Corbel Bold" size="12.0" />

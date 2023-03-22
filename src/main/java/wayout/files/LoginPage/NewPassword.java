@@ -79,19 +79,9 @@ public class NewPassword extends TemporaryData{
             try {
                 con = DriverManager.getConnection(url, username, password);
 
-
-                String query11 = "select count(*) from accountinfo";
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery(query11);
-                rs.next();
-                int count = rs.getInt(1);
-                System.out.println(count + 1);
-
-
-
-                pst = con.prepareStatement("UPDATE accountinfo SET password = ? WHEN email = ?");
-                pst.setString(1, emal_2);
-                pst.setString(2, U_Password);
+                pst = con.prepareStatement("UPDATE accountinfo SET password = ? WHERE email = ?");
+                pst.setString(1, U_Password);
+                pst.setString(2, emal_2);
                 pst.execute();
 
                 System.out.println("Update successful");

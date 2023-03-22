@@ -11,6 +11,7 @@ module wayout.files {
     requires google.api.services.oauth2.v2.rev157;
     requires java.desktop;
     requires com.google.api.client;
+    requires javafx.web;
 
 
     opens wayout.files to javafx.fxml;
@@ -18,6 +19,12 @@ module wayout.files {
 
     opens wayout.files.LoginPage to javafx.fxml;
     exports wayout.files.LoginPage;
+
+    opens wayout.files.Homepage to javafx.fxml;
+    exports wayout.files.Homepage;
+
+    opens wayout.files.Dashboard to javafx.fxml;
+    exports wayout.files.Dashboard;
 
 
 }
