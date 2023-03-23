@@ -1,16 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Homepage.HomePage_2nd_Controller">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/HomePage_2nd.png" />
+            <Image url="@../images/wayout.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="114.0" layoutX="810.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="119.0" fitWidth="114.0" layoutX="802.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="824.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/travel-itinerary.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="949.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/review.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="79.0" layoutX="1061.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/transportation.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="847.0" layoutY="291.0" text="Trips">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="965.0" layoutY="291.0" prefHeight="26.0" prefWidth="47.0" text="Hotel">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="1061.0" layoutY="291.0" text="Transport">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="976.0" layoutY="336.0" text="OR">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="946.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tour.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="964.0" layoutY="470.0" text="Guide">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="859.0" layoutY="554.0" prefHeight="38.0" prefWidth="98.0" text="Sign Up">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </MFXButton>
+      <MFXButton layoutX="1021.0" layoutY="554.0" prefHeight="38.0" prefWidth="98.0" text="Sign In">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </MFXButton>
+      <Label layoutX="981.0" layoutY="565.0" text="OR">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="957.0" layoutY="623.0" prefHeight="26.0" prefWidth="64.0" text="About Us" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
