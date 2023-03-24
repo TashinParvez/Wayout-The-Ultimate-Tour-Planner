@@ -38,6 +38,7 @@ import java.net.URI;
 import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
+import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.util.Collections;
 
@@ -70,12 +71,22 @@ public class LoginController implements Initializable {
     private Scene scene;
     private Parent root;
     private GoogleAuthorizationCodeFlow flow;
+    @FXML
+    private MFXButton backButton;
 
     @FXML
     void GuideLoginClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("guideLogin.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void backButtonClicked(ActionEvent event) throws IOException {
+        root= FXMLLoader.load(HomePage_2nd_Controller.class.getResource("HomePage_2nd.fxml"));
+        stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

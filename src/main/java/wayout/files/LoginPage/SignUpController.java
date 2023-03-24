@@ -21,6 +21,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import wayout.files.Homepage.HomePage_2nd_Controller;
 import wayout.files.LoginPage.LoginRunner;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -63,7 +65,7 @@ public class SignUpController extends TemporaryData implements Initializable{
 
     @FXML
     void backButtonClicked(ActionEvent event) throws Exception {
-        root= FXMLLoader.load(getClass().getResource("login.fxml"));
+        root= FXMLLoader.load(HomePage_2nd_Controller.class.getResource("HomePage_2nd.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
