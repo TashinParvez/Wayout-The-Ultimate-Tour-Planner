@@ -23,8 +23,8 @@ module wayout.files {
     opens wayout.files.Homepage to javafx.fxml;
     exports wayout.files.Homepage;
 
-    opens wayout.files.Dashboard to javafx.fxml;
-    exports wayout.files.Dashboard;
+    //opens wayout.files.Dashboard to javafx.fxml;
+    //exports wayout.files.Dashboard;
 
 
 }
