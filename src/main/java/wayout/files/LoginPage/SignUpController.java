@@ -13,20 +13,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.net.URL;
-import java.sql.*;
-import java.time.LocalDate;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 import wayout.files.Homepage.HomePage_2nd_Controller;
-import wayout.files.LoginPage.LoginRunner;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.util.Callback;
 
 import java.io.IOException;
 
