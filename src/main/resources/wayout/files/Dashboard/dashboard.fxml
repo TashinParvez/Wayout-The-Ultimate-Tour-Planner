@@ -40,19 +40,23 @@
             <MFXTextField layoutX="155.0" layoutY="5.0" prefHeight="32.0" prefWidth="468.0" promptText="Search" />
          </children>
       </AnchorPane>
-      <MFXScrollPane layoutX="313.0" layoutY="74.0" prefHeight="115.0" prefWidth="574.0">
-         <content>
-            <HBox prefHeight="98.0" prefWidth="796.0" />
-         </content>
-      </MFXScrollPane>
-      <MFXScrollPane layoutX="319.0" layoutY="189.0" prefHeight="559.0" prefWidth="574.0">
-         <content>
-            <VBox prefHeight="655.0" prefWidth="560.0" />
-         </content>
-      </MFXScrollPane>
-      <AnchorPane layoutX="958.0" layoutY="76.0" prefHeight="671.0" prefWidth="242.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css">
+      <AnchorPane layoutX="235.0" layoutY="74.0" prefHeight="671.0" prefWidth="968.0">
          <children>
-            <Label layoutX="72.0" layoutY="14.0" prefHeight="38.0" prefWidth="98.0" text="Time &amp; Weather" />
+            <MFXScrollPane layoutX="91.0" prefHeight="106.0" prefWidth="574.0">
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="570.0" />
+               </content>
+            </MFXScrollPane>
+            <MFXScrollPane layoutX="91.0" layoutY="97.0" prefHeight="559.0" prefWidth="574.0">
+               <content>
+                  <VBox prefHeight="655.0" prefWidth="560.0" />
+               </content>
+            </MFXScrollPane>
+            <AnchorPane layoutX="719.0" prefHeight="671.0" prefWidth="242.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css">
+               <children>
+                  <Label layoutX="72.0" layoutY="14.0" prefHeight="38.0" prefWidth="98.0" text="Time &amp; Weather" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
