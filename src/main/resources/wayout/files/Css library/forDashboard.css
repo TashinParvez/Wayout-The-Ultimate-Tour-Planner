@@ -1,17 +1,21 @@
 .hBox-backgraound {
     /*-fx-background-color: #ffff;*/
-    -fx-background-color: #9cd3d3;
+    -fx-background-color: #ffff;
+    /*-fx-background-color: #9cd3d3;*/
     -fx-opacity: .25;
 }
-.visitablePlaces{
+
+.visitablePlaces {
     -fx-background-color: #ffff;
 }
+
 .vBox-backgraound {
     -fx-background-color: #9cd3d3;
+
     -fx-opacity: .5;
 }
 
 
-.transparent{
-    -fx-background-color: rgba(0,0,0,0);
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
 }

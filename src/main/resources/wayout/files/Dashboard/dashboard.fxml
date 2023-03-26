@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +16,17 @@
          </image>
       </ImageView>
       <VBox layoutY="83.0" prefHeight="669.0" prefWidth="219.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
-      <VBox layoutX="957.0" layoutY="83.0" prefHeight="670.0" prefWidth="242.0" styleClass="hBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
-      <HBox layoutX="219.0" prefHeight="74.0" prefWidth="982.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
+      <VBox layoutX="957.0" layoutY="83.0" prefHeight="670.0" prefWidth="242.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
+      <HBox layoutX="219.0" prefHeight="74.0" prefWidth="982.0" styleClass="hBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
+      <MFXScrollPane layoutX="313.0" layoutY="74.0" prefHeight="115.0" prefWidth="574.0">
+         <content>
+            <HBox prefHeight="98.0" prefWidth="796.0" />
+         </content>
+      </MFXScrollPane>
+      <MFXScrollPane layoutX="319.0" layoutY="189.0" prefHeight="559.0" prefWidth="574.0">
+         <content>
+            <VBox prefHeight="655.0" prefWidth="556.0" />
+         </content>
+      </MFXScrollPane>
    </children>
 </AnchorPane>
