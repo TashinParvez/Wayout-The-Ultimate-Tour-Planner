@@ -3,14 +3,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="@../Css%20library/forDashboard.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.DashboardController">
    <children>
-      <ImageView fitHeight="750.0" fitWidth="1200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="749.0" fitWidth="1216.0" layoutX="-14.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/DashBoardBackground.png" />
          </image>
       </ImageView>
+      <VBox layoutY="83.0" prefHeight="669.0" prefWidth="219.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
+      <VBox layoutX="957.0" layoutY="83.0" prefHeight="670.0" prefWidth="242.0" styleClass="hBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
+      <HBox layoutX="219.0" prefHeight="74.0" prefWidth="982.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css" />
    </children>
 </AnchorPane>
