@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="168.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.SidebarOptions.MostRatedPlaceController">
+   <children>
+      <ImageView fitHeight="139.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/MostRatedPlace1.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="132.0" text="Bandarban" textFill="#ef0000">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="146.0" text="5 Trips Available">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="189.0" layoutY="128.0" prefHeight="20.0" prefWidth="6.0" text="5">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="204.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/favourites.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

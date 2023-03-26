@@ -47,7 +47,7 @@
                   <HBox prefHeight="100.0" prefWidth="570.0" />
                </content>
             </MFXScrollPane>
-            <MFXScrollPane layoutX="91.0" layoutY="97.0" prefHeight="559.0" prefWidth="574.0">
+            <MFXScrollPane layoutX="91.0" layoutY="96.0" prefHeight="574.0" prefWidth="574.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css">
                <content>
                   <VBox prefHeight="655.0" prefWidth="560.0" />
                </content>
@@ -55,6 +55,7 @@
             <AnchorPane layoutX="719.0" prefHeight="671.0" prefWidth="242.0" styleClass="vBox-backgraound" stylesheets="@../Css%20library/forDashboard.css">
                <children>
                   <Label layoutX="72.0" layoutY="14.0" prefHeight="38.0" prefWidth="98.0" text="Time &amp; Weather" />
+                  <VBox layoutY="91.0" prefHeight="582.0" prefWidth="242.0" />
                </children>
             </AnchorPane>
          </children>
