@@ -2,7 +2,7 @@
     /*-fx-background-color: #ffff;*/
     -fx-background-color: #ffff;
     /*-fx-background-color: #9cd3d3;*/
-    -fx-opacity: .25;
+    /*-fx-opacity: .25;*/
 }
 
 .visitablePlaces {
@@ -12,10 +12,14 @@
 .vBox-backgraound {
     -fx-background-color: #9cd3d3;
 
-    -fx-opacity: .5;
+    /*-fx-opacity: .5;*/
 }
 
 
 .transparent {
     -fx-background-color: rgba(0, 0, 0, 0);
+}
+.slider-buttons{
+    -fx-opacity: 100;
+    -fx-text-fill: "BLACK";
 }
