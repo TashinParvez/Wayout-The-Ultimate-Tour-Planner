@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="535.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.Posts.UserPostController">
+   <children>
+      <AnchorPane layoutX="7.0" prefHeight="138.0" prefWidth="560.0" styleClass="hBox-backgraound" stylesheets="@../../Css%20library/forDashboard.css">
+         <children>
+            <Circle fill="DODGERBLUE" layoutX="42.0" layoutY="42.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" styleClass="vBox-backgraound" />
+            <Label layoutX="87.0" layoutY="20.0" prefHeight="27.0" prefWidth="108.0" text="Akil Sir">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="87.0" layoutY="42.0" prefHeight="27.0" prefWidth="108.0" text="Post Date">
+               <font>
+                  <Font name="Bell MT" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="28.0" layoutY="86.0" prefHeight="46.0" prefWidth="500.0" text="Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Sed ut felis in dolor finibus ornare et sed lectus. Duis ultricies ex sit amet elit placerat, ut ornare tortor hendrerit. Vivamus quis pellentesque turpis. Vestibulum euismod sagittis massa nec eleifend. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam ut libero odio. Donec molestie lorem a interdum convallis. In hac habitasse platea dictumst." />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="128.0" prefHeight="338.0" prefWidth="560.0" styleClass="vBox-backgraound" stylesheets="@../../Css%20library/forDashboard.css">
+         <children>
+            <ImageView fitHeight="319.0" fitWidth="560.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="7.0" layoutY="466.0" prefHeight="65.0" prefWidth="560.0" styleClass="hBox-backgraound" stylesheets="@../../Css%20library/forDashboard.css">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="71.0" layoutX="117.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="46.0" fitWidth="71.0" layoutX="373.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
