@@ -38,6 +38,8 @@ import java.net.URI;
 import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
+import wayout.files.Dashboard.Dashboard;
+import wayout.files.Dashboard.Dashboard2;
 import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.util.Collections;
@@ -161,11 +163,11 @@ public class LoginController implements Initializable {
                     String gend = rs1.getString("gender");
                     String usern = rs1.getString("username");
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Welcome");
-                    alert.setHeaderText("Login Successful");
-                    alert.setContentText("Name: " + fullName + "\nEmail: " + em + "\nDate of Birth: " + datofBirth + "\nGender: " + gend + "\nUsername: " + usern);
-                    alert.showAndWait();
+                    Parent root= FXMLLoader.load(Dashboard.class.getResource("dashboard.fxml"));
+                    stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    scene=new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -183,11 +185,11 @@ public class LoginController implements Initializable {
                     String gend = rs2.getString("gender");
                     String usern = rs2.getString("username");
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Welcome");
-                    alert.setHeaderText("Login Successful");
-                    alert.setContentText("Name: " + fullName + "\nEmail: " + em + "\nDate of Birth: " + datofBirth + "\nGender: " + gend + "\nUsername: " + usern);
-                    alert.showAndWait();
+                    Parent root= FXMLLoader.load(Dashboard2.class.getResource("dashboard2.fxml"));
+                    stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    scene=new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
