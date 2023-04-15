@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="658.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.EditProfile">
+   <children>
+      <Circle fx:id="profileCircle" layoutX="760.0" layoutY="244.0" radius="88.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Hyperlink fx:id="updateProfilePic" layoutX="681.0" layoutY="353.0" onAction="#updateProfilePicClicked" prefHeight="28.0" prefWidth="167.0" text="Update profile picture">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Hyperlink>
+      <AnchorPane fx:id="anchorPane" prefHeight="658.0" prefWidth="627.0">
+         <children>
+            <MFXButton fx:id="BackButton" layoutX="28.0" layoutY="26.0" onAction="#backClicked" style="-fx-background-color: #f9e45b;" text="Back">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" />
+               </graphic>
+            </MFXButton>
+            <MFXTextField fx:id="firstName" floatingText="   First name" layoutX="141.0" layoutY="102.0" prefHeight="49.0" prefWidth="265.0" />
+            <MFXTextField fx:id="lastName" floatingText="   Last name" layoutX="141.0" layoutY="167.0" prefHeight="49.0" prefWidth="265.0" />
+            <MFXDatePicker fx:id="dob" editable="false" floatMode="INLINE" floatingText="  Date of birth" layoutX="141.0" layoutY="235.0" prefHeight="49.0" prefWidth="265.0" selectable="false" />
+            <MFXTextField fx:id="phnNumber" floatingText="   Phone number" layoutX="141.0" layoutY="301.0" prefHeight="49.0" prefWidth="265.0" />
+            <MFXTextField fx:id="nationality" floatingText="   Nationality" layoutX="141.0" layoutY="366.0" prefHeight="49.0" prefWidth="265.0" />
+            <MFXButton fx:id="SubmitButton" layoutX="141.0" layoutY="441.0" onAction="#submitClicked" prefHeight="42.0" prefWidth="265.0" style="-fx-background-color: #f9e45b;" text="Submit " />
+            <Hyperlink fx:id="updatePass" layoutX="141.0" layoutY="514.0" onAction="#updatePassClicked" prefHeight="29.0" prefWidth="144.0" text="Update Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
