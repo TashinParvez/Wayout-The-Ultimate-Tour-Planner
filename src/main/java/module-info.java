@@ -12,7 +12,7 @@ module wayout.files {
     requires java.desktop;
     requires com.google.api.client;
     requires javafx.web;
-
+    requires org.controlsfx.controls;
 
     opens wayout.files to javafx.fxml;
     exports wayout.files;
@@ -25,6 +25,8 @@ module wayout.files {
 
     opens wayout.files.Dashboard to javafx.fxml;
     exports wayout.files.Dashboard;
+
+
 
 
 }
