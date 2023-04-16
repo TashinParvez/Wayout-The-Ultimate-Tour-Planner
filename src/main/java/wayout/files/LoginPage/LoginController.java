@@ -38,7 +38,7 @@ import java.net.URI;
 import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
-import wayout.files.Dashboard.Dashboard;
+import wayout.files.Dashboard.UserDashboardController;
 import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.util.Collections;
@@ -162,7 +162,7 @@ public class LoginController implements Initializable {
                     String gend = rs1.getString("gender");
                     String usern = rs1.getString("username");
 
-                    Parent root= FXMLLoader.load(Dashboard.class.getResource("dashboard3.fxml"));
+                    Parent root= FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
                     stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
                     scene=new Scene(root);
                     stage.setScene(scene);
@@ -184,7 +184,7 @@ public class LoginController implements Initializable {
                     String gend = rs2.getString("gender");
                     String usern = rs2.getString("username");
 
-                    Parent root= FXMLLoader.load(Dashboard.class.getResource("dashboard3.fxml"));
+                    Parent root= FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
                     stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
                     scene=new Scene(root);
                     stage.setScene(scene);
