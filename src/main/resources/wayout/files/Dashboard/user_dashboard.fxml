@@ -25,8 +25,8 @@
             <children>
                 <!--               side top-->
                 <Circle centerX="30" centerY="30" radius="20" fx:id="profile_Picture"
-                        style="-fx-border-color: red; -fx-fill: #00d38b; -fx-border-radius: 3px"/>
-                <Label fx:id="username" layoutX="60" layoutY="18" text="klimon3"
+                        style="-fx-border-color: red; -fx-border-radius: 3px"/>
+                <Label fx:id="username" layoutX="60" layoutY="18"
                        style="-fx-text-fill: White; -fx-font-size: 15px; -fx-font-family: 'Arial Black'">
 
                 </Label>
@@ -51,7 +51,7 @@
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Find a Trip" layoutY="230"
+                <Label layoutX="30" text=" Find a Local Tour" layoutY="230"
                        style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
                        fx:id="trips">
 
@@ -139,7 +139,7 @@
         </AnchorPane>
 
         <!--        main Panel-->
-        <AnchorPane style="-fx-background-color: white" prefHeight="750" prefWidth="1020" layoutX="180">
+        <AnchorPane fx:id="mainPanel" style="-fx-background-color: white" prefHeight="750" prefWidth="1020" layoutX="180">
             <children>
 
                 <MFXScrollPane fx:id="main_scrollPane" prefWidth="1020" prefHeight="750" hbarPolicy="NEVER"
@@ -201,10 +201,10 @@
                                    layoutX="10" layoutY="420"/>
 
                             <MFXScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" layoutX="10" layoutY="450"
-                                           prefHeight="300" prefWidth="990">
+                                           maxHeight="300" prefWidth="990">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->
-                                <HBox fx:id="card_must_go_Lists" prefHeight="300" prefWidth="10000"
-                                      style="-fx-background-color: #ddff00"></HBox>
+                                <HBox fx:id="card_must_go_Lists" maxHeight="300"
+                                      style="-fx-background-color: #ffffff"></HBox>
                             </MFXScrollPane>
 
 
@@ -218,8 +218,8 @@
                             <MFXScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" layoutX="10" layoutY="890"
                                            prefHeight="300" prefWidth="990">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->
-                                <HBox fx:id="popular_hotels" prefHeight="300" prefWidth="10000"
-                                      style="-fx-background-color: #a93e3e"></HBox>
+                                <HBox fx:id="popular_hotels" prefHeight="300"
+                                      style="-fx-background-color: #ffffff"></HBox>
                             </MFXScrollPane>
 
 

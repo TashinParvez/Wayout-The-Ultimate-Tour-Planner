@@ -9,12 +9,20 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -23,6 +31,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import wayout.files.LoginPage.LoginController;
+
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +40,7 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
-public class UserDashboardController implements Initializable {
+public class UserDashboardController extends User_Login_Information implements Initializable {
     @FXML
     private HBox card_must_go_Lists;
 
@@ -95,25 +105,26 @@ public class UserDashboardController implements Initializable {
     private Label username;
 
     @FXML
+    private AnchorPane mainPanel;
+    @FXML
     private HBox ways_to_tour_Dhaka_city;
 
     @FXML
     private Label weatherLbl;
 
-    private Vector<Node>nodesVector=new Vector<>();
+    private Vector<Node> nodesVector = new Vector<>();
     private Stage stage;
     private Parent root;
     private Scene scene;
-//    @FXML
-    private ListView<String> suggestionListView=new ListView<>();
+    //    @FXML
+    private ListView<String> suggestionListView = new ListView<>();
 
     private List<String> suggestions = new ArrayList<>();
 
     private Popup suggestionPopup = new Popup();
 
 
-
-    public void sideBarMove(Node node){
+    public void sideBarMove(Node node) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -123,17 +134,21 @@ public class UserDashboardController implements Initializable {
         }).start();
     }
 
-    public void changeAllRemaining(Node node){
+    public void changeAllRemaining(Node node) {
         new Thread(new Runnable() {
             @Override
             public void run() {
 
 
-                for(int i=0;i<nodesVector.size();i++){
-                    if(!nodesVector.get(i).equals(node)){
-                        nodesVector.get(i).setStyle("-fx-text-fill: #ffffff; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;");
-                    }else {
-                        nodesVector.get(i).setStyle("-fx-translate-x: 25px;-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;");
+                for (int i = 0; i < nodesVector.size(); i++) {
+                    if (!nodesVector.get(i).equals(node)) {
+                        nodesVector.get(i).setStyle("-fx-text-fill: #ffffff; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" +
+                                "-fx-transition: background-color 1s pointer;" +
+                                "-fx-cursor: pointer");
+                    } else {
+                        nodesVector.get(i).setStyle("-fx-translate-x: 25px;-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;" +
+                                "-fx-transition: background-color 1s pointer;" +
+                                "-fx-cursor: pointer");
                     }
                 }
 
@@ -141,7 +156,7 @@ public class UserDashboardController implements Initializable {
         }).start();
     }
 
-    public void addAllSideNodes(){
+    public void addAllSideNodes() {
         nodesVector.add(home);
         nodesVector.add(maps);
         nodesVector.add(trips);
@@ -154,6 +169,205 @@ public class UserDashboardController implements Initializable {
         nodesVector.add(edit_profile);
     }
 
+    public void must_go_list_card(String loc, Image image) {
+        try {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    AnchorPane cards = new AnchorPane();
+                    cards.setPrefHeight(280);
+                    cards.setPrefWidth(300);
+
+                    StackPane cards_stackPane1 = new StackPane();
+                    cards_stackPane1.setPrefHeight(280);
+                    cards_stackPane1.setPrefWidth(300);
+//            cards_stackPane1.setLayoutX(10);
+                    cards_stackPane1.setLayoutY(10);
+                    cards_stackPane1.setPadding(new Insets(5, 10, 5, 0));
+
+
+                    ImageView imageView = new ImageView();
+                    imageView.setFitWidth(300);
+                    imageView.setFitHeight(290);
+                    imageView.setImage(image);
+
+
+                    AnchorPane stackAncor = new AnchorPane();
+                    MFXButton placeName = new MFXButton();
+//                    stackAncor.setLayoutX(10);
+                    placeName.setText(loc);
+                    placeName.setLayoutX(10);
+                    placeName.setStyle("-fx-font-size: 14px;" +
+                            "-fx-font-family: 'Arial Black';" +
+                            "-fx-background-color: Black;" +
+                            "-fx-padding: 5px;" +
+                            "-fx-text-fill: white");
+
+
+//            Platform.runLater(()->{
+//                String css=getClass().getResource("stackAnchor.css").toExternalForm();
+//                cards.getStylesheets().add(css);
+//
+//                if(cards.isHover()){
+//                    System.out.println("yes");
+//                }else {
+//                    System.out.println("NO");
+//                }
+//            });
+
+//                   placeName.setLayoutX(25);
+                    placeName.setLayoutY(240);
+                    placeName.setPadding(new Insets(0, 5, 0, 5));
+                    placeName.setPrefWidth(280);
+                    placeName.setAlignment(Pos.CENTER);
+                    stackAncor.getChildren().add(placeName);
+
+                    //placeName button Controller
+
+                    placeName.setOnAction((event -> {
+                        System.out.println("YES");
+                    }));
+
+                    stackAncor.setOnMouseEntered((event -> {
+                        cards.setStyle("-fx-translate-y: -10px;" +
+                                "-fx-smooth: true");
+                        stackAncor.setStyle("-fx-background-color: rgba(0,0,0,0.23)");
+                    }));
+
+                    stackAncor.setOnMouseExited((event -> {
+                        cards.setStyle("-fx-translate-y: 0px");
+                        stackAncor.setStyle("");
+                    }));
+
+
+                    //individual card clicks
+                    stackAncor.setOnMouseClicked((event -> {
+                        System.out.println(placeName.getText());
+                    }));
+
+
+                    Platform.runLater(() -> {
+                        cards_stackPane1.getChildren().add(imageView);
+                        cards_stackPane1.getChildren().add(stackAncor);
+                        cards.getChildren().add(cards_stackPane1);
+                        card_must_go_Lists.getChildren().add(cards);
+                    });
+
+//            if(card_must_go_Lists.getWidth()>=750){
+//                MFXButton mfxButton=new MFXButton("Next");
+//                stackAncor.getChildren().add(mfxButton);
+//                cards_stackPane1.getChildren().add(stackAncor);
+//                cards.getChildren().add(cards_stackPane1);
+//                card_must_go_Lists.getChildren().add(cards);
+//            }
+                }
+            }).start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setHotels(String name, String loc, Image image) {
+        try {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    AnchorPane cards = new AnchorPane();
+                    cards.setPrefHeight(280);
+                    cards.setPrefWidth(300);
+
+                    StackPane cards_stackPane1 = new StackPane();
+                    cards_stackPane1.setPrefHeight(280);
+                    cards_stackPane1.setPrefWidth(300);
+//            cards_stackPane1.setLayoutX(10);
+                    cards_stackPane1.setLayoutY(10);
+                    cards_stackPane1.setPadding(new Insets(5, 10, 5, 0));
+
+
+                    ImageView imageView = new ImageView();
+                    imageView.setFitWidth(300);
+                    imageView.setFitHeight(290);
+                    imageView.setImage(image);
+
+
+                    AnchorPane stackAncor = new AnchorPane();
+                    MFXButton placeName = new MFXButton();
+//                    stackAncor.setLayoutX(10);
+                    placeName.setText(loc);
+                    placeName.setLayoutX(10);
+                    placeName.setStyle("-fx-font-size: 14px;" +
+                            "-fx-font-family: 'Arial Black';" +
+                            "-fx-background-color: Black;" +
+                            "-fx-padding: 5px;" +
+                            "-fx-text-fill: white");
+
+
+//            Platform.runLater(()->{
+//                String css=getClass().getResource("stackAnchor.css").toExternalForm();
+//                cards.getStylesheets().add(css);
+//
+//                if(cards.isHover()){
+//                    System.out.println("yes");
+//                }else {
+//                    System.out.println("NO");
+//                }
+//            });
+
+//                   placeName.setLayoutX(25);
+                    placeName.setLayoutY(240);
+                    placeName.setPadding(new Insets(0, 5, 0, 5));
+                    placeName.setPrefWidth(280);
+                    placeName.setAlignment(Pos.CENTER);
+                    stackAncor.getChildren().add(placeName);
+
+                    //placeName button Controller
+
+//                    placeName.setOnAction((event -> {
+//                        System.out.println("YES");
+//                    }));
+
+                    stackAncor.setOnMouseEntered((event -> {
+                        cards.setStyle("-fx-translate-y: -10px;" +
+                                "-fx-smooth: true");
+                        stackAncor.setStyle("-fx-background-color: rgba(0,0,0,0.23)");
+                    }));
+
+                    stackAncor.setOnMouseExited((event -> {
+                        cards.setStyle("-fx-translate-y: 0px");
+                        stackAncor.setStyle("");
+                    }));
+
+
+                    //individual card clicks
+                    stackAncor.setOnMouseClicked((event -> {
+                        System.out.println(placeName.getText());
+                    }));
+
+
+                    Platform.runLater(() -> {
+                        cards_stackPane1.getChildren().add(imageView);
+                        cards_stackPane1.getChildren().add(stackAncor);
+                        cards.getChildren().add(cards_stackPane1);
+                        popular_hotels.getChildren().add(cards);
+                    });
+
+//            if(card_must_go_Lists.getWidth()>=750){
+//                MFXButton mfxButton=new MFXButton("Next");
+//                stackAncor.getChildren().add(mfxButton);
+//                cards_stackPane1.getChildren().add(stackAncor);
+//                cards.getChildren().add(cards_stackPane1);
+//                card_must_go_Lists.getChildren().add(cards);
+//            }
+                }
+            }).start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -161,71 +375,131 @@ public class UserDashboardController implements Initializable {
 //        searchBox.getItems().addAll("Apple","Banana");
 //        sideBarMove(home);
 
-        maps.setOnMouseClicked((event)->{
+        try {
+            profile_Picture.setFill(new ImagePattern(new Image(getClass().getResource("user.png").openStream())));
+            File file = new File("src/main/resources/wayout/files/Dashboard/username.txt");
+            if (file.exists()) {
+                String word = "";
+                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                    // Read the first line of the file
+                    String line = br.readLine();
+                    // Assign the first word to the 'word' variable
+                    if (line != null) {
+                        word = line.trim().split("\\s+")[0];
+                        username.setText(word);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else System.out.println("File not found");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        home.setStyle("-fx-translate-x: 25px;-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;" +
+                "-fx-transition: background-color 1s pointer;" +
+                "-fx-cursor: pointer");
+
+        maps.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(maps);
         });
 
-        home.setOnMouseClicked((event)->{
+        home.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(home);
+
+            try {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        synchronized (this) {
+                            Platform.runLater(() -> {
+                                try {
+                                    root = FXMLLoader.load(getClass().getResource("user_dashboard.fxml"));
+                                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                    scene = new Scene(root);
+                                    stage.setScene(scene);
+                                    stage.show();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                            });
+                        }
+
+
+                    }
+                }).start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
-        trips.setOnMouseClicked((event)->{
+        trips.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(trips);
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("tour_packages.fxml"));
+                mainPanel.getChildren().add(root);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
-        guides.setOnMouseClicked((event)->{
+        guides.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(guides);
         });
 
-        hotel.setOnMouseClicked((event)->{
+        hotel.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(hotel);
         });
 
-        transport.setOnMouseClicked((event)->{
+        transport.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(transport);
         });
 
-        cart.setOnMouseClicked((event)->{
+        cart.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(cart);
         });
 
-        chat.setOnMouseClicked((event)->{
+        chat.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(chat);
         });
 
-        rewards.setOnMouseClicked((event)->{
+        rewards.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(rewards);
         });
-        edit_profile.setOnMouseClicked((event)->{
+        edit_profile.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(edit_profile);
         });
 
         logout.setOnMouseClicked((event) -> {
-            try{
-                root= FXMLLoader.load(LoginController.class.getResource("login.fxml"));
-                stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-                scene=new Scene(root);
+            try {
+                root = FXMLLoader.load(LoginController.class.getResource("login.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
 
-        Thread Clocation=new Thread(new Runnable() {
+        Thread Clocation = new Thread(new Runnable() {
             @Override
             public void run() {
-                Platform.runLater(()->{
+                Platform.runLater(() -> {
                     try {
                         String url = "https://mylocation.org/";
                         Document doc = Jsoup.connect(url).get();
@@ -245,10 +519,10 @@ public class UserDashboardController implements Initializable {
                                     country = value;
                                 }
                             }
-                            userLoc.setText(city+", "+country);
+                            userLoc.setText(city + ", " + country);
 
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 });
@@ -256,40 +530,56 @@ public class UserDashboardController implements Initializable {
         });
 
 
+        Thread weather = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //weather information
+                try {
+                    String url = "https://www.tomorrow.io/weather/";
+                    Document doc = Jsoup.connect(url).get();
 
-       Thread weather=new Thread(new Runnable() {
-           @Override
-           public void run() {
-               //weather information
-               try{
-                   String url = "https://www.tomorrow.io/weather/";
-                   Document doc = Jsoup.connect(url).get();
+                    Elements weatherElements = doc.select("div.fvkAud span._3fQrr5");
 
-                   Elements weatherElements = doc.select("div.fvkAud span._3fQrr5");
-
-                   for (Element weatherElement : weatherElements) {
-                       String temperature = weatherElement.text();
+                    for (Element weatherElement : weatherElements) {
+                        String temperature = weatherElement.text();
 
 
-                       String[] split=temperature.split("°");
-                       int temp=Integer.parseInt(split[0]);
+                        String[] split = temperature.split("°");
+                        int temp = Integer.parseInt(split[0]);
 
-                       Platform.runLater(()->{
-                           if(temp>=45){
-                               weatherLbl.setText(temperature+"F");
-                           }else {
-                               weatherLbl.setText(temperature+"C");
-                           }
-                       });
-                   }
-               }catch (Exception e){
-                   e.printStackTrace();
-               }
-           }
-       });
+                        Platform.runLater(() -> {
+                            if (temp >= 45) {
+                                weatherLbl.setText(temperature + "F");
+                            } else {
+                                weatherLbl.setText(temperature + "C");
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         Clocation.start();
         weather.start();
+
+//        card_must_go_Lists
+        try {
+            Image image = new Image(getClass().getResource("sugandha-beach-cox-s.png").openStream());
+
+            for (int i = 0; i < 10; i++) {
+                must_go_list_card("Cox's Bazar", image);
+                must_go_list_card("Dhaka", image);
+
+
+                setHotels("AA", "BB", image);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
