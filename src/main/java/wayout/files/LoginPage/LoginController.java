@@ -44,12 +44,11 @@ import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
 import wayout.files.Dashboard.UserDashboardController;
-import wayout.files.Dashboard.User_Login_Information;
 import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.util.Collections;
 
-public class LoginController extends User_Login_Information implements Initializable {
+public class LoginController implements Initializable {
 
     // google api properties
     private static final String CLIENT_ID = "156066230892-j88hek91hj3h39bcqt1aqh1d176i76o5.apps.googleusercontent.com";
@@ -177,7 +176,6 @@ public class LoginController extends User_Login_Information implements Initializ
                     stage.setScene(scene);
                     stage.show();
 
-                    userName=usern;
 
 
                 } else {
