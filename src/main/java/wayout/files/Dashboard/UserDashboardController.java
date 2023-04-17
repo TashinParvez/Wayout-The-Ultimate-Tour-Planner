@@ -40,7 +40,8 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
-public class UserDashboardController extends User_Login_Information implements Initializable {
+public class UserDashboardController
+        implements Initializable {
     @FXML
     private HBox card_must_go_Lists;
 
@@ -146,7 +147,7 @@ public class UserDashboardController extends User_Login_Information implements I
                                 "-fx-transition: background-color 1s pointer;" +
                                 "-fx-cursor: pointer");
                     } else {
-                        nodesVector.get(i).setStyle("-fx-translate-x: 25px;-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;" +
+                        nodesVector.get(i).setStyle("-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;" +
                                 "-fx-transition: background-color 1s pointer;" +
                                 "-fx-cursor: pointer");
                     }
@@ -396,13 +397,29 @@ public class UserDashboardController extends User_Login_Information implements I
             throw new RuntimeException(e);
         }
 
-        home.setStyle("-fx-translate-x: 25px;-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;" +
+        home.setStyle("-fx-text-fill: #00d38b; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 15px;" +
                 "-fx-transition: background-color 1s pointer;" +
                 "-fx-cursor: pointer");
 
         maps.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(maps);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(maps);
+
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("explore.fxml"));
+                            System.out.println("SSS");
+                            mainPanel.getChildren().add(root);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            }).start();
         });
 
         home.setOnMouseClicked((event) -> {
@@ -451,49 +468,105 @@ public class UserDashboardController extends User_Login_Information implements I
         });
 
         guides.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(guides);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(guides);
+                }
+            }).start();
         });
 
         hotel.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(hotel);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(hotel);
+                }
+            }).start();
         });
 
         transport.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(transport);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(transport);
+                }
+            }).start();
         });
 
         cart.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(cart);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(cart);
+                }
+            }).start();
         });
 
         chat.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(chat);
-        });
 
-        rewards.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(rewards);
-        });
-        edit_profile.setOnMouseClicked((event) -> {
-            addAllSideNodes();
-            changeAllRemaining(edit_profile);
-        });
-
-        logout.setOnMouseClicked((event) -> {
             try {
-                root = FXMLLoader.load(LoginController.class.getResource("login.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Platform.runLater(() -> {
+                            try {
+                                root = FXMLLoader.load(UserDashboardController.class.getResource("client_chat.fxml"));
+                                mainPanel.getChildren().add(root);
+
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        });
+                    }
+                }).start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        });
+
+        rewards.setOnMouseClicked((event) -> {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(rewards);
+                }
+            }).start();
+        });
+        edit_profile.setOnMouseClicked((event) -> {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    addAllSideNodes();
+                    changeAllRemaining(edit_profile);
+                }
+            }).start();
+        });
+
+        logout.setOnMouseClicked((event) -> {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        root = FXMLLoader.load(LoginController.class.getResource("login.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         });
 
         Thread Clocation = new Thread(new Runnable() {
@@ -565,21 +638,25 @@ public class UserDashboardController extends User_Login_Information implements I
         weather.start();
 
 //        card_must_go_Lists
-        try {
-            Image image = new Image(getClass().getResource("sugandha-beach-cox-s.png").openStream());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Image image = new Image(getClass().getResource("sugandha-beach-cox-s.png").openStream());
+                    Image image2 = new Image(getClass().getResource("image1.png").openStream());
+                    Image image3 = new Image(getClass().getResource("image2.jpg").openStream());
 
-            for (int i = 0; i < 10; i++) {
-                must_go_list_card("Cox's Bazar", image);
-                must_go_list_card("Dhaka", image);
+                    must_go_list_card("Cox's Bazar", image);
+                    must_go_list_card("Sundarbans", image2);
+
+                    setHotels("AA", "BB", image3);
 
 
-                setHotels("AA", "BB", image);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        }).start();
 
 
     }

@@ -26,7 +26,10 @@ module wayout.files {
     opens wayout.files.Dashboard to javafx.fxml;
     exports wayout.files.Dashboard;
 
-
+    opens wayout.files.Dashboard.Networking to javafx.fxml;
+    exports wayout.files.Dashboard.Networking;
+    exports wayout.files.Dashboard.Networking.util;
+    opens wayout.files.Dashboard.Networking.util to javafx.fxml;
 
 
 }
