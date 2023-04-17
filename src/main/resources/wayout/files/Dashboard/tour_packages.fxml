@@ -11,21 +11,23 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="wayout.files.Dashboard.TourPackages"
             prefHeight="750.0" prefWidth="1020.0">
-
-    <MFXScrollPane prefHeight="750" hbarPolicy="NEVER" prefWidth="1015" layoutX="5">
-        <AnchorPane prefWidth="1015">
-            <AnchorPane prefWidth="1015" prefHeight="200">
-                <StackPane prefHeight="200" prefWidth="1015">
-                    <Label text="Tour Packages" style="-fx-text-fill: Black; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 22px"/>
+    <children>
+        <AnchorPane prefWidth="1015" prefHeight="100" style="-fx-background-color: Gray">
+            <AnchorPane prefWidth="1015" prefHeight="100">
+                <StackPane prefHeight="100" prefWidth="1015">
+                    <Label text="Tour Packages"
+                           style="-fx-text-fill: Black; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 22px"/>
                 </StackPane>
             </AnchorPane>
 
-            <AnchorPane layoutY="200" prefWidth="1015" prefHeight="10000">
-                <VBox fx:id="packages_vbox"  prefWidth="1010" prefHeight="2000" style="-fx-background-color: red"/>
-            </AnchorPane>
+            <MFXScrollPane prefHeight="750" hbarPolicy="NEVER" prefWidth="1015" layoutY="100">
+                <AnchorPane layoutY="200" prefWidth="1015" prefHeight="10000">
+                    <children>
+                        <VBox fx:id="packages_vbox" prefWidth="1010" />
+                    </children>
+                </AnchorPane>
+            </MFXScrollPane>
         </AnchorPane>
-
-
-    </MFXScrollPane>
-
+    </children>
 </AnchorPane>
+
