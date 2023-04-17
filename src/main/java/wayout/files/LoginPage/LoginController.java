@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +14,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -38,12 +43,13 @@ import java.net.URI;
 import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
-import wayout.files.Dashboard.Dashboard;
+import wayout.files.Dashboard.UserDashboardController;
+import wayout.files.Dashboard.User_Login_Information;
 import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.util.Collections;
 
-public class LoginController implements Initializable {
+public class LoginController extends User_Login_Information implements Initializable {
 
     // google api properties
     private static final String CLIENT_ID = "156066230892-j88hek91hj3h39bcqt1aqh1d176i76o5.apps.googleusercontent.com";
@@ -68,6 +74,9 @@ public class LoginController implements Initializable {
     private WebView web;
     @FXML
     private MFXButton signinGoogle;
+
+    @FXML
+    private AnchorPane eraser;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -162,11 +171,14 @@ public class LoginController implements Initializable {
                     String gend = rs1.getString("gender");
                     String usern = rs1.getString("username");
 
-                    Parent root= FXMLLoader.load(Dashboard.class.getResource("dashboard3.fxml"));
+                    Parent root= FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
                     stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
                     scene=new Scene(root);
                     stage.setScene(scene);
                     stage.show();
+
+                    userName=usern;
+
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -184,11 +196,43 @@ public class LoginController implements Initializable {
                     String gend = rs2.getString("gender");
                     String usern = rs2.getString("username");
 
-                    Parent root= FXMLLoader.load(Dashboard.class.getResource("dashboard3.fxml"));
-                    stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    scene=new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+
+
+                    File file=new File("src/main/resources/wayout/files/Dashboard/username.txt");
+                    if(file.exists()){
+                        BufferedWriter bw=new BufferedWriter(new FileWriter(file));
+                        bw.write(usern);
+                        System.out.println("Written");
+                        bw.close();
+                    }else System.out.println("File not found");
+
+                    eraser.setVisible(true);
+                    Thread thread=new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                            Platform.runLater(()->{
+                                try {
+                                    Parent root= FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
+                                    stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+                                    scene=new Scene(root);
+                                    stage.setScene(scene);
+                                    stage.show();
+
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            });
+                        }
+                    });
+                    thread.start();
+
+
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -314,6 +358,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        eraser.setVisible(false);
         try {
             flow = new GoogleAuthorizationCodeFlow.Builder(GoogleNetHttpTransport.newTrustedTransport(), new GsonFactory(), CLIENT_ID, CLIENT_SECRET, Collections.singleton(SCOPE)).setAccessType("offline").build();
         } catch (GeneralSecurityException e) {

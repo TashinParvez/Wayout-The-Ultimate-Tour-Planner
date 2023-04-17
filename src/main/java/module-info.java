@@ -1,5 +1,4 @@
 module wayout.files {
-    requires javafx.controls;
     requires javafx.fxml;
     requires MaterialFX;
     requires com.jfoenix;
@@ -13,6 +12,7 @@ module wayout.files {
     requires com.google.api.client;
     requires javafx.web;
     requires org.controlsfx.controls;
+    requires org.jsoup;
 
     opens wayout.files to javafx.fxml;
     exports wayout.files;
