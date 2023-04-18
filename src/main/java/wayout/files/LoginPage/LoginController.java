@@ -43,6 +43,7 @@ import java.net.URI;
 import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
+import wayout.files.Dashboard.Admin_Dashboard;
 import wayout.files.Dashboard.UserDashboardController;
 import wayout.files.Homepage.HomePage_2nd_Controller;
 
@@ -91,11 +92,12 @@ public class LoginController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void backButtonClicked(ActionEvent event) throws IOException {
-        root= FXMLLoader.load(HomePage_2nd_Controller.class.getResource("HomePage_2nd.fxml"));
-        stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        root = FXMLLoader.load(HomePage_2nd_Controller.class.getResource("HomePage_2nd.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -161,7 +163,13 @@ public class LoginController implements Initializable {
             rs1 = pst1.executeQuery();
             rs2 = pst2.executeQuery();
 
-            if (rs1.next()) {
+            if (mail.equals("admin") && pass.equals("admin")) {
+                Parent root = FXMLLoader.load(Admin_Dashboard.class.getResource("admin_dashboard.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else if (rs1.next()) {
                 String pas = rs1.getString("password");
                 if (pas.equals(pass)) {
                     String fullName = rs1.getString("fullName");
@@ -170,12 +178,11 @@ public class LoginController implements Initializable {
                     String gend = rs1.getString("gender");
                     String usern = rs1.getString("username");
 
-                    Parent root= FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
-                    stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    scene=new Scene(root);
+                    Parent root = FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
-
 
 
                 } else {
@@ -195,26 +202,25 @@ public class LoginController implements Initializable {
                     String usern = rs2.getString("username");
 
 
+                    File file = new File("src/main/resources/wayout/files/Dashboard/username.txt");
+                    File file2 = new File("src/main/resources/wayout/files/Dashboard/account_name.txt");
 
-                    File file=new File("src/main/resources/wayout/files/Dashboard/username.txt");
-                    File file2=new File("src/main/resources/wayout/files/Dashboard/account_name.txt");
-
-                    if(file.exists()){
-                        BufferedWriter bw=new BufferedWriter(new FileWriter(file));
+                    if (file.exists()) {
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
                         bw.write(usern);
                         System.out.println("Written");
                         bw.close();
-                    }else System.out.println("File not found");
+                    } else System.out.println("File not found");
 
-                    if(file2.exists()){
-                        BufferedWriter bw=new BufferedWriter(new FileWriter(file));
+                    if (file2.exists()) {
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
                         bw.write(fullName);
                         System.out.println("Written");
                         bw.close();
                     }
 
                     eraser.setVisible(true);
-                    Thread thread=new Thread(new Runnable() {
+                    Thread thread = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
@@ -223,22 +229,21 @@ public class LoginController implements Initializable {
                                 throw new RuntimeException(e);
                             }
 
-                            Platform.runLater(()->{
+                            Platform.runLater(() -> {
                                 try {
-                                    Parent root= FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
-                                    stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-                                    scene=new Scene(root);
+                                    Parent root = FXMLLoader.load(UserDashboardController.class.getResource("user_dashboard.fxml"));
+                                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                    scene = new Scene(root);
                                     stage.setScene(scene);
                                     stage.show();
 
-                                }catch (Exception e){
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             });
                         }
                     });
                     thread.start();
-
 
 
                 } else {
@@ -282,7 +287,7 @@ public class LoginController implements Initializable {
         GoogleCredential credential = new GoogleCredential.Builder().setTransport(GoogleNetHttpTransport.newTrustedTransport()).setJsonFactory(new GsonFactory()).setClientSecrets(CLIENT_ID, CLIENT_SECRET).build().setAccessToken(response.getAccessToken()).setRefreshToken(response.getRefreshToken());
 
         Oauth2 oauth2 = new Oauth2.Builder(GoogleNetHttpTransport.newTrustedTransport(), new GsonFactory(), credential).build();
-        String user_password=JOptionPane.showInputDialog("Enter a password: ");
+        String user_password = JOptionPane.showInputDialog("Enter a password: ");
 
         Connection con;
         PreparedStatement pst;
@@ -305,16 +310,15 @@ public class LoginController implements Initializable {
             con = DriverManager.getConnection(url, username, password);
 
 
-
             //extract data from json:
 
             Userinfo user = oauth2.userinfo().get().execute();
-            String user_first_name=user.getGivenName();
-            String user_FullName=user.getName();
-            String[] splitName=user_FullName.split(" ");
-            int words= splitName.length;
-            int lastwordIndex=words-1;
-            String user_last_name=splitName[lastwordIndex];
+            String user_first_name = user.getGivenName();
+            String user_FullName = user.getName();
+            String[] splitName = user_FullName.split(" ");
+            int words = splitName.length;
+            int lastwordIndex = words - 1;
+            String user_last_name = splitName[lastwordIndex];
 
 
             String query11 = "select count(*) from accountinfo";
