@@ -106,7 +106,7 @@ public class UserDashboardController
     private Label username;
 
     @FXML
-    private AnchorPane mainPanel;
+    AnchorPane mainPanel;
     @FXML
     private HBox ways_to_tour_Dhaka_city;
 
