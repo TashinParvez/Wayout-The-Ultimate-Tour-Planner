@@ -102,8 +102,9 @@ public class ClientController implements Initializable {
         System.out.println(message);
         if (!message.isEmpty()) {
             sendMessage(message, false);
-            writer.println(message);
             messageBox.clear();
+            writer.println(message);
+
         }
     }
 

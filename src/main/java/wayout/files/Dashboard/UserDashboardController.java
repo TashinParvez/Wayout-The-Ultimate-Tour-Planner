@@ -473,6 +473,16 @@ public class UserDashboardController
                 public void run() {
                     addAllSideNodes();
                     changeAllRemaining(guides);
+//
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("find_guide.fxml"));
+                            mainPanel.getChildren().add(root);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
             }).start();
         });
@@ -548,6 +558,15 @@ public class UserDashboardController
                 public void run() {
                     addAllSideNodes();
                     changeAllRemaining(edit_profile);
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("editProfile.fxml"));
+                            mainPanel.getChildren().add(root);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
             }).start();
         });
