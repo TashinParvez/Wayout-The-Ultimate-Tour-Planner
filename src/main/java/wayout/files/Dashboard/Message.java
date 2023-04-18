@@ -1,4 +1,4 @@
-package wayout.files.Dashboard.Networking;
+package wayout.files.Dashboard;
 
 import java.io.Serializable;
 

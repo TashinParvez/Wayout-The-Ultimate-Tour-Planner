@@ -197,12 +197,21 @@ public class LoginController implements Initializable {
 
 
                     File file=new File("src/main/resources/wayout/files/Dashboard/username.txt");
+                    File file2=new File("src/main/resources/wayout/files/Dashboard/account_name.txt");
+
                     if(file.exists()){
                         BufferedWriter bw=new BufferedWriter(new FileWriter(file));
                         bw.write(usern);
                         System.out.println("Written");
                         bw.close();
                     }else System.out.println("File not found");
+
+                    if(file2.exists()){
+                        BufferedWriter bw=new BufferedWriter(new FileWriter(file));
+                        bw.write(fullName);
+                        System.out.println("Written");
+                        bw.close();
+                    }
 
                     eraser.setVisible(true);
                     Thread thread=new Thread(new Runnable() {

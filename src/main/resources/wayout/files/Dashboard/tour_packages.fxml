@@ -21,9 +21,9 @@
             </AnchorPane>
 
             <MFXScrollPane prefHeight="750" hbarPolicy="NEVER" prefWidth="1015" layoutY="100">
-                <AnchorPane layoutY="200" prefWidth="1015" prefHeight="10000">
+                <AnchorPane layoutY="200" prefWidth="1015">
                     <children>
-                        <VBox fx:id="packages_vbox" prefWidth="1010" />
+                        <VBox fx:id="packages_vbox" prefWidth="1010" style="-fx-padding: 0 0 90 0px"/>
                     </children>
                 </AnchorPane>
             </MFXScrollPane>

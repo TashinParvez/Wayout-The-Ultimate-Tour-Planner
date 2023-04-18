@@ -556,17 +556,19 @@ public class UserDashboardController
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        root = FXMLLoader.load(LoginController.class.getResource("login.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(LoginController.class.getResource("login.fxml"));
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
-            });
+            }).start();
         });
 
         Thread Clocation = new Thread(new Runnable() {

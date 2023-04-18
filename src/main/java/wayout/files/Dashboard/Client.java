@@ -1,10 +1,10 @@
-package wayout.files.Dashboard.Networking;
+package wayout.files.Dashboard;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
-import wayout.files.Dashboard.Networking.util.NetworkUtil;
+import wayout.files.Dashboard.util.NetworkUtil;
 
 import java.util.Scanner;
 
