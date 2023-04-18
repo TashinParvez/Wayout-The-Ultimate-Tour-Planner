@@ -4,6 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -14,6 +15,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="750.0" prefWidth="1200.0" style="-fx-border-radius: 30; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.LoginPage.LoginController">
    <children>
@@ -67,5 +69,16 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Hyperlink>
+      <WebView fx:id="web" layoutX="52.0" layoutY="130.0" prefHeight="246.0" prefWidth="350.0" />
+      <MFXButton fx:id="backButton" layoutX="579.0" layoutY="34.0" onAction="#backButtonClicked" style="-fx-background-color: #ffca40;" text="&lt; Back">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </MFXButton>
+      <AnchorPane fx:id="eraser" layoutX="677.0" layoutY="477.0" prefHeight="48.0" prefWidth="357.0" style="-fx-background-color: white;">
+         <children>
+            <MFXProgressBar layoutX="75.0" layoutY="22.0" prefWidth="200.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
