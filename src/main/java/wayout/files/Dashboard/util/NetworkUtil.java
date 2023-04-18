@@ -1,4 +1,4 @@
-package wayout.files.Dashboard.Networking.util;
+package wayout.files.Dashboard.util;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
