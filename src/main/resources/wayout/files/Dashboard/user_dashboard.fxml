@@ -26,6 +26,7 @@
                 <!--               side top-->
                 <Circle centerX="30" centerY="30" radius="20" fx:id="profile_Picture"
                         style="-fx-border-color: red; -fx-border-radius: 3px"/>
+
                 <Label fx:id="username" layoutX="60" layoutY="18"
                        style="-fx-text-fill: White; -fx-font-size: 15px; -fx-font-family: 'Arial Black'">
 
