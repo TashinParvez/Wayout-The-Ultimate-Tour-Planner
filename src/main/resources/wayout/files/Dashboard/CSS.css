@@ -29,5 +29,17 @@
 
 .image_shadow {
     -fx-background-color: #FBFCFB;
+}
+
+.guide_info {
+    -fx-background-color: #c2cef3;
+}
+
+.guide_info2 {
+    -fx-background-color: #584580;
+}
+.button{
+    -fx-background-color:  #ffca40;
 
 }
+
