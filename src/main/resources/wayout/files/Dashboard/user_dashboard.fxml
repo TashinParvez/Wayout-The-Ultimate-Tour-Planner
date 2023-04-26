@@ -166,7 +166,7 @@
                             </Hyperlink>
 
 
-                            <StackPane layoutY="160" layoutX="10">
+                            <StackPane layoutY="100" layoutX="10" prefWidth="990">
                                 <ImageView layoutX="10" layoutY="60" fitWidth="990" fitHeight="200"
                                            style="-fx-padding: 10px">
                                     <Image url="@image2.jpg">
@@ -174,10 +174,10 @@
                                     </Image>
 
                                 </ImageView>
-                                <AnchorPane prefHeight="100" prefWidth="990">
+                                <AnchorPane fx:id="parent" prefHeight="100" prefWidth="990">
                                     <children>
                                         <MFXTextField layoutX="150" layoutY="80" prefWidth="590" prefHeight="50"
-                                                      floatMode="DISABLED" promptText="Where to next?"
+                                                      floatMode="DISABLED" promptText="Find anything here.."
                                                       style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px"
                                                       fx:id="searchBox"/>
                                         <MFXButton fx:id="searchBtn" layoutX="760" text="" layoutY="80" prefWidth="100"

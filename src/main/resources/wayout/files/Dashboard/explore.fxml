@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="750" prefWidth="1020.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.ExploreMaps">
+<AnchorPane fx:id="parent" prefHeight="750" prefWidth="1020.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.ExploreMaps">
     <children>
       <WebView fx:id="webpage" layoutX="10.0" layoutY="177.0" prefHeight="570.0" prefWidth="1000.0" />
       <Label fx:id="locationNameSearched" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="118.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-font-size: 15px; -fx-font-family: 'Arial Rounded MT Bold'" />
