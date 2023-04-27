@@ -8,11 +8,11 @@
 
 <AnchorPane fx:id="body" nodeOrientation="LEFT_TO_RIGHT" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.FindGuide">
    <children>
-      <AnchorPane layoutX="5.0" prefHeight="100.0" prefWidth="1010.0" styleClass="weather_bg" stylesheets="@CSS.css">
+      <AnchorPane prefHeight="100.0" prefWidth="1020.0" style="-fx-background-color: #6db784;">
          <children>
-            <Label layoutX="225.0" layoutY="34.0" text="Hire An Expert, to make your journey more comfortable.">
+            <Label layoutX="137.0" layoutY="33.0" text="Hire An Expert, to make your journey more comfortable." textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
          </children>
