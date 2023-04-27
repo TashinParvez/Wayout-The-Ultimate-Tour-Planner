@@ -22,6 +22,8 @@ WayOut is a JavaFX-based tour planner application designed to make travel planni
 
 4. Run the application by executing the `Home.java` file located under Homepage package.
 
+5. Add all the external libraries (given under resources folder as Libraries) to the project structure. 
+
 ## Usage
 
 When you first open WayOut, you will be prompted to login. If you don't have any account simply create an account and continue to the application. 
