@@ -14,8 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class VerifyAccount extends TemporaryData {
-
+public class GuideVerifyAccount extends TemporaryData{
     @FXML
     private MFXButton confirm;
 
@@ -115,7 +114,7 @@ public class VerifyAccount extends TemporaryData {
                     alert.showAndWait();
 
                     try {
-                        Parent root2 = FXMLLoader.load(getClass().getResource("login.fxml"));
+                        Parent root2 = FXMLLoader.load(getClass().getResource("guideLogin.fxml"));
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         Scene scene2 = new Scene(root2);
                         stage.setScene(scene2);
@@ -142,5 +141,4 @@ public class VerifyAccount extends TemporaryData {
 
 
     }
-
 }

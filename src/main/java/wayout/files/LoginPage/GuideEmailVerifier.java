@@ -1,4 +1,18 @@
 package wayout.files.LoginPage;
+
+import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+import org.json.JSONObject;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,21 +20,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.*;
 import java.util.Properties;
-import javafx.event.Event;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
-import org.json.JSONObject;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
-
-public class EmailVerifier extends TemporaryData {
+public class GuideEmailVerifier extends TemporaryData {
     private static final String API_KEY = "516ab40faaec419288e3d2390d74ccf4";
     private static final String VERIFY_API_URL = "https://api.zerobounce.net/v2/validate?api_key=" + API_KEY;
 
@@ -51,7 +52,7 @@ public class EmailVerifier extends TemporaryData {
             if (status.equals("valid")) {
 
                 if(checkMail(email_z)){
-                    root2 = FXMLLoader.load(getClass().getResource("verifyAccount.fxml"));
+                    root2 = FXMLLoader.load(getClass().getResource("guide_verify_account.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene2 = new Scene(root2);
                     stage.setScene(scene2);
@@ -64,7 +65,7 @@ public class EmailVerifier extends TemporaryData {
                     String password = "ejntpurrhwoplqcq";
                     String to = email_z;
                     String subject = "Verify your email";
-                    String message = "Here is your verification code: \n\n" + generated_code + "\n\nPlease enter this verification code to confirm your account\n";
+                    String message = "Here is your verification code: \n\n" + generated_code + "\n\nPlease enter this verification code to confirm your account as a guide\n";
 
                     Properties props = new Properties();
                     props.put("mail.smtp.host", "smtp.gmail.com");
@@ -96,7 +97,7 @@ public class EmailVerifier extends TemporaryData {
                         throw new RuntimeException(e);
                     }
                 }else {
-                    Alert alert = new Alert(AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText("Cannot create account with this email!");
                     alert.setContentText("This email account already exists");
@@ -106,11 +107,11 @@ public class EmailVerifier extends TemporaryData {
 
 
             } else {
-                Alert alert = new Alert(AlertType.WARNING, "Email address is not valid.");
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Email address is not valid.");
                 alert.showAndWait();
             }
         } catch (IOException e) {
-            Alert alert = new Alert(AlertType.ERROR, "Failed to verify email address.");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to verify email address.");
             alert.showAndWait();
         }
     }
@@ -133,7 +134,7 @@ public class EmailVerifier extends TemporaryData {
 
         try {
 
-            String chk1 = "Select * from accountinfo where email=?";
+            String chk1 = "Select * from guide_info where email=?";
 
             Connection con;
             PreparedStatement pst1, pst2;
@@ -158,4 +159,5 @@ public class EmailVerifier extends TemporaryData {
         }
 
     }
-    }
+
+}
