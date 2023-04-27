@@ -1,4 +1,4 @@
-# WayOut
+![wayout](https://github.com/codewithLimon/AOOP-Project-Wayout/blob/Main/src/main/resources/wayout/files/images/Logo.png?raw=true)
 
 WayOut is a JavaFX-based tour planner application designed to make travel planning easy and efficient. This project is being developed by a team of three contributors: Kaium Al Limon, Abdullah Al Masud & Tashin Parvez.
 
