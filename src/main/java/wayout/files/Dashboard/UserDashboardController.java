@@ -814,12 +814,55 @@ public class UserDashboardController
             e.printStackTrace();
         }
 
+        donate.setOnAction(event -> {
+            try{
+                root=FXMLLoader.load(getClass().getResource("donation_Page.fxml"));
+                mainPanel.getChildren().add(root);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
+        });
 
+        see_best_hotel_listBtn.setOnAction(event -> {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String filePath = "src/main/resources/wayout/files/Dashboard/temp_search.txt";
+                    try {
+                        File f = new File(filePath);
+
+                        if (f.exists()) {
+                            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+                            bw.write("Best Hotels nearby me");
+                            bw.close();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("search_page.fxml"));
+                            mainPanel.getChildren().add(root);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            }).start();
+        });
     }
+
+
+
     private ListView<String> listView;
     @FXML
     private AnchorPane parent;
 
     private List<String> autocompleteValues = new ArrayList<>();
+    @FXML
+    private MFXButton donate;
+
+    @FXML
+    private MFXButton see_the_listBTN;
 }
