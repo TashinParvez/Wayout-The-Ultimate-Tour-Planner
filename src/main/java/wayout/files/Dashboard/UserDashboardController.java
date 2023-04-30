@@ -84,7 +84,7 @@ public class UserDashboardController
     private HBox recently_viewed_places;
 
     @FXML
-    private Label rewards;
+    private Label joinguide;
 
     @FXML
     private MFXTextField searchBox;
@@ -168,7 +168,7 @@ public class UserDashboardController
         nodesVector.add(transport);
         nodesVector.add(cart);
         nodesVector.add(chat);
-        nodesVector.add(rewards);
+        nodesVector.add(joinguide);
         nodesVector.add(edit_profile);
     }
 
@@ -545,12 +545,21 @@ public class UserDashboardController
             }
         });
 
-        rewards.setOnMouseClicked((event) -> {
+        joinguide.setOnMouseClicked((event) -> {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     addAllSideNodes();
-                    changeAllRemaining(rewards);
+                    changeAllRemaining(joinguide);
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("join_Guide.fxml"));
+                            mainPanel.getChildren().add(root);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
             }).start();
         });
