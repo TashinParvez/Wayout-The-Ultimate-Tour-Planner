@@ -1,138 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.shape.Circle?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="wayout.files.Dashboard.UserDashboardController"
-            prefHeight="750.0" prefWidth="1200.0">
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.UserDashboardController">
     <children>
 
         <!--        side panel-->
 
-        <AnchorPane style="-fx-background-color: #191f31" prefWidth="180" prefHeight="750">
+        <AnchorPane prefHeight="750" prefWidth="180" style="-fx-background-color: #191f31">
             <children>
                 <!--               side top-->
-                <Circle centerX="30" centerY="30" radius="20" fx:id="profile_Picture"
-                        style="-fx-border-color: red; -fx-border-radius: 3px"/>
+                <Circle fx:id="profile_Picture" centerX="30" centerY="30" radius="20" style="-fx-border-color: red; -fx-border-radius: 3px" />
 
-                <Label fx:id="username" layoutX="60" layoutY="18"
-                       style="-fx-text-fill: White; -fx-font-size: 15px; -fx-font-family: 'Arial Black'">
+                <Label fx:id="username" layoutX="60" layoutY="18" style="-fx-text-fill: White; -fx-font-size: 15px; -fx-font-family: 'Arial Black'">
 
                 </Label>
 
                 <!--               side main-->
-                <Label layoutX="30" text=" Home" layoutY="150"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="home">
+                <Label fx:id="home" layoutX="30" layoutY="150" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Home">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="HOME" size="18" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="HOME" size="18" />
                     </graphic>
                 </Label>
 
 
-                <Label layoutX="30" text=" Explore" layoutY="190"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="maps">
+                <Label fx:id="maps" layoutX="30" layoutY="190" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Explore">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="MAP" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="MAP" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Find a Local Tour" layoutY="230"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="trips">
+                <Label fx:id="trips" layoutX="30" layoutY="230" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Find a Local Tour">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="PLANE" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="PLANE" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Find a Guide" layoutY="270"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="guides">
+                <Label fx:id="guides" layoutX="30" layoutY="270" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Find a Guide">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="USER" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="USER" size="15" />
                     </graphic>
                 </Label>
 
 
-                <Label layoutX="30" text=" Find a Hotel" layoutY="310"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="hotel">
+                <Label fx:id="hotel" layoutX="30" layoutY="310" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Find a Hotel">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="HOTEL" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="HOTEL" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Find Transport" layoutY="350"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="transport">
+                <Label fx:id="transport" layoutX="30" layoutY="350" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Find Transport">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="CAR" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="CAR" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Cart" layoutY="390"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="cart">
+                <Label fx:id="cart" layoutX="30" layoutY="390" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Cart">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="SHOPPING_CART" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="SHOPPING_CART" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Contact Us" layoutY="430"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="chat">
+                <Label fx:id="chat" layoutX="30" layoutY="430" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Contact Us">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="COMMENT" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="COMMENT" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Rewards" layoutY="470"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="rewards">
+                <Label fx:id="joinguide" layoutX="30" layoutY="470" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Join as a Guide!">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="GIFT" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="GIFT" size="15" />
                     </graphic>
                 </Label>
 
-                <Label layoutX="30" text=" Edit Profile" layoutY="510"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="edit_profile">
+                <Label fx:id="edit_profile" layoutX="30" layoutY="510" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Edit Profile">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="PENCIL" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="PENCIL" size="15" />
                     </graphic>
                 </Label>
 
 
                 <!--                bottom side panel-->
-                <Label layoutX="35" text=" Logout" layoutY="690"
-                       style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;"
-                       fx:id="logout">
+                <Label fx:id="logout" layoutX="35" layoutY="690" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Logout">
 
                     <graphic>
-                        <FontAwesomeIconView glyphName="SIGN_OUT" size="15" fill="white"/>
+                        <FontAwesomeIconView fill="white" glyphName="SIGN_OUT" size="15" />
                     </graphic>
                 </Label>
 
@@ -140,35 +113,26 @@
         </AnchorPane>
 
         <!--        main Panel-->
-        <AnchorPane fx:id="mainPanel" style="-fx-background-color: white" prefHeight="750" prefWidth="1020" layoutX="180">
+        <AnchorPane fx:id="mainPanel" layoutX="180" prefHeight="750" prefWidth="1020" style="-fx-background-color: white">
             <children>
 
-                <MFXScrollPane fx:id="main_scrollPane" prefWidth="1020" prefHeight="750" hbarPolicy="NEVER"
-                               vbarPolicy="AS_NEEDED">
-                    <AnchorPane style="-fx-background-color: white" prefWidth="1020">
+                <MFXScrollPane fx:id="main_scrollPane" hbarPolicy="NEVER" prefHeight="750" prefWidth="1020" vbarPolicy="AS_NEEDED">
+                    <AnchorPane prefWidth="1020" style="-fx-background-color: white">
                         <children>
-                            <Label text="Welcome home!"
-                                   style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 22;"
-                                   layoutX="10" layoutY="20"/>
-                            <Label style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 30;"
-                                   layoutX="10" layoutY="50"
-                                   fx:id="weatherLbl"/>
+                            <Label layoutX="10" layoutY="20" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 22;" text="Welcome home!" />
+                            <Label fx:id="weatherLbl" layoutX="10" layoutY="50" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 30;" />
 
-                            <Label style="-fx-font-family: 'Inter'; -fx-font-size: 18;"
-                                   layoutX="10" layoutY="85"
-                                   fx:id="userLoc"/>
+                            <Label fx:id="userLoc" layoutX="10" layoutY="85" style="-fx-font-family: 'Inter'; -fx-font-size: 18;" />
 
-                            <Hyperlink text=" Notifications" layoutX="890" layoutY="20"
-                                       style="-fx-text-fill: Black; -fx-font-size: 13; -fx-font-family: 'Arial Rounded MT Bold'">
+                            <Hyperlink layoutX="890" layoutY="20" style="-fx-text-fill: Black; -fx-font-size: 13; -fx-font-family: 'Arial Rounded MT Bold'" text=" Notifications">
                                 <graphic>
-                                    <FontAwesomeIconView glyphName="BELL" size="15" fill="Black"/>
+                                    <FontAwesomeIconView fill="Black" glyphName="BELL" size="15" />
                                 </graphic>
                             </Hyperlink>
 
 
-                            <StackPane layoutY="100" layoutX="10" prefWidth="990">
-                                <ImageView layoutX="10" layoutY="60" fitWidth="990" fitHeight="200"
-                                           style="-fx-padding: 10px">
+                            <StackPane layoutX="10" layoutY="100" prefWidth="990">
+                                <ImageView fitHeight="200" fitWidth="990" layoutX="10" layoutY="60" style="-fx-padding: 10px">
                                     <Image url="@image2.jpg">
 
                                     </Image>
@@ -176,16 +140,10 @@
                                 </ImageView>
                                 <AnchorPane fx:id="parent" prefHeight="100" prefWidth="990">
                                     <children>
-                                        <MFXTextField layoutX="150" layoutY="80" prefWidth="590" prefHeight="50"
-                                                      floatMode="DISABLED" promptText="Find anything here.."
-                                                      style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px"
-                                                      fx:id="searchBox"/>
-                                        <MFXButton fx:id="searchBtn" layoutX="760" text="" layoutY="80" prefWidth="100"
-                                                   prefHeight="50"
-                                                   style="-fx-font-family: 'Arial Rounded MT Bold';-fx-padding: 0 5 0 5px; -fx-font-size: 13px ;-fx-background-radius: 30px; -fx-border-radius: 30px">
+                                        <MFXTextField fx:id="searchBox" floatMode="DISABLED" layoutX="150" layoutY="80" prefHeight="50" prefWidth="590" promptText="Find anything here.." style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px" />
+                                        <MFXButton fx:id="searchBtn" layoutX="760" layoutY="80" prefHeight="50" prefWidth="100" style="-fx-font-family: 'Arial Rounded MT Bold';-fx-padding: 0 5 0 5px; -fx-font-size: 13px ;-fx-background-radius: 30px; -fx-border-radius: 30px" text="">
                                             <graphic>
-                                                <FontAwesomeIconView glyphName="SEARCH" size="16"
-                                                                     fontSmoothingType="LCD" fill="Black"/>
+                                                <FontAwesomeIconView fill="Black" fontSmoothingType="LCD" glyphName="SEARCH" size="16" />
                                             </graphic>
                                         </MFXButton>
                                     </children>
@@ -194,102 +152,64 @@
                             </StackPane>
 
 
-                            <Label text="Where to go, right now"
-                                   style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" layoutX="10"
-                                   layoutY="390"/>
-                            <Label text="Spots at the top of travelers’ must-go lists"
-                                   style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px"
-                                   layoutX="10" layoutY="420"/>
+                            <Label layoutX="10" layoutY="390" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Where to go, right now" />
+                            <Label layoutX="10" layoutY="420" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Spots at the top of travelers’ must-go lists" />
 
-                            <MFXScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" layoutX="10" layoutY="450"
-                                           maxHeight="300" prefWidth="990">
+                            <MFXScrollPane hbarPolicy="AS_NEEDED" layoutX="10" layoutY="450" maxHeight="300" prefWidth="990" vbarPolicy="NEVER">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->
-                                <HBox fx:id="card_must_go_Lists" maxHeight="300"
-                                      style="-fx-background-color: #ffffff"></HBox>
+                                <HBox fx:id="card_must_go_Lists" maxHeight="300" style="-fx-background-color: #ffffff" />
                             </MFXScrollPane>
 
 
-                            <Label text="You might like this"
-                                   style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" layoutX="10"
-                                   layoutY="820"/>
-                            <Label text="Popular places to stay"
-                                   style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px"
-                                   layoutX="10" layoutY="850"/>
+                            <Label layoutX="10" layoutY="820" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="You might like this" />
+                            <Label layoutX="10" layoutY="850" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Popular places to stay" />
 
-                            <MFXScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" layoutX="10" layoutY="890"
-                                           prefHeight="300" prefWidth="990">
+                            <MFXScrollPane hbarPolicy="AS_NEEDED" layoutX="10" layoutY="890" prefHeight="300" prefWidth="990" vbarPolicy="NEVER">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->
-                                <HBox fx:id="popular_hotels" prefHeight="300"
-                                      style="-fx-background-color: #ffffff"></HBox>
+                                <HBox fx:id="popular_hotels" prefHeight="300" style="-fx-background-color: #ffffff" />
                             </MFXScrollPane>
 
 
-                            <Label text="Recently viewed places"
-                                   style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" layoutX="10"
-                                   layoutY="1250"/>
-                            <Label text="Popular places to stay"
-                                   style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px"
-                                   layoutX="10" layoutY="1280"/>
+                            <Label layoutX="10" layoutY="1250" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Recently viewed places" />
+                            <Label layoutX="10" layoutY="1280" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Popular places to stay" />
 
-                            <MFXScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" layoutX="10" layoutY="1320"
-                                           prefHeight="300" prefWidth="990">
+                            <MFXScrollPane hbarPolicy="AS_NEEDED" layoutX="10" layoutY="1320" prefHeight="300" prefWidth="990" vbarPolicy="NEVER">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->
-                                <HBox fx:id="recently_viewed_places" prefHeight="300" prefWidth="10000"
-                                      style="-fx-background-color: #29f14a"></HBox>
+                                <HBox fx:id="recently_viewed_places" prefHeight="300" prefWidth="10000" style="-fx-background-color: #29f14a" />
                             </MFXScrollPane>
 
 
-                            <AnchorPane prefWidth="990" prefHeight="200" layoutX="10" layoutY="1670"
-                                        style="-fx-background-color: #99d5d3">
+                            <AnchorPane layoutX="10" layoutY="1670" prefHeight="200" prefWidth="990" style="-fx-background-color: #99d5d3">
                                 <children>
-                                    <Label text="Your next trip starts here"
-                                           style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px"
-                                           layoutX="20" layoutY="20"/>
-                                    <Label text="Top-rated hotels that earned Best of the Best crown."
-                                           style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: #5a6c67; -fx-font-size: 12px"
-                                           layoutX="21" layoutY="50"/>
+                                    <Label layoutX="20" layoutY="20" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Your next trip starts here" />
+                                    <Label layoutX="21" layoutY="50" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: #5a6c67; -fx-font-size: 12px" text="Top-rated hotels that earned Best of the Best crown." />
                                     <ImageView fitHeight="200" fitWidth="550" layoutX="450">
-                                        <Image url="@sugandha-beach-cox-s.png"></Image>
+                                        <Image url="@sugandha-beach-cox-s.png" />
                                     </ImageView>
 
-                                    <MFXButton layoutX="20" layoutY="120" text="See the list"
-                                               style="-fx-background-color: #f9e45b; -fx-font-size: 13px ;-fx-border-radius: 30px; -fx-background-radius: 30px"
-                                               prefHeight="50" prefWidth="110" fx:id="see_best_hotel_listBtn"/>
+                                    <MFXButton fx:id="see_best_hotel_listBtn" layoutX="20" layoutY="120" prefHeight="50" prefWidth="110" style="-fx-background-color: #f9e45b; -fx-font-size: 13px ;-fx-border-radius: 30px; -fx-background-radius: 30px" text="See the list" />
                                 </children>
                             </AnchorPane>
 
 
-                            <Label text="Ways to tour Dhaka City"
-                                   style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" layoutX="10"
-                                   layoutY="1950"/>
-                            <Label text="Book these experiences for a close-up look at Dhaka City."
-                                   style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px"
-                                   layoutX="10" layoutY="1980"/>
+                            <Label layoutX="10" layoutY="1950" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Ways to tour Dhaka City" />
+                            <Label layoutX="10" layoutY="1980" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Book these experiences for a close-up look at Dhaka City." />
 
-                            <MFXScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" layoutX="10" layoutY="2020"
-                                           prefHeight="300" prefWidth="990">
+                            <MFXScrollPane hbarPolicy="AS_NEEDED" layoutX="10" layoutY="2020" prefHeight="300" prefWidth="990" vbarPolicy="NEVER">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->
-                                <HBox fx:id="ways_to_tour_Dhaka_city" prefHeight="300" prefWidth="10000"
-                                      style="-fx-background-color: #4418c7"></HBox>
+                                <HBox fx:id="ways_to_tour_Dhaka_city" prefHeight="300" prefWidth="10000" style="-fx-background-color: #4418c7" />
                             </MFXScrollPane>
 
 
-                            <AnchorPane prefWidth="990" prefHeight="410" layoutX="10" layoutY="2450"
-                                        style="-fx-background-color: #99d5d3">
+                            <AnchorPane layoutX="10" layoutY="2450" prefHeight="410" prefWidth="990" style="-fx-background-color: #99d5d3">
                                 <children>
-                                    <ImageView layoutX="15" layoutY="15" fitHeight="380" fitWidth="400">
-                                        <Image url="@poorP.jpg"></Image>
+                                    <ImageView fitHeight="380" fitWidth="400" layoutX="15" layoutY="15">
+                                        <Image url="@poorP.jpg" />
                                     </ImageView>
-                                    <Label text="Wayout Foundation" layoutX="660" style="-fx-font-size: 14px"
-                                           layoutY="45"/>
-                                    <Label text="Making a Difference in Bangladesh: Wayout Supports Local Charities"
-                                           wrapText="true" maxWidth="350" textAlignment="CENTER" layoutX="540"
-                                           style="-fx-font-size: 16px; -fx-font-family: 'Arial Rounded MT Bold'"
-                                           layoutY="75"/>
-                                    <Label text="Wayout is dedicated to making a positive impact in the communities where we operate, and that's why we've established a foundation to support local charities in Bangladesh. Through our foundation, we provide financial assistance to organizations that are working to improve the lives of people in our country. Whether it's supporting education, healthcare, or social services, we're committed to making a difference in Bangladesh. Stay tuned for updates on the organizations we're supporting and the impact we're making in our community."
-                                           layoutX="485" maxWidth="470" wrapText="true" style="-fx-font-size: 14px"
-                                           layoutY="150"/>
-                                    <MFXButton text="Donate" style="-fx-background-color: #f9e45b;-fx-font-size: 13px;-fx-background-radius: 30px;-fx-padding: 10 20 10 20px; -fx-border-radius: 30px" prefHeight="40" layoutX="660" layoutY="350"/>
+                                    <Label layoutX="660" layoutY="45" style="-fx-font-size: 14px" text="Wayout Foundation" />
+                                    <Label layoutX="540" layoutY="75" maxWidth="350" style="-fx-font-size: 16px; -fx-font-family: 'Arial Rounded MT Bold'" text="Making a Difference in Bangladesh: Wayout Supports Local Charities" textAlignment="CENTER" wrapText="true" />
+                                    <Label layoutX="485" layoutY="150" maxWidth="470" style="-fx-font-size: 14px" text="Wayout is dedicated to making a positive impact in the communities where we operate, and that's why we've established a foundation to support local charities in Bangladesh. Through our foundation, we provide financial assistance to organizations that are working to improve the lives of people in our country. Whether it's supporting education, healthcare, or social services, we're committed to making a difference in Bangladesh. Stay tuned for updates on the organizations we're supporting and the impact we're making in our community." wrapText="true" />
+                                    <MFXButton layoutX="660" layoutY="350" prefHeight="40" style="-fx-background-color: #f9e45b;-fx-font-size: 13px;-fx-background-radius: 30px;-fx-padding: 10 20 10 20px; -fx-border-radius: 30px" text="Donate" />
                                 </children>
                             </AnchorPane>
 
