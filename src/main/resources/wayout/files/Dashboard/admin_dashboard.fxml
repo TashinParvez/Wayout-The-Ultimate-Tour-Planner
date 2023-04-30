@@ -33,6 +33,16 @@
             <Label fx:id="add_package" layoutX="44.0" layoutY="316.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Add Package" textFill="#fafafa" />
             <Label fx:id="logout" layoutX="66.0" layoutY="693.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="LogOut" textFill="#fafafa" />
 
+<!--            <Label fx:id="chat" layoutX="30" layoutY="430" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Contact Us">-->
+
+<!--               <graphic>-->
+<!--                  <FontAwesomeIconView fill="white" glyphName="COMMENT" size="15" />-->
+<!--               </graphic>-->
+<!--            </Label>-->
+
+
+
+
 <!--            <Label fx:id="Home" layoutX="30" layoutY="150" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Home">-->
 <!--            </Label>-->
 

@@ -86,6 +86,7 @@
                     </graphic>
                 </Label>
 
+
                 <Label fx:id="joinguide" layoutX="30" layoutY="470" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Join as a Guide!">
 
                     <graphic>
