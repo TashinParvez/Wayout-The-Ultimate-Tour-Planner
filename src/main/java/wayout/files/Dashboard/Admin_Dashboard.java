@@ -34,6 +34,9 @@ public class Admin_Dashboard implements Initializable {
     private Label inbox;
 
     @FXML
+    private Label guide_applications;
+
+    @FXML
     private LineChart<?, ?> linearChart;
 
     @FXML
@@ -112,6 +115,7 @@ public class Admin_Dashboard implements Initializable {
         nodesVector.add(earnings);
         nodesVector.add(inbox);
         nodesVector.add(add_package);
+        nodesVector.add(guide_applications);
 //        nodesVector.add(transport);
 //        nodesVector.add(cart);
 //        nodesVector.add(chat);
@@ -226,6 +230,19 @@ public class Admin_Dashboard implements Initializable {
 //            } catch (Exception e) {
 //                e.printStackTrace();
 //            }
+        });
+
+        guide_applications.setOnMouseClicked(event -> {
+            addAllSideNodes();
+            changeAllRemaining(guide_applications);
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("guide_applications.fxml"));
+                mainPanel.getChildren().add(root);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         logout.setOnMouseClicked((event) -> {

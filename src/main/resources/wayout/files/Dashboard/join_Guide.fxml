@@ -37,7 +37,7 @@
                 <Font name="Arial Rounded MT Bold" size="14.0" />
             </font>
         </Label>
-        <MFXTextField fx:id="cityBox" floatMode="DISABLED" layoutX="265.0" layoutY="211.0" prefHeight="35.0" prefWidth="700.0" promptText="Current Location" style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;" text="Your available area." />
+        <MFXTextField fx:id="cityBox" floatMode="DISABLED" layoutX="265.0" layoutY="211.0" prefHeight="35.0" prefWidth="700.0" promptText="Your available area." style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;" />
         <Label layoutX="268.0" layoutY="254.0" prefHeight="26.0" prefWidth="128.0" text="E-mail">
             <font>
                 <Font name="Arial Rounded MT Bold" size="14.0" />
@@ -65,12 +65,12 @@
                 <Font name="Arial" size="15.0" />
             </font>
         </Label>
-        <Label layoutX="267.0" layoutY="404.0" prefHeight="26.0" prefWidth="128.0" text="Blood Group">
+        <Label layoutX="267.0" layoutY="404.0" prefHeight="26.0" prefWidth="128.0" text="Personal details in short">
             <font>
                 <Font name="Arial Rounded MT Bold" size="14.0" />
             </font>
         </Label>
-        <MFXTextField fx:id="bloodBox" floatMode="DISABLED" layoutX="265.0" layoutY="431.0" prefHeight="35.0" prefWidth="700.0" promptText="A+(ve)" style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;">
+        <MFXTextField fx:id="bloodBox" floatMode="DISABLED" layoutX="265.0" layoutY="431.0" prefHeight="35.0" prefWidth="700.0" promptText="Details" style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;">
             <contextMenu>
                 <ContextMenu>
                     <items>
@@ -79,7 +79,7 @@
                 </ContextMenu>
             </contextMenu>
         </MFXTextField>
-        <MFXButton layoutX="67.0" layoutY="369.0" style="-fx-border-color: Gray; -fx-background-color: #f9e45b; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Upload Your Photo">
+        <MFXButton fx:id="upload_photo" layoutX="67.0" layoutY="369.0" style="-fx-border-color: Gray; -fx-background-color: #f9e45b; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Upload Your Photo">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
