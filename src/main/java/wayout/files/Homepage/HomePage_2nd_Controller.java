@@ -4,18 +4,22 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import wayout.files.Dashboard.Server;
 import wayout.files.LoginPage.LoginController;
 import wayout.files.LoginPage.SignUpController;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HomePage_2nd_Controller {
+public class HomePage_2nd_Controller implements Initializable {
 
     @FXML
     private Hyperlink aboutUs;
@@ -72,4 +76,8 @@ public class HomePage_2nd_Controller {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Server server=new Server();
+    }
 }

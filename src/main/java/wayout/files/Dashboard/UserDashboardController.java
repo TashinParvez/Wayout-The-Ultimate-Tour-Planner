@@ -534,7 +534,7 @@ public class UserDashboardController
 
                         Platform.runLater(() -> {
                             try {
-                                root = FXMLLoader.load(UserDashboardController.class.getResource("client_chat.fxml"));
+                                root = FXMLLoader.load(UserDashboardController.class.getResource("chat_gui.fxml"));
                                 mainPanel.getChildren().add(root);
 
                             } catch (IOException e) {
