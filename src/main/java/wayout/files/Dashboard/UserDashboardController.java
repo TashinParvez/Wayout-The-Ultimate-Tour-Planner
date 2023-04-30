@@ -34,6 +34,8 @@ import wayout.files.LoginPage.LoginController;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -82,7 +84,7 @@ public class UserDashboardController
     private HBox recently_viewed_places;
 
     @FXML
-    private Label rewards;
+    private Label joinguide;
 
     @FXML
     private MFXTextField searchBox;
@@ -166,7 +168,7 @@ public class UserDashboardController
         nodesVector.add(transport);
         nodesVector.add(cart);
         nodesVector.add(chat);
-        nodesVector.add(rewards);
+        nodesVector.add(joinguide);
         nodesVector.add(edit_profile);
     }
 
@@ -543,12 +545,21 @@ public class UserDashboardController
             }
         });
 
-        rewards.setOnMouseClicked((event) -> {
+        joinguide.setOnMouseClicked((event) -> {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     addAllSideNodes();
-                    changeAllRemaining(rewards);
+                    changeAllRemaining(joinguide);
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("join_Guide.fxml"));
+                            mainPanel.getChildren().add(root);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
             }).start();
         });
@@ -680,5 +691,187 @@ public class UserDashboardController
         }).start();
 
 
+
+//        20px padding
+
+
+        searchBtn.setOnAction(event -> {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+//                    String filePath="src/main/resources/wayout/files/Dashboard/search_anything.txt";
+                    try {
+                        File file = new File("src/main/resources/wayout/files/Dashboard/search_anything.txt");
+                        String filePath="src/main/resources/wayout/files/Dashboard/search_anything.txt";
+                        if(file.exists()){
+                            byte[] fileContent = Files.readAllBytes(Paths.get(filePath));
+                            String fileContentString = new String(fileContent, "UTF-8");
+
+                            if(!fileContentString.contains(searchBox.getText().toLowerCase())){
+                                PrintWriter pw=new PrintWriter(new FileWriter(file,true));
+                                pw.print(searchBox.getText()+"@");
+                                pw.close();
+                            }
+
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String filePath="src/main/resources/wayout/files/Dashboard/temp_search.txt";
+                    try{
+                        File f=new File(filePath);
+
+                        if(f.exists()){
+                            BufferedWriter bw=new BufferedWriter(new FileWriter(f));
+                            bw.write(searchBox.getText());
+                            System.out.println(searchBox.getText());
+                            bw.close();
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(()->{
+                        try{
+                            root=FXMLLoader.load(getClass().getResource("search_page.fxml"));
+                            mainPanel.getChildren().add(root);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            }).start();
+        });
+
+
+        //autocomplete text:
+
+//        searchBox  - textField
+//        searchBtn - Search
+
+        try{
+            autocompleteValues.add("Top Restaurants in Dhaka");
+            autocompleteValues.add("Top Hotels to stay in Dhaka");
+            autocompleteValues.add("Tourist Places in Bangladesh");
+
+//            autocompleteValues.addAll("dhaka", "sylhet", "chittagong", "cox's Bazar", "sundarbans", "sajek-valley")
+            String filePath="src/main/resources/wayout/files/Dashboard/search_anything.txt";
+            File f=new File(filePath);
+            if(f.exists()){
+                byte[] fileContent = Files.readAllBytes(Paths.get(filePath));
+                String fileContentString = new String(fileContent, "UTF-8");
+
+                String[] splitLocations=fileContentString.split("@");
+
+                for(int i=0;i<splitLocations.length;i++){
+                    if(!autocompleteValues.contains(splitLocations[i].toLowerCase())){
+                        autocompleteValues.add(splitLocations[i].toLowerCase());
+                    }
+                }
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            Thread autoCompleteSearch=new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    listView = new ListView<>();
+                    listView.setPrefWidth(searchBox.getPrefWidth()-40);
+                    listView.setVisible(false);
+                    listView.setLayoutX(searchBox.getLayoutX()+20);
+                    listView.setLayoutY(searchBox.getLayoutY()+searchBox.getPrefHeight()+5);
+                    listView.setPrefHeight(autocompleteValues.size()*24);
+
+                    searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+                        List<String> filteredValues = autocompleteValues.stream()
+                                .filter(value -> value.toLowerCase().startsWith(newValue.toLowerCase()))
+                                .collect(Collectors.toList());
+                        if (!filteredValues.isEmpty()) {
+                            listView.setItems(FXCollections.observableArrayList(filteredValues));
+                            listView.setVisible(true);
+                        } else {
+                            listView.getItems().clear();
+                            listView.setVisible(false);
+                        }
+                    });
+
+                    listView.setOnMouseClicked(event -> {
+                        String selectedValue = listView.getSelectionModel().getSelectedItem();
+                        searchBox.setText(selectedValue);
+                        listView.setVisible(false);
+                    });
+
+
+                    Platform.runLater(()->{
+                        parent.getChildren().addAll(listView);
+                    });
+                }
+            });
+            autoCompleteSearch.start();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        donate.setOnAction(event -> {
+            try{
+                root=FXMLLoader.load(getClass().getResource("donation_Page.fxml"));
+                mainPanel.getChildren().add(root);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        });
+
+        see_best_hotel_listBtn.setOnAction(event -> {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String filePath = "src/main/resources/wayout/files/Dashboard/temp_search.txt";
+                    try {
+                        File f = new File(filePath);
+
+                        if (f.exists()) {
+                            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+                            bw.write("Best Hotels nearby me");
+                            bw.close();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("search_page.fxml"));
+                            mainPanel.getChildren().add(root);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            }).start();
+        });
     }
+
+
+
+    private ListView<String> listView;
+    @FXML
+    private AnchorPane parent;
+
+    private List<String> autocompleteValues = new ArrayList<>();
+    @FXML
+    private MFXButton donate;
+
+    @FXML
+    private MFXButton see_the_listBTN;
 }

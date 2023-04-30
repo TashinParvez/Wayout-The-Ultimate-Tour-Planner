@@ -208,7 +208,8 @@ public class TourPackages implements Initializable {
                     "foods & others facilities. Tour package depends on avaibility. Confirm your booking ASAP.", 15000.0);
 
 
-            addPackages(image, "Sajek Valley", "5-7 days", "None", "None", 8000);
+            addPackages(image, "Sajek Valley", "5-7 days", "None", "Sajek Valley is the most attractive place for every tourist. It's like a cloud kingdom above the sky. All seasons are best time to visit the sajek valley.\n" +
+                    "We have sajek tour package for family, couple & corporate. We operate all tours by our own tour guide. This package also includes Khagrachori all tourist spot.", 8000);
 
 
 //            addPackages(image, "Saint-Martin Couple Tour Package", "14-15 days", "Buisness class bus ticket", "Saint-Martin is the perfect destination " +

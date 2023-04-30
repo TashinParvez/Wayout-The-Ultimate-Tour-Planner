@@ -40,8 +40,7 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
-public class GuideDashBoard
-        implements Initializable {
+public class GuideDashBoard implements Initializable {
     @FXML
     private HBox card_must_go_Lists;
 
