@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import wayout.files.LoginPage.LoginController;
@@ -207,13 +208,17 @@ public class Admin_Dashboard implements Initializable {
             changeAllRemaining(inbox);
 
 //            try {
-//                root = FXMLLoader.load(getClass().getResource("BanUser.fxml"));
+//                root = FXMLLoader.load(getClass().getResource("adminInbox.fxml"));
 //                mainPanel.getChildren().add(root);
 //
 //            } catch (Exception e) {
 //                e.printStackTrace();
 //            }
+
+
         });
+
+
 
         add_package.setOnMouseClicked(event -> {
             addAllSideNodes();
@@ -247,5 +252,14 @@ public class Admin_Dashboard implements Initializable {
             }).start();
         });
 
+
+
     }
+
+//    @FXML
+//    void InboxButtonClicked(MouseEvent event) throws IOException {
+//        Parent root = FXMLLoader.load(getClass().getResource("adminInbox.fxml"));
+//        mainPanel.getChildren().add(root);
+//    }
+
 }

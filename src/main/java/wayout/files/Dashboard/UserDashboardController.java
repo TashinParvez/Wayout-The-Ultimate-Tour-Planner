@@ -401,6 +401,7 @@ public class UserDashboardController
                 "-fx-transition: background-color 1s pointer;" +
                 "-fx-cursor: pointer");
 
+
         maps.setOnMouseClicked((event) -> {
             new Thread(new Runnable() {
                 @Override
@@ -562,6 +563,7 @@ public class UserDashboardController
                 }
             }).start();
         });
+
         edit_profile.setOnMouseClicked((event) -> {
             new Thread(new Runnable() {
                 @Override
