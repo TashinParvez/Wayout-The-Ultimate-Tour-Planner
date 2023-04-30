@@ -203,20 +203,24 @@ public class Admin_Dashboard implements Initializable {
             }
         });
 
+
         inbox.setOnMouseClicked(event -> {
             addAllSideNodes();
             changeAllRemaining(inbox);
 
-//            try {
-//                root = FXMLLoader.load(getClass().getResource("adminInbox.fxml"));
-//                mainPanel.getChildren().add(root);
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                root = FXMLLoader.load(getClass().getResource("adminInbox.fxml"));
+                mainPanel.getChildren().add(root);
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         });
+
+
+
+
 
 
 
