@@ -14,15 +14,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class FindGuide implements Initializable {
@@ -195,73 +196,44 @@ public class FindGuide implements Initializable {
             @Override
             public void run() {
                 try {
-                    Image image = new Image(getClass().getResource("image2.jpg").openStream());
-                    addGuide(image, "Abdullah Al Masud","14-15 days","Available in Dhaka","Saint-Martin is the perfect destination " +
-                            "for honeymoon couple to spending relax & private times. Our package includes bus tickets, ship tickets, resort booking, " +
-                            "foods & others facilities. Tour package depends on avaibility. Confirm your booking ASAP.","1000");
-
-                    Image image2 = new Image(getClass().getResource("image3.jpg").openStream());
-                    addGuide(image2, "Kaium Al Limon","14-15 days","Availabe in Chittagong","Saint-Martin is the perfect destination " +
-                            "for honeymoon couple to spending relax & private times. Our package includes bus tickets, ship tickets, resort booking, " +
-                            "foods & others facilities. Tour package depends on avaibility. Confirm your booking ASAP.","1500");
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try{
-                                String filePathString="src/main/resources/wayout/files/Dashboard/guide_info.txt";
-                                Path filePath = Paths.get(filePathString);
-                                File file=new File(filePathString);
-
-                                if(file.exists()){
-                                    byte[] fileBytes = Files.readAllBytes(filePath);
-                                    String fileContents = new String(fileBytes, StandardCharsets.UTF_8);
 
 
-                                    String[] Guide=fileContents.split("~");
+                    String url = "jdbc:mysql://127.0.0.1/wayout";
+                    String username = "root";
+                    String password = "";
 
-                                    for (int i=0;i<Guide.length;i++){
-                                        try{
-                                            String[] singleGuideExtract=Guide[i].split("@");
+                    try {
+                        Connection conn = DriverManager.getConnection(url, username, password);
+                        Statement stmt = conn.createStatement();
+                        ResultSet rs = stmt.executeQuery("SELECT * FROM guides_list");
 
-                                            String imageURL=singleGuideExtract[0];
-                                            System.out.println(imageURL);
+                        while (rs.next()) {
+                            String name = rs.getString("Name");
+                            String city = rs.getString("City");
+                            String email = rs.getString("Email");
+                            String mobile = rs.getString("Mobile");
+                            String details = rs.getString("Details");
+                            String nid = rs.getString("NID");
+                            String hourlyCharge = String.valueOf(rs.getDouble("Hourly_Charge"));
+                            String availableTime = rs.getString("Available_time");
+                            String Status = rs.getString("Status");
+                            InputStream image = rs.getBinaryStream("image");
 
-                                            String title=singleGuideExtract[1];
-                                            System.out.println(title);
 
-                                            String days=singleGuideExtract[2];
-                                            System.out.println(days);
+                            Image img = new Image(image);
 
-                                            String features=singleGuideExtract[3];
-                                            System.out.println(features);
 
-                                            String details=singleGuideExtract[4];
-                                            System.out.println(details);
-
-                                            String cost=singleGuideExtract[5];
-                                            System.out.println(cost);
-
-                                            Image im=new Image(getClass().getResource(imageURL).openStream());
-                                            System.out.println(im.getUrl());
-
-                                            addGuide(im,title,days,features,details,cost);
-                                            System.out.println("Ok");
-                                        }catch (Exception e){
-
-                                        }
-                                    }
-
-                                }
-                            }catch (Exception e){
-
+                            if(Status.toLowerCase().equals("approved")){
+                                Platform.runLater(()->{
+                                    addGuide(img,name,availableTime,city,details,hourlyCharge);
+                                });
                             }
                         }
-                    }).start();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
 
-//                    addPackages(image, "Saint-Martin Couple Tour Package","14-15 days","Buisness class bus ticket","Saint-Martin is the perfect destination " +
-//                            "for honeymoon couple to spending relax & private times. Our package includes bus tickets, ship tickets, resort booking, " +
-//                            "foods & others facilities. Tour package depends on avaibility. Confirm your booking ASAP.",15000);
+
                 } catch (Exception e) {
                     System.out.println("Error");
                 }
