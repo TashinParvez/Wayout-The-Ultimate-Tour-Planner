@@ -1,7 +1,6 @@
 package wayout.files.Dashboard;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.application.Platform;
@@ -19,7 +18,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
@@ -410,7 +408,7 @@ public class UserDashboardController
                     addAllSideNodes();
                     changeAllRemaining(maps);
 
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         try {
                             root = FXMLLoader.load(getClass().getResource("explore.fxml"));
                             System.out.println("SSS");
@@ -476,7 +474,7 @@ public class UserDashboardController
                     addAllSideNodes();
                     changeAllRemaining(guides);
 //
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         try {
                             root = FXMLLoader.load(getClass().getResource("find_guide.fxml"));
                             mainPanel.getChildren().add(root);
@@ -519,7 +517,8 @@ public class UserDashboardController
             }).start();
         });
 
-        chat.setOnMouseClicked((event) -> {
+// contact onclicked action
+        chat.setOnMouseClicked((event) -> { 
             addAllSideNodes();
             changeAllRemaining(chat);
 
@@ -551,7 +550,7 @@ public class UserDashboardController
                 public void run() {
                     addAllSideNodes();
                     changeAllRemaining(joinguide);
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         try {
                             root = FXMLLoader.load(getClass().getResource("join_Guide.fxml"));
                             mainPanel.getChildren().add(root);
@@ -569,7 +568,7 @@ public class UserDashboardController
                 public void run() {
                     addAllSideNodes();
                     changeAllRemaining(edit_profile);
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         try {
                             root = FXMLLoader.load(getClass().getResource("editProfile.fxml"));
                             mainPanel.getChildren().add(root);
@@ -586,7 +585,7 @@ public class UserDashboardController
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         try {
                             root = FXMLLoader.load(LoginController.class.getResource("login.fxml"));
                             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -691,7 +690,6 @@ public class UserDashboardController
         }).start();
 
 
-
 //        20px padding
 
 
@@ -703,19 +701,19 @@ public class UserDashboardController
 //                    String filePath="src/main/resources/wayout/files/Dashboard/search_anything.txt";
                     try {
                         File file = new File("src/main/resources/wayout/files/Dashboard/search_anything.txt");
-                        String filePath="src/main/resources/wayout/files/Dashboard/search_anything.txt";
-                        if(file.exists()){
+                        String filePath = "src/main/resources/wayout/files/Dashboard/search_anything.txt";
+                        if (file.exists()) {
                             byte[] fileContent = Files.readAllBytes(Paths.get(filePath));
                             String fileContentString = new String(fileContent, "UTF-8");
 
-                            if(!fileContentString.contains(searchBox.getText().toLowerCase())){
-                                PrintWriter pw=new PrintWriter(new FileWriter(file,true));
-                                pw.print(searchBox.getText()+"@");
+                            if (!fileContentString.contains(searchBox.getText().toLowerCase())) {
+                                PrintWriter pw = new PrintWriter(new FileWriter(file, true));
+                                pw.print(searchBox.getText() + "@");
                                 pw.close();
                             }
 
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -725,24 +723,24 @@ public class UserDashboardController
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    String filePath="src/main/resources/wayout/files/Dashboard/temp_search.txt";
-                    try{
-                        File f=new File(filePath);
+                    String filePath = "src/main/resources/wayout/files/Dashboard/temp_search.txt";
+                    try {
+                        File f = new File(filePath);
 
-                        if(f.exists()){
-                            BufferedWriter bw=new BufferedWriter(new FileWriter(f));
+                        if (f.exists()) {
+                            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
                             bw.write(searchBox.getText());
                             System.out.println(searchBox.getText());
                             bw.close();
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    Platform.runLater(()->{
-                        try{
-                            root=FXMLLoader.load(getClass().getResource("search_page.fxml"));
+                    Platform.runLater(() -> {
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("search_page.fxml"));
                             mainPanel.getChildren().add(root);
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     });
@@ -756,42 +754,42 @@ public class UserDashboardController
 //        searchBox  - textField
 //        searchBtn - Search
 
-        try{
+        try {
             autocompleteValues.add("Top Restaurants in Dhaka");
             autocompleteValues.add("Top Hotels to stay in Dhaka");
             autocompleteValues.add("Tourist Places in Bangladesh");
 
 //            autocompleteValues.addAll("dhaka", "sylhet", "chittagong", "cox's Bazar", "sundarbans", "sajek-valley")
-            String filePath="src/main/resources/wayout/files/Dashboard/search_anything.txt";
-            File f=new File(filePath);
-            if(f.exists()){
+            String filePath = "src/main/resources/wayout/files/Dashboard/search_anything.txt";
+            File f = new File(filePath);
+            if (f.exists()) {
                 byte[] fileContent = Files.readAllBytes(Paths.get(filePath));
                 String fileContentString = new String(fileContent, "UTF-8");
 
-                String[] splitLocations=fileContentString.split("@");
+                String[] splitLocations = fileContentString.split("@");
 
-                for(int i=0;i<splitLocations.length;i++){
-                    if(!autocompleteValues.contains(splitLocations[i].toLowerCase())){
+                for (int i = 0; i < splitLocations.length; i++) {
+                    if (!autocompleteValues.contains(splitLocations[i].toLowerCase())) {
                         autocompleteValues.add(splitLocations[i].toLowerCase());
                     }
                 }
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            Thread autoCompleteSearch=new Thread(new Runnable() {
+            Thread autoCompleteSearch = new Thread(new Runnable() {
                 @Override
                 public void run() {
 
                     listView = new ListView<>();
-                    listView.setPrefWidth(searchBox.getPrefWidth()-40);
+                    listView.setPrefWidth(searchBox.getPrefWidth() - 40);
                     listView.setVisible(false);
-                    listView.setLayoutX(searchBox.getLayoutX()+20);
-                    listView.setLayoutY(searchBox.getLayoutY()+searchBox.getPrefHeight()+5);
-                    listView.setPrefHeight(autocompleteValues.size()*24);
+                    listView.setLayoutX(searchBox.getLayoutX() + 20);
+                    listView.setLayoutY(searchBox.getLayoutY() + searchBox.getPrefHeight() + 5);
+                    listView.setPrefHeight(autocompleteValues.size() * 24);
 
                     searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
                         List<String> filteredValues = autocompleteValues.stream()
@@ -813,21 +811,21 @@ public class UserDashboardController
                     });
 
 
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         parent.getChildren().addAll(listView);
                     });
                 }
             });
             autoCompleteSearch.start();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         donate.setOnAction(event -> {
-            try{
-                root=FXMLLoader.load(getClass().getResource("donation_Page.fxml"));
+            try {
+                root = FXMLLoader.load(getClass().getResource("donation_Page.fxml"));
                 mainPanel.getChildren().add(root);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -861,7 +859,6 @@ public class UserDashboardController
             }).start();
         });
     }
-
 
 
     private ListView<String> listView;
