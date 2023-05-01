@@ -65,7 +65,7 @@ public class TourPackages implements Initializable {
                 "");
 
 
-        Label duration = new Label(days);
+        Label duration = new Label(days +" Day/Days");
         duration.setLayoutX(400);
         duration.setLayoutY(55);
         duration.setMaxWidth(85);
@@ -80,7 +80,7 @@ public class TourPackages implements Initializable {
                         "");
 
 
-        Label feat = new Label(features);
+        Label feat = new Label("Area: "+features);
         feat.setLayoutX(490);
         feat.setLayoutY(55);
         feat.setStyle(
@@ -109,15 +109,15 @@ public class TourPackages implements Initializable {
                 "-fx-text-fill: white");
 
 
-        MFXButton viewDetailsButtn = new MFXButton("View details");
-        viewDetailsButtn.setStyle("-fx-font-size: 14px;" +
-                "-fx-padding: 5 10 5 10px;" +
-                "-fx-text-fill: white;" +
-                "-fx-background-color: teal;" +
-                "-fx-border-radius: 0px;" +
-                "-fx-background-radius: 0px");
-        viewDetailsButtn.setLayoutY(240);
-        viewDetailsButtn.setLayoutX(505);
+//        MFXButton viewDetailsButtn = new MFXButton("View details");
+//        viewDetailsButtn.setStyle("-fx-font-size: 14px;" +
+//                "-fx-padding: 5 10 5 10px;" +
+//                "-fx-text-fill: white;" +
+//                "-fx-background-color: teal;" +
+//                "-fx-border-radius: 0px;" +
+//                "-fx-background-radius: 0px");
+//        viewDetailsButtn.setLayoutY(240);
+//        viewDetailsButtn.setLayoutX(505);
 
         MFXButton bookNowButton = new MFXButton("Book now");
         bookNowButton.setStyle("-fx-font-size: 14px;" +
@@ -127,7 +127,7 @@ public class TourPackages implements Initializable {
                 "-fx-border-radius: 0px;" +
                 "-fx-background-radius: 0px");
         bookNowButton.setLayoutY(240);
-        bookNowButton.setLayoutX(615);
+        bookNowButton.setLayoutX(505);
 
         bookNowButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -184,7 +184,7 @@ public class TourPackages implements Initializable {
             anchorPane.getChildren().add(feat);
             anchorPane.getChildren().add(detailS_lbl);
             anchorPane.getChildren().add(cost_package);
-            anchorPane.getChildren().add(viewDetailsButtn);
+        //    anchorPane.getChildren().add(viewDetailsButtn);
             anchorPane.getChildren().add(bookNowButton);
 
             hBox.getChildren().add(anchorPane);
