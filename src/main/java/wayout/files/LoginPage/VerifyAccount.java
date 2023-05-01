@@ -57,6 +57,9 @@ public class VerifyAccount extends TemporaryData {
         String a6 = password_T;
         String a7 = c_password;
 
+        System.out.println("Given code: "+code);
+        System.out.println("Generated code: "+code);
+
         try {
             if (code.equals(generated_code)) {
                 try {
@@ -95,7 +98,7 @@ public class VerifyAccount extends TemporaryData {
                     System.out.println(generated_username);
 
 
-                    pst = con.prepareStatement("INSERT INTO guide_info(firstName,lastName,fullName,email,dob,gender,username,password) VALUES(?,?,?,?,?,?,?,?)");
+                    pst = con.prepareStatement("INSERT INTO accountinfo(firstName,lastName,fullName,email,dob,gender,username,password) VALUES(?,?,?,?,?,?,?,?)");
                     pst.setString(1, user_first_name);
                     pst.setString(2, user_last_name);
                     pst.setString(3, user_FullName);
@@ -110,8 +113,8 @@ public class VerifyAccount extends TemporaryData {
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Welcome");
-                    alert.setHeaderText("Login Successful");
-                    alert.setContentText("Sign up Successful\nAutomatically Generated Username: " + generated_username + "\nUse this username to login into your account");
+                    alert.setHeaderText("SignUP Successful");
+                    alert.setContentText("Automatically Generated Username: " + generated_username + "\nUse this username to login into your account");
                     alert.showAndWait();
 
                     try {
