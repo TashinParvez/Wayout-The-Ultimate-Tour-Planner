@@ -26,10 +26,8 @@ public class ClientController implements Initializable {
 
     @FXML
     private VBox messageBodyVbox;
-
     @FXML
     private MFXTextField messageBox;
-
     @FXML
     private MFXButton sendBtn;
     private Socket socket;
@@ -114,8 +112,9 @@ public class ClientController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 //        String name=JOptionPane.showInputDialog("Enter Your Name:"); // here the dialog / popup open and gets user name
-        // new my code
-        String name=JOptionPane.showInputDialog("Enter Your Name:"); // here the dialog / popup open and gets user name
+
+        // new my code tashin
+        String name=JOptionPane.showInputDialog("Enter Your Name:"); // here the dialog // popup open and gets user name
 
         if(!name.isEmpty()){
             new Thread(new Runnable() {
@@ -136,6 +135,7 @@ public class ClientController implements Initializable {
                 pw.print(name+"@");
                 pw.close();
             }
+
 
 //            sendBtn.setOnAction(event -> {
 //                String text = messageBox.getText().trim();
@@ -167,7 +167,6 @@ public class ClientController implements Initializable {
                                 while(true){
                                     String input = scanner.nextLine();
                                     sendMessage(input,true);
-
                                 }
                             }
                         }).start();

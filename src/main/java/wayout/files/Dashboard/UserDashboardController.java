@@ -520,7 +520,8 @@ public class UserDashboardController
 
 // contact onclicked action // chat option
 // tashin
-        chat.setOnMouseClicked((event) -> { 
+
+        chat.setOnMouseClicked((event) -> {
             addAllSideNodes();
             changeAllRemaining(chat);
 
@@ -548,9 +549,6 @@ public class UserDashboardController
 
 
         // tashin End -------------------
-
-
-
 
 
         joinguide.setOnMouseClicked((event) -> {
