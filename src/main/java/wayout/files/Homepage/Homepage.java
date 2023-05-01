@@ -11,7 +11,7 @@ import wayout.files.Dashboard.UserDashboardController;
 public class Homepage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root= FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("HomePage_2nd.fxml"));
         Scene scene=new Scene(root);
         primaryStage.setScene(scene);
 
