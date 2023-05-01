@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import wayout.files.LoginPage.LoginController;
 
@@ -23,6 +26,15 @@ import java.util.Vector;
 public class Admin_Dashboard implements Initializable {
     @FXML
     private Label add_package;
+
+    @FXML
+    private Circle profile_pic;
+
+    @FXML
+    private Label manage_packages;
+
+    @FXML
+    private Label manage_guides;
 
     @FXML
     private Label earnings;
@@ -125,6 +137,12 @@ public class Admin_Dashboard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            profile_pic.setFill(new ImagePattern(new Image(getClass().getResource("software-engineer.png").openStream())));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 //        setLinearChart();
 //        inPieChart();
 
@@ -222,14 +240,14 @@ public class Admin_Dashboard implements Initializable {
         add_package.setOnMouseClicked(event -> {
             addAllSideNodes();
             changeAllRemaining(add_package);
-//
-//            try {
-//                root = FXMLLoader.load(getClass().getResource("BanUser.fxml"));
-//                mainPanel.getChildren().add(root);
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("add_Package.fxml"));
+                mainPanel.getChildren().add(root);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         guide_applications.setOnMouseClicked(event -> {
@@ -262,6 +280,37 @@ public class Admin_Dashboard implements Initializable {
                     });
                 }
             }).start();
+        });
+
+
+
+
+        manage_packages.setOnMouseClicked(event -> {
+            addAllSideNodes();
+            changeAllRemaining(manage_packages);
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("manage_packages.fxml"));
+                mainPanel.getChildren().add(root);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+
+
+        manage_guides.setOnMouseClicked(event -> {
+            addAllSideNodes();
+            changeAllRemaining(manage_guides);
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("manage_guides.fxml"));
+                mainPanel.getChildren().add(root);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
     }
