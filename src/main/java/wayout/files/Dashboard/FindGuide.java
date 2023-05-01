@@ -142,7 +142,7 @@ public class FindGuide implements Initializable {
 
                                 try {
                                     alertx.hide();
-                                    root= FXMLLoader.load(getClass().getResource("payment_page.fxml"));
+                                    root= FXMLLoader.load(getClass().getResource("guide_Schedule.fxml"));
                                     body.getChildren().add(root);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
