@@ -78,6 +78,6 @@ public class HomePage_2nd_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Server server=new Server();
+//        Server server=new Server();
     }
 }

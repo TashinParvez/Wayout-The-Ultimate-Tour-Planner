@@ -4,15 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import wayout.files.Dashboard.UserDashboardController;
 
 public class Homepage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root= FXMLLoader.load(getClass().getResource("home.fxml"));
-        Scene scene=new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage_2nd.fxml"));
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
         primaryStage.setTitle("Homepage");
@@ -21,6 +19,7 @@ public class Homepage extends Application {
 //
 //        // Set the stage icons
 //        primaryStage.getIcons().add(icon);
+
         primaryStage.show();
     }
 

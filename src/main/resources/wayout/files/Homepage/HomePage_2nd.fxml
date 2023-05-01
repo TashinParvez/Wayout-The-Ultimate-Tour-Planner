@@ -22,42 +22,27 @@
             <Image url="@../images/travel-itinerary.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="949.0" layoutY="202.0" onMouseClicked="#hotelClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/review.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="86.0" fitWidth="79.0" layoutX="1061.0" layoutY="205.0" onMouseClicked="#transportClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/transportation.png" />
          </image>
       </ImageView>
-      <Label layoutX="847.0" layoutY="291.0" text="Trips">
+      <Label layoutX="836.0" layoutY="291.0" text="Explore">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="965.0" layoutY="291.0" prefHeight="26.0" prefWidth="47.0" text="Hotel">
+      <Label layoutX="1081.0" layoutY="291.0" text="Trips">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="1061.0" layoutY="291.0" text="Transport">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="976.0" layoutY="336.0" text="OR">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="946.0" layoutY="375.0" onMouseClicked="#guideClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="946.0" layoutY="205.0" onMouseClicked="#guideClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tour.png" />
          </image>
       </ImageView>
-      <Label layoutX="964.0" layoutY="470.0" text="Guide">
+      <Label layoutX="964.0" layoutY="300.0" text="Guide">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
