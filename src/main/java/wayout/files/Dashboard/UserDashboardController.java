@@ -519,7 +519,7 @@ public class UserDashboardController
         });
 
 // contact onclicked action // chat option
-
+// tashin
         chat.setOnMouseClicked((event) -> { 
             addAllSideNodes();
             changeAllRemaining(chat);
@@ -545,6 +545,13 @@ public class UserDashboardController
                 e.printStackTrace();
             }
         });
+
+
+        // tashin End -------------------
+
+
+
+
 
         joinguide.setOnMouseClicked((event) -> {
             new Thread(new Runnable() {
@@ -584,7 +591,7 @@ public class UserDashboardController
             }).start();
         });
 
-        logout.setOnMouseClicked((event) -> {
+        logout.setOnMouseClicked((event) -> {       //--------------------------  logout button
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -824,7 +831,7 @@ public class UserDashboardController
             e.printStackTrace();
         }
 
-        donate.setOnAction(event -> {
+        donate.setOnAction(event -> { //--------------------------  Donate page
             try {
                 root = FXMLLoader.load(getClass().getResource("donation_Page.fxml"));
                 mainPanel.getChildren().add(root);
