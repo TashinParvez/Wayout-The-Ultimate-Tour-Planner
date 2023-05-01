@@ -6,6 +6,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,10 +16,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class GuideApplications implements Initializable {
@@ -196,6 +205,119 @@ public class GuideApplications implements Initializable {
             }
 
 
+
+            // send mail
+
+
+            Username_Generator usernameGenerator=new Username_Generator();
+            Password_Generator passwordGenerator=new Password_Generator();
+
+            String login_username=usernameGenerator.generateUsername(8);
+            String login_password=usernameGenerator.generateUsername(8);
+
+
+
+
+
+
+
+
+
+
+
+            String admin_email = "applicationwayout@gmail.com";
+            String admin_password = "ejntpurrhwoplqcq";
+            String to = email;
+            String subject = "Regarding Guide Application";
+            String message = "Congratulations! Wayout admin approved your request to become a guide.\n" +
+                    "Here is your login info:\n" +
+                    "username: "+login_username+
+                    "\npassword: "+login_password+
+                    "\nUse these credentials to login into your account!";
+
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.ssl.trust", "*");
+
+
+            Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(admin_email, admin_password);
+                }
+            });
+
+            try {
+                javax.mail.Message mimeMessage = new MimeMessage(session);
+                mimeMessage.setFrom(new InternetAddress(admin_email));
+                mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                mimeMessage.setSubject(subject);
+                mimeMessage.setText(message);
+
+                Transport.send(mimeMessage);
+
+                System.out.println("Email sent successfully!");
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            }
+
+
+            try{
+                //store credentials into database
+
+
+
+                System.out.println("Connecting database...");
+
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
+                    System.out.println("Database connected!");
+                } catch (SQLException e) {
+                    throw new IllegalStateException("Cannot connect the database!", e);
+                }
+
+                Connection con;
+                PreparedStatement pst;
+
+                try {
+                    con = DriverManager.getConnection(url, username, password);
+                    pst = con.prepareStatement("INSERT INTO guide_info(Name,Email,username,password) VALUES(?,?,?,?)");
+                    pst.setString(1, name);
+                    pst.setString(2,email);
+                    pst.setString(3,login_username);
+                    pst.setString(4,login_password);
+
+                    pst.execute();
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Request accepted.");
+//                    alert.setContentText("Your new package is added to the user dashboard, Thanks from Wayout!");
+                    alert.showAndWait();
+
+
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+
         });
 
 
@@ -229,6 +351,49 @@ public class GuideApplications implements Initializable {
 
             }catch (Exception e){
                 e.printStackTrace();
+            }
+
+
+
+            // send mail
+
+
+            String admin_email = "applicationwayout@gmail.com";
+            String admin_password = "ejntpurrhwoplqcq";
+            String to = email;
+            String subject = "Regarding Guide Application";
+            String message = "Dear user,\n"+
+                    "Sorry to say that, Wayout admin has rejected your request to become a guide.\nPlease try again Later\n"+
+                    "Thanks for staying with wayout";
+
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.ssl.trust", "*");
+
+
+            Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(admin_email, admin_password);
+                }
+            });
+
+            try {
+                Message mimeMessage = new MimeMessage(session);
+                mimeMessage.setFrom(new InternetAddress(admin_email));
+                mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                mimeMessage.setSubject(subject);
+                mimeMessage.setText(message);
+
+                Transport.send(mimeMessage);
+
+                System.out.println("Email sent successfully!");
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
             }
         });
     }

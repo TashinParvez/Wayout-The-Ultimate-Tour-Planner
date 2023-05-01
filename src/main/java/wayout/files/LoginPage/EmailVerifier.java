@@ -43,6 +43,8 @@ public class EmailVerifier extends TemporaryData {
 
             JSONObject jsonResponse = new JSONObject(response.toString());
             String status = jsonResponse.getString("status");
+
+            ///
             System.out.println("" + status);
             Parent root2;
             Stage stage;

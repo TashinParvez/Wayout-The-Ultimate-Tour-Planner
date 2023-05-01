@@ -15,6 +15,8 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import wayout.files.LoginPage.LoginController;
+import wayout.files.LoginPage.SignUpController;
 
 import java.io.IOException;
 
@@ -59,7 +61,7 @@ public class HomeController {
 
     @FXML
     void registerClicked(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("../LoginPage/signUP.fxml"));
+        Parent root= FXMLLoader.load(SignUpController.class.getResource("signUP.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -76,7 +78,7 @@ public class HomeController {
 
     @FXML
     void signInClicked(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("../LoginPage/login.fxml"));
+        Parent root= FXMLLoader.load(LoginController.class.getResource("login.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);

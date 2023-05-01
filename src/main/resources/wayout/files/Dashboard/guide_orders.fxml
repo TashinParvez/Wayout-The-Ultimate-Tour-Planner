@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main_anchorPane" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.Guide_Manage">
+<AnchorPane fx:id="main_anchorPane" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.GuideOrders">
     <children>
         <AnchorPane prefHeight="100" prefWidth="1015" style="-fx-background-color: Gray">
             <AnchorPane prefHeight="100" prefWidth="1015">
                 <StackPane prefHeight="100" prefWidth="1020.0" style="-fx-background-color: #6db784;">
-                    <Label text="Available Guides" textFill="WHITE">
+                    <Label text="Orders" textFill="WHITE">
                         <font>
                             <Font name="Arial Rounded MT Bold" size="29.0" />
                         </font></Label>
