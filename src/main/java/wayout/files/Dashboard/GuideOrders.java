@@ -35,12 +35,12 @@ public class GuideOrders implements Initializable {
     public void add_orders(String hired_by, String hire_date, String hire_hours, String starting_time, String email, String phone, String notes) {
         HBox hBox = new HBox();
         hBox.setPrefWidth(1020);
-        hBox.setPrefHeight(300);
+        hBox.setPrefHeight(270);
 
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setPrefWidth(1020);
         anchorPane.setPrefHeight(250);
-        anchorPane.setStyle("-fx-background-color: #8ebb9a;");
+        anchorPane.setStyle("-fx-background-color: #cad0dc;");
 
         AnchorPane anchorPane1 = new AnchorPane();
         anchorPane1.setPrefWidth(1020);
@@ -48,51 +48,53 @@ public class GuideOrders implements Initializable {
 
         Label user = new Label("Traveller Name: " + hired_by);
         user.setLayoutX(40);
-        user.setLayoutY(50);
+        user.setLayoutY(20);
         user.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
         Label date = new Label("Hired date: " + hire_date);
         date.setLayoutX(40);
-        date.setLayoutY(80);
+        date.setLayoutY(50);
         date.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
-        Label hours = new Label("Hired for: " + hire_hours + " hours");
+        Label hours = new Label("Hired for: " + hire_hours + " hours, From "+starting_time  );
         hours.setLayoutX(40);
-        hours.setLayoutY(110);
+        hours.setLayoutY(80);
         hours.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
-        Label S_time = new Label("Hired for: " + hire_hours + " hours");
-        S_time.setLayoutX(40);
-        S_time.setLayoutY(140);
-        S_time.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
+        Label u_num = new Label("Phone: " + phone);
+        u_num.setLayoutX(40);
+        u_num.setLayoutY(140);
+        u_num.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
-                "-fx-font-weight: bold");
+                "-fx-font-weight: bold;" +
+                "-fx-vgap: 10px");
 
-
-        Label u_email = new Label("Traveller Contact: \nEmail:" + email + ",\tPhone number: " + phone);
+        Label u_email = new Label("Email: " + email);
         u_email.setLayoutX(40);
-        u_email.setLayoutY(170);
+        u_email.setLayoutY(110);
         u_email.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold;" +
                 "-fx-vgap: 10px");
 
+
+
         Label special_notes = new Label("Order notes: " + notes);
         special_notes.setLayoutX(40);
-        special_notes.setLayoutY(220);
+        special_notes.setLayoutY(170);
         special_notes.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
 
         MFXButton accept = new MFXButton("Accept order");
-        accept.setLayoutX(640);
+        accept.setLayoutX(700);
         accept.setLayoutY(220);
         accept.setStyle("-fx-font-size: 13px;" +
                 "-fx-padding: 7 15 7 15px;" +
@@ -101,7 +103,7 @@ public class GuideOrders implements Initializable {
 
 
         MFXButton reject = new MFXButton("Reject order");
-        reject.setLayoutX(800);
+        reject.setLayoutX(830);
         reject.setLayoutY(220);
         reject.setStyle("-fx-font-size: 13px;" +
                 "-fx-padding: 7 15 7 15px;" +
@@ -112,8 +114,9 @@ public class GuideOrders implements Initializable {
         anchorPane.getChildren().add(reject);
         anchorPane.getChildren().add(accept);
         anchorPane.getChildren().add(special_notes);
+        anchorPane.getChildren().add(u_num);
         anchorPane.getChildren().add(u_email);
-        anchorPane.getChildren().add(S_time);
+
         anchorPane.getChildren().add(hours);
         anchorPane.getChildren().add(date);
         anchorPane.getChildren().add(user);

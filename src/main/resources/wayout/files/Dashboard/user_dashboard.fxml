@@ -119,49 +119,36 @@
                 <MFXScrollPane fx:id="main_scrollPane" hbarPolicy="NEVER" prefHeight="750" prefWidth="1020" vbarPolicy="AS_NEEDED">
                     <AnchorPane prefWidth="1020" style="-fx-background-color: white">
                         <children>
-                            <AnchorPane prefHeight="120"  prefWidth="1020">
-                                <children>
-                                    <Label layoutX="10" layoutY="10" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 22;" text="Welcome home!" />
-                                    <Label fx:id="weatherLbl" layoutX="10" layoutY="40" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 30;" />
+                            <Label layoutX="10" layoutY="20" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 22;" text="Welcome home!" />
+                            <Label fx:id="weatherLbl" layoutX="10" layoutY="50" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 30;" />
 
-                                    <Label fx:id="userLoc" layoutX="10" layoutY="75" style="-fx-font-family: 'Inter'; -fx-font-size: 18;" />
-                                </children>
-                            </AnchorPane>
+                            <Label fx:id="userLoc" layoutX="10" layoutY="85" style="-fx-font-family: 'Inter'; -fx-font-size: 18;" />
+
+                            <Hyperlink layoutX="890" layoutY="20" style="-fx-text-fill: Black; -fx-font-size: 13; -fx-font-family: 'Arial Rounded MT Bold'" text=" Notifications">
+                                <graphic>
+                                    <FontAwesomeIconView fill="Black" glyphName="BELL" size="15" />
+                                </graphic>
+                            </Hyperlink>
 
 
-                            <AnchorPane layoutY="130" prefHeight="200"  prefWidth="1020">
-                                <children>
-                                    <ImageView fitHeight="200" fitWidth="1020">
-                                        <Image url="@image2.jpg"/>
-                                    </ImageView>
+                            <StackPane layoutX="10" layoutY="100" prefWidth="990">
+                                <ImageView fitHeight="200" fitWidth="990" layoutX="10" layoutY="60" style="-fx-padding: 10px">
+                                    <Image url="@image2.jpg">
+                                    </Image>
 
-                                    <AnchorPane fx:id="parent" prefWidth="1020">
-                                        <children>
-                                            <MFXTextField fx:id="searchBox" floatMode="DISABLED" layoutX="150" layoutY="75" prefHeight="50" prefWidth="590" promptText="Find anything here.." style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px" />
-                                            <MFXButton fx:id="searchBtn" layoutX="760" layoutY="75" prefHeight="50" prefWidth="100" style="-fx-font-family: 'Arial Rounded MT Bold';-fx-padding: 0 5 0 5px; -fx-font-size: 13px ;-fx-background-radius: 30px; -fx-border-radius: 30px" text="">
-                                                <graphic>
-                                                    <FontAwesomeIconView fill="Black" fontSmoothingType="LCD" glyphName="SEARCH" size="16" />
-                                                </graphic>
-                                            </MFXButton>
-                                        </children>
-                                    </AnchorPane>
-                                </children>
-                            </AnchorPane>
+                                </ImageView>
+                                <AnchorPane fx:id="parent" prefHeight="100" prefWidth="990">
+                                    <children>
+                                        <MFXTextField fx:id="searchBox" floatMode="DISABLED" layoutX="150" layoutY="90" prefHeight="50" prefWidth="590" promptText="Find anything here.." style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px" />
+                                        <MFXButton fx:id="searchBtn" layoutX="760" layoutY="90" prefHeight="50" prefWidth="100" style="-fx-font-family: 'Arial Rounded MT Bold';-fx-padding: 0 5 0 5px; -fx-font-size: 13px ;-fx-background-radius: 30px; -fx-border-radius: 30px" text="">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="Black" fontSmoothingType="LCD" glyphName="SEARCH" size="16" />
+                                            </graphic>
+                                        </MFXButton>
+                                    </children>
+                                </AnchorPane>
 
-<!--                            -->
-<!--                            <StackPane layoutX="10" layoutY="130" prefWidth="990">-->
-<!--                                <ImageView fitHeight="200" fitWidth="990" layoutX="10" layoutY="60" style="-fx-padding: 10px">-->
-<!--                                    <Image url="@image2.jpg">-->
-<!--                                    </Image>-->
-
-<!--                                </ImageView>-->
-<!--                                <AnchorPane fx:id="parent" prefHeight="100" prefWidth="990">-->
-<!--                                    <children>-->
-<!--                                       -->
-<!--                                    </children>-->
-<!--                                </AnchorPane>-->
-
-<!--                            </StackPane>-->
+                            </StackPane>
 
 
                             <Label layoutX="10" layoutY="390" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Where to go, right now" />

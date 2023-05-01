@@ -564,6 +564,8 @@ public class UserDashboardController
                                 }
                             }
                             userLoc.setText(city + ", " + country);
+                            System.out.println(city);
+                            System.out.println(country);
 
                         }
                     } catch (Exception e) {

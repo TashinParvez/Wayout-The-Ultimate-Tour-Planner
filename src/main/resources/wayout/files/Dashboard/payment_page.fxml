@@ -23,8 +23,8 @@
                             <Label layoutX="20" layoutY="50" style="-fx-font-size: 13px ; -fx-text-fill: gray" text="Full name *" />
                             <MFXTextField fx:id="full_name" floatMode="DISABLED" layoutX="20" layoutY="75" prefHeight="40" prefWidth="300" style="-fx-border-radius: 0px; -fx-background-radius: 0px; -fx-padding: 0 0 0 10px" />
 
-                            <Label layoutX="600" layoutY="50" style="-fx-font-size: 13px; -fx-text-fill: gray" text="Booking notes (optional)" />
-                            <TextArea fx:id="additional_message" layoutX="600" layoutY="75" prefHeight="60" prefWidth="300" promptText="Notes about your order, e.g. special notes for bookings" style="-fx-border-radius: 0px; -fx-background-radius: 0px; -fx-text-alignment: center" />
+                            <Label layoutX="600" layoutY="50" style="-fx-font-size: 13px; -fx-text-fill: gray" text="Booking notes " />
+                            <TextArea fx:id="additional_message" layoutX="600" layoutY="75" prefHeight="60" prefWidth="300" promptText="Notes about your order, e.g. Your meeting location or others info." style="-fx-border-radius: 0px; -fx-background-radius: 0px; -fx-text-alignment: center" />
 
 
                         </children>
