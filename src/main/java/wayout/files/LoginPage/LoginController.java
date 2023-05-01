@@ -355,8 +355,8 @@ public class LoginController implements Initializable {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Welcome");
-            alert.setHeaderText("Login Successful");
-            alert.setContentText("Sign up Successful\nAutomatically Generated Username: " + generated_username + "\nUse this username to login into your account");
+            alert.setHeaderText("SignUP Successful");
+            alert.setContentText("Automatically Generated Username: " + generated_username + "\nUse this username to login into your account");
             alert.showAndWait();
 
         } catch (Exception e) {

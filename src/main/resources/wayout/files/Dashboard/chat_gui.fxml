@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main_panel" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demochat.ClientChatController">
+<AnchorPane fx:id="main_panel" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wayout.files.Dashboard.ClientChatController">
     <AnchorPane prefHeight="40.0" prefWidth="1020">
-        <Label alignment="CENTER" prefHeight="75.0" prefWidth="1020" style="-fx-background-color: red; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 20px; -fx-text-fill: white" fx:id="clientName">
+        <Label fx:id="clientName" alignment="CENTER" prefHeight="75.0" prefWidth="1020" style="-fx-background-color: red; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 20px; -fx-text-fill: white">
             <font>
                 <Font name="Arial Rounded MT Bold" size="95.0" />
             </font></Label>
     </AnchorPane>
-    <MFXScrollPane hbarPolicy="NEVER" layoutY="76.0" prefHeight="576.0" prefWidth="1020">
+    <MFXScrollPane hbarPolicy="NEVER" layoutY="70.0" prefHeight="587.0" prefWidth="1020">
         <VBox fx:id="messageBodyVbox" prefWidth="1018" style="-fx-background-color: #ffffff" />
     </MFXScrollPane>
     <AnchorPane layoutY="653.0" prefHeight="98.0" prefWidth="1020" style="-fx-background-color: Black;">
