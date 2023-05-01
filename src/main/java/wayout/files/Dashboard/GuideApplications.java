@@ -47,77 +47,82 @@ public class GuideApplications implements Initializable {
         Label g_name=new Label(name);
         g_name.setLayoutX(290);
         g_name.setLayoutY(7);
-        g_name.setStyle("-fx-font-size: 18px;" +
-                "-fx-font-weight: bold");
+        g_name.setStyle("-fx-font-size: 20px;" +
+                "-fx-font-weight: bold" );
 
 
         Label av_time=new Label("Available time: "+available_time);
         av_time.setLayoutX(290);
-        av_time.setLayoutY(40);
-        av_time.setStyle("-fx-background-color: #7a9f84;" +
-                "-fx-padding: 7px;" +
+        av_time.setLayoutY(252);
+        av_time.setStyle(
+                "-fx-padding: 0px;" +
                 "-fx-font-size: 13px;" +
-                "-fx-text-fill: white");
+                "-fx-text-fill: black;" +
+                        "-fx-font-weight: bold");
 
 
         Label av_loc=new Label("Available Area: "+city);
-        av_loc.setLayoutX(530);
-        av_loc.setLayoutY(40);
-        av_loc.setStyle("-fx-background-color: #779d82;" +
-                "-fx-padding: 7px;" +
+        av_loc.setLayoutX(290);
+        av_loc.setLayoutY(232);
+        av_loc.setStyle(
+                "-fx-padding: 0px;" +
                 "-fx-font-size: 13px;" +
-                "-fx-text-fill: white");
+                "-fx-text-fill: black;" +
+                        "-fx-font-weight: bold");
 
 
         Label desc=new Label(details);
         desc.setLayoutX(290);
-        desc.setLayoutY(80);
+        desc.setLayoutY(45);
         desc.setMaxWidth(700);
         desc.setWrapText(true);
 
 
-
-        Label email_=new Label("Email: "+email);
+//+"|| Contact: "+ mobile +"|| NID/Passport: "+nid +"|| Hourly Charge: "+hourly_charge+"/= TK"
+        Label email_=new Label("Email: "+email );
         email_.setLayoutX(290);
-        email_.setLayoutY(220);
-        email_.setStyle("-fx-background-color: #7a9f84;" +
-                "-fx-padding: 7px;" +
+        email_.setLayoutY(172);
+        email_.setStyle("-fx-background-color: #ffffff;" +
+                "-fx-padding: 0px;" +
                 "-fx-font-size: 13px;" +
-                "-fx-text-fill: white");
+                "-fx-font-weight: bold");
 
 
         Label phn=new Label("Contact: "+mobile);
-        phn.setLayoutX(530);
-        phn.setLayoutY(220);
-        phn.setStyle("-fx-background-color: #779d82;" +
-                "-fx-padding: 7px;" +
+        phn.setLayoutX(290);
+        phn.setLayoutY(192);
+        phn.setStyle("-fx-background-color:#ffffff ;" +
+                "-fx-padding: 0px;" +
                 "-fx-font-size: 13px;" +
-                "-fx-text-fill: white");
+                "-fx-font-weight: bold;"+
+                "-fx-text-fill: black");
 
 
 
-        Label nid_num=new Label("NID: "+nid);
-        nid_num.setLayoutX(730);
-        nid_num.setLayoutY(220);
-        nid_num.setStyle("-fx-background-color: #779d82;" +
-                "-fx-padding: 7px;" +
+        Label nid_num=new Label("NID/Passport: "+nid);
+        nid_num.setLayoutX(290);
+        nid_num.setLayoutY(212);
+        nid_num.setStyle(
+                "-fx-padding: 0px;" +
                 "-fx-font-size: 13px;" +
-                "-fx-text-fill: white");
+                "-fx-text-fill: black;"+
+                "-fx-font-weight: bold;");
 
 
 
-        Label charge=new Label("Charge per hour: "+hourly_charge+" /= TK");
+        Label charge=new Label("Hourly Charge: "+hourly_charge+" /= TK");
         charge.setLayoutX(290);
-        charge.setLayoutY(275);
-        charge.setStyle("-fx-background-color: #779d82;" +
-                "-fx-padding: 7px;" +
+        charge.setLayoutY(272);
+        charge.setStyle(
+                "-fx-padding: 0px;" +
                 "-fx-font-size: 13px;" +
-                "-fx-text-fill: white");
+                "-fx-text-fill: black;"+
+                "-fx-font-weight: bold;");
 
 
         MFXButton approve=new MFXButton("Approve");
-        approve.setLayoutX(810);
-        approve.setLayoutY(275);
+        approve.setLayoutX(780);
+        approve.setLayoutY(250);
         approve.setStyle("-fx-padding: 7 15 7 15px;" +
                 "-fx-font-size: 13px;" +
                 "-fx-background-radius: 0px;" +
@@ -131,8 +136,8 @@ public class GuideApplications implements Initializable {
 
 
         MFXButton reject=new MFXButton("Reject");
-        reject.setLayoutX(900);
-        reject.setLayoutY(275);
+        reject.setLayoutX(870);
+        reject.setLayoutY(250);
         reject.setStyle("-fx-padding: 7 15 7 15px;" +
                 "-fx-font-size: 13px;" +
                 "-fx-background-radius: 0px;" +
