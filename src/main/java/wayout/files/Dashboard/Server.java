@@ -1,6 +1,6 @@
 package wayout.files.Dashboard;
 
-import wayout.files.Dashboard.util.*;
+import wayout.files.Dashboard.util.NetworkUtil;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,7 +15,7 @@ public class Server {
     public Server() {
         clientMap = new HashMap<>();
         try {
-            serverSocket = new ServerSocket(33335);
+            serverSocket = new ServerSocket(33338);
             System.out.println("Server has started...");
             while (true) {
                 Socket clientSocket = serverSocket.accept();
@@ -72,6 +72,10 @@ public class Server {
 
         new Thread(new ReadThreadServer()).start();
 
+    }
+
+    public static void main(String[] args) {
+        Server server=new Server();
     }
 
 }

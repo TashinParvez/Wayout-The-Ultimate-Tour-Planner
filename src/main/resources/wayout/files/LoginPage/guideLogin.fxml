@@ -34,11 +34,6 @@
                 <Font name="Corbel Bold" size="12.0" />
             </font>
         </MFXButton>
-        <Hyperlink fx:id="createAcc" layoutX="844.0" layoutY="653.0" onAction="#createAccClicked" text="Create an account." textFill="#6db784">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Hyperlink>
         <JFXCheckBox fx:id="remember" layoutX="676.0" layoutY="367.0" onAction="#rememberMeSelected" text="Remember me" />
         <Hyperlink fx:id="forgotPass" layoutX="929.0" layoutY="364.0" onAction="#forgotPassClicked" text="Forgot password" textFill="RED" underline="true" />
         <FontAwesomeIconView glyphName="GOOGLE" layoutX="779.0" layoutY="572.0" size="17.0">
@@ -73,5 +68,6 @@
             <MFXProgressBar layoutX="55.0" layoutY="17.0" prefWidth="250.0" />
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="679.0" layoutY="652.0" prefHeight="47.0" prefWidth="200.0" style="-fx-background-color: white;" />
     </children>
 </AnchorPane>

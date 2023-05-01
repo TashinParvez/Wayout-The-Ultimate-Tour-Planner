@@ -462,26 +462,26 @@ public class UserDashboardController
             addAllSideNodes();
             changeAllRemaining(chat);
 
-//            try {
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        Platform.runLater(() -> {
-//                            try {
-//                                root = FXMLLoader.load(UserDashboardController.class.getResource("chat_gui.fxml"));
-//                                mainPanel.getChildren().add(root);
-//
-//                            } catch (IOException e) {
-//                                throw new RuntimeException(e);
-//                            }
-//
-//                        });
-//                    }
-//                }).start();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Platform.runLater(() -> {
+                            try {
+                                root = FXMLLoader.load(UserDashboardController.class.getResource("chat_gui.fxml"));
+                                mainPanel.getChildren().add(root);
+
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        });
+                    }
+                }).start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         joinguide.setOnMouseClicked((event) -> {

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import wayout.files.Dashboard.Server;
 import wayout.files.Dashboard.UserDashboardController;
 
 public class Homepage extends Application {
@@ -16,15 +17,12 @@ public class Homepage extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.setTitle("Homepage");
-
-//        Image icon = new Image(UserDashboardController.class.getClass().getResourceAsStream("baggage.png"));
-//
-//        // Set the stage icons
-//        primaryStage.getIcons().add(icon);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
+
+        Server server=new Server();
     }
 }
