@@ -98,7 +98,7 @@ public class BookPackageController implements Initializable {
         packageT2.setStyle("-fx-font-size: 15px;" +
                 "-fx-font-family: 'Arial Rounded MT Bold'");
 
-        Label packageN2=new Label(duration);
+        Label packageN2=new Label(duration+" Day/Days");
         packageN2.setLayoutX(600);
         packageN2.setLayoutY(70);
         packageN2.setPrefWidth(400);
@@ -281,12 +281,13 @@ public class BookPackageController implements Initializable {
         mfxCheckbox.setLayoutY(380);
 
 
-        MFXButton bookNow=new MFXButton("Book package");
+        MFXButton bookNow=new MFXButton("Book Package");
         bookNow.setLayoutY(440);
         bookNow.setLayoutX(800);
         bookNow.setStyle("-fx-font-size: 14px;" +
                 "-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-padding: 0 10 0 10px;" +
+                "-fx-background-color: #ffc600;"+
                 "-fx-border-color: #0066ff;" +
                 "-fx-border-width: 2px");
         bookNow.setPrefHeight(50);
