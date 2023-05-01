@@ -692,12 +692,16 @@ public class UserDashboardController
                 while (rs.next()) {
                     String name = rs.getString("Name");
                     String loc = rs.getString("City");
+                    String stat=rs.getString("Status");
                     InputStream image=rs.getBinaryStream("image");
-
-
                     Image img=new Image(image);
 
-                    setHotels(name,loc,img);
+                    if(stat.toLowerCase().equals("approved")){
+                        setHotels(name,loc,img);
+                    }
+
+
+
                 }
 
                 rs.close();
