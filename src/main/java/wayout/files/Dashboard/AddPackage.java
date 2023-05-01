@@ -91,8 +91,8 @@ public class AddPackage implements Initializable {
                 pst.execute();
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("Request sent successfully");
-                alert.setContentText("Admin will contact you later on the email you provided, Thanks from wayout!");
+                alert.setHeaderText("New package added.");
+                alert.setContentText("Your new package is added to the user dashboard, Thanks from Wayout!");
                 alert.showAndWait();
 
             } catch (Exception e) {
