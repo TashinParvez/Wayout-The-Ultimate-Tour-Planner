@@ -16,8 +16,8 @@
    <children>
       <AnchorPane prefHeight="750.0" prefWidth="180.0" styleClass="side_Menu">
          <children>
-            <Circle fill="DODGERBLUE" layoutX="40.0" layoutY="40.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label layoutX="69.0" layoutY="26.0" text="Admin" textFill="WHITE">
+            <Circle fx:id="profile_pic" fill="DODGERBLUE" layoutX="37.0" layoutY="37.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="74.0" layoutY="24.0" text="Admin" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -31,7 +31,9 @@
             <Label fx:id="earnings" layoutX="69.0" layoutY="251.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Earn" textFill="#fafafa" />
             <Label fx:id="inbox" layoutX="69.0" layoutY="284.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Inbox" textFill="#fafafa" />
             <Label fx:id="add_package" layoutX="44.0" layoutY="316.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Add Package" textFill="#fafafa" />
-            <Label fx:id="guide_applications" layoutX="66.0" layoutY="348.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Guides" textFill="#fafafa" />
+            <Label fx:id="guide_applications" layoutX="44.0" layoutY="348.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Guide Requests" textFill="#fafafa" />
+            <Label fx:id="manage_packages" layoutX="44.0" layoutY="380.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Manage Packages" textFill="#fafafa" />
+            <Label fx:id="manage_guides" layoutX="44.0" layoutY="412.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="Manage Guides" textFill="#fafafa" />
             <Label fx:id="logout" layoutX="66.0" layoutY="693.0" styleClass="menu-bar-items" stylesheets="@CSS.css" text="LogOut" textFill="#fafafa" />
 
 <!--            <Label fx:id="Home" layoutX="30" layoutY="150" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Home">-->
@@ -43,7 +45,7 @@
 <!--            <Label fx:id="Trips" layoutX="30" layoutY="150" style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 13px;" text=" Home">-->
 <!--            </Label>-->
 
-            
+
 
 
 
