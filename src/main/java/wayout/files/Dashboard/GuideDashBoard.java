@@ -433,7 +433,7 @@ public class GuideDashBoard implements Initializable {
                         synchronized (this) {
                             Platform.runLater(() -> {
                                 try {
-                                    root = FXMLLoader.load(getClass().getResource("user_dashboard.fxml"));
+                                    root = FXMLLoader.load(getClass().getResource("guide_dashboard.fxml"));
                                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                     scene = new Scene(root);
                                     stage.setScene(scene);
@@ -453,38 +453,6 @@ public class GuideDashBoard implements Initializable {
             }
         });
 
-//        trips.setOnMouseClicked((event) -> {
-//            addAllSideNodes();
-//            changeAllRemaining(trips);
-//
-//            try {
-//                root = FXMLLoader.load(getClass().getResource("tour_packages.fxml"));
-//                mainPanel.getChildren().add(root);
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        });
-
-//        guides.setOnMouseClicked((event) -> {
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    addAllSideNodes();
-//                    changeAllRemaining(guides);
-////
-//                    Platform.runLater(()->{
-//                        try {
-//                            root = FXMLLoader.load(getClass().getResource("find_guide.fxml"));
-//                            mainPanel.getChildren().add(root);
-//
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    });
-//                }
-//            }).start();
-//        });
 
         hotel.setOnMouseClicked((event) -> {
             new Thread(new Runnable() {
@@ -512,6 +480,17 @@ public class GuideDashBoard implements Initializable {
                 public void run() {
                     addAllSideNodes();
                     changeAllRemaining(order);
+
+                    Platform.runLater(() -> {
+                        try {
+                            root = FXMLLoader.load(UserDashboardController.class.getResource("guide_orders.fxml"));
+                            mainPanel.getChildren().add(root);
+
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    });
                 }
             }).start();
         });
