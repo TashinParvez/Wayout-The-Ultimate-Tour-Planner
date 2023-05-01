@@ -518,7 +518,8 @@ public class UserDashboardController
             }).start();
         });
 
-// contact onclicked action
+// contact onclicked action // chat option
+
         chat.setOnMouseClicked((event) -> { 
             addAllSideNodes();
             changeAllRemaining(chat);

@@ -104,7 +104,6 @@ public class ClientController implements Initializable {
             sendMessage(message, false);
             messageBox.clear();
             writer.println(message);
-
         }
     }
 
@@ -114,7 +113,9 @@ public class ClientController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        String name=JOptionPane.showInputDialog("Enter Your Name:");
+//        String name=JOptionPane.showInputDialog("Enter Your Name:"); // here the dialog / popup open and gets user name
+        // new my code
+        String name=JOptionPane.showInputDialog("Enter Your Name:"); // here the dialog / popup open and gets user name
 
         if(!name.isEmpty()){
             new Thread(new Runnable() {
