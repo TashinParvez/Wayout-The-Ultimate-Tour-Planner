@@ -700,8 +700,6 @@ public class UserDashboardController
                         setHotels(name,loc,img);
                     }
 
-
-
                 }
 
                 rs.close();
