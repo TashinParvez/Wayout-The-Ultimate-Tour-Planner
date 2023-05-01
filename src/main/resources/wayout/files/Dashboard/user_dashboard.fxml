@@ -134,14 +134,13 @@
                             <StackPane layoutX="10" layoutY="100" prefWidth="990">
                                 <ImageView fitHeight="200" fitWidth="990" layoutX="10" layoutY="60" style="-fx-padding: 10px">
                                     <Image url="@image2.jpg">
-
                                     </Image>
 
                                 </ImageView>
                                 <AnchorPane fx:id="parent" prefHeight="100" prefWidth="990">
                                     <children>
-                                        <MFXTextField fx:id="searchBox" floatMode="DISABLED" layoutX="150" layoutY="80" prefHeight="50" prefWidth="590" promptText="Find anything here.." style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px" />
-                                        <MFXButton fx:id="searchBtn" layoutX="760" layoutY="80" prefHeight="50" prefWidth="100" style="-fx-font-family: 'Arial Rounded MT Bold';-fx-padding: 0 5 0 5px; -fx-font-size: 13px ;-fx-background-radius: 30px; -fx-border-radius: 30px" text="">
+                                        <MFXTextField fx:id="searchBox" floatMode="DISABLED" layoutX="150" layoutY="90" prefHeight="50" prefWidth="590" promptText="Find anything here.." style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 4px; -fx-font-size: 14px; -fx-font-family: 'Arial Rounded MT Bold'; -fx-padding: 0 0 0 20px; -fx-border-radius: 30px; -fx-background-radius: 30px" />
+                                        <MFXButton fx:id="searchBtn" layoutX="760" layoutY="90" prefHeight="50" prefWidth="100" style="-fx-font-family: 'Arial Rounded MT Bold';-fx-padding: 0 5 0 5px; -fx-font-size: 13px ;-fx-background-radius: 30px; -fx-border-radius: 30px" text="">
                                             <graphic>
                                                 <FontAwesomeIconView fill="Black" fontSmoothingType="LCD" glyphName="SEARCH" size="16" />
                                             </graphic>
