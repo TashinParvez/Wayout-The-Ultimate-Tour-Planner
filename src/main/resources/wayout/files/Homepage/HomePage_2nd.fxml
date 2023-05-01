@@ -62,7 +62,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </MFXButton>
-      <MFXButton fx:id="signIn11" layoutX="879.0" layoutY="423.0" onAction="#signInClicked" prefHeight="38.0" prefWidth="218.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Sign In as a Guide">
+      <MFXButton fx:id="signIn11" layoutX="879.0" layoutY="423.0" onAction="#GuideLoginClicked" prefHeight="38.0" prefWidth="218.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Sign In as a Guide">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

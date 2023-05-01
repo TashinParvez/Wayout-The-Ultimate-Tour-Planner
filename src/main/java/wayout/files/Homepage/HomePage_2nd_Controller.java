@@ -12,6 +12,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import wayout.files.Dashboard.Server;
+import wayout.files.LoginPage.GuideLoginController;
 import wayout.files.LoginPage.LoginController;
 import wayout.files.LoginPage.SignUpController;
 
@@ -56,6 +57,23 @@ public class HomePage_2nd_Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    @FXML
+    void GuideLoginClicked(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(GuideLoginController.class.getResource("guideLogin.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+
+
+
+
 
     @FXML
     void signUPClicked(ActionEvent event) throws IOException {
