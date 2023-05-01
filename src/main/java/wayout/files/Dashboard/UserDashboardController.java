@@ -36,6 +36,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -205,6 +206,7 @@ public class UserDashboardController
                             "-fx-background-color: Black;" +
                             "-fx-padding: 5px;" +
                             "-fx-text-fill: white");
+//                    placeName.setDisable(true);
 
 
 //            Platform.runLater(()->{
@@ -231,23 +233,6 @@ public class UserDashboardController
                         System.out.println("YES");
                     }));
 
-                    stackAncor.setOnMouseEntered((event -> {
-                        cards.setStyle("-fx-translate-y: -10px;" +
-                                "-fx-smooth: true");
-                        stackAncor.setStyle("-fx-background-color: rgba(0,0,0,0.23)");
-                    }));
-
-                    stackAncor.setOnMouseExited((event -> {
-                        cards.setStyle("-fx-translate-y: 0px");
-                        stackAncor.setStyle("");
-                    }));
-
-
-                    //individual card clicks
-                    stackAncor.setOnMouseClicked((event -> {
-                        System.out.println(placeName.getText());
-                    }));
-
 
                     Platform.runLater(() -> {
                         cards_stackPane1.getChildren().add(imageView);
@@ -255,14 +240,6 @@ public class UserDashboardController
                         cards.getChildren().add(cards_stackPane1);
                         card_must_go_Lists.getChildren().add(cards);
                     });
-
-//            if(card_must_go_Lists.getWidth()>=750){
-//                MFXButton mfxButton=new MFXButton("Next");
-//                stackAncor.getChildren().add(mfxButton);
-//                cards_stackPane1.getChildren().add(stackAncor);
-//                cards.getChildren().add(cards_stackPane1);
-//                card_must_go_Lists.getChildren().add(cards);
-//            }
                 }
             }).start();
 
@@ -307,46 +284,13 @@ public class UserDashboardController
                             "-fx-text-fill: white");
 
 
-//            Platform.runLater(()->{
-//                String css=getClass().getResource("stackAnchor.css").toExternalForm();
-//                cards.getStylesheets().add(css);
-//
-//                if(cards.isHover()){
-//                    System.out.println("yes");
-//                }else {
-//                    System.out.println("NO");
-//                }
-//            });
 
-//                   placeName.setLayoutX(25);
                     placeName.setLayoutY(240);
                     placeName.setPadding(new Insets(0, 5, 0, 5));
                     placeName.setPrefWidth(280);
                     placeName.setAlignment(Pos.CENTER);
                     stackAncor.getChildren().add(placeName);
 
-                    //placeName button Controller
-
-//                    placeName.setOnAction((event -> {
-//                        System.out.println("YES");
-//                    }));
-
-                    stackAncor.setOnMouseEntered((event -> {
-                        cards.setStyle("-fx-translate-y: -10px;" +
-                                "-fx-smooth: true");
-                        stackAncor.setStyle("-fx-background-color: rgba(0,0,0,0.23)");
-                    }));
-
-                    stackAncor.setOnMouseExited((event -> {
-                        cards.setStyle("-fx-translate-y: 0px");
-                        stackAncor.setStyle("");
-                    }));
-
-
-                    //individual card clicks
-                    stackAncor.setOnMouseClicked((event -> {
-                        System.out.println(placeName.getText());
-                    }));
 
 
                     Platform.runLater(() -> {
@@ -356,13 +300,6 @@ public class UserDashboardController
                         popular_hotels.getChildren().add(cards);
                     });
 
-//            if(card_must_go_Lists.getWidth()>=750){
-//                MFXButton mfxButton=new MFXButton("Next");
-//                stackAncor.getChildren().add(mfxButton);
-//                cards_stackPane1.getChildren().add(stackAncor);
-//                cards.getChildren().add(cards_stackPane1);
-//                card_must_go_Lists.getChildren().add(cards);
-//            }
                 }
             }).start();
 
@@ -375,8 +312,6 @@ public class UserDashboardController
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        searchBox.getItems().addAll("Apple","Banana");
-//        sideBarMove(home);
 
         try {
             profile_Picture.setFill(new ImagePattern(new Image(getClass().getResource("user.png").openStream())));
@@ -527,26 +462,26 @@ public class UserDashboardController
             addAllSideNodes();
             changeAllRemaining(chat);
 
-            try {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        Platform.runLater(() -> {
-                            try {
-                                root = FXMLLoader.load(UserDashboardController.class.getResource("chat_gui.fxml"));
-                                mainPanel.getChildren().add(root);
-
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-
-                        });
-                    }
-                }).start();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        Platform.runLater(() -> {
+//                            try {
+//                                root = FXMLLoader.load(UserDashboardController.class.getResource("chat_gui.fxml"));
+//                                mainPanel.getChildren().add(root);
+//
+//                            } catch (IOException e) {
+//                                throw new RuntimeException(e);
+//                            }
+//
+//                        });
+//                    }
+//                }).start();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         });
 
         joinguide.setOnMouseClicked((event) -> {
@@ -673,26 +608,113 @@ public class UserDashboardController
         Clocation.start();
         weather.start();
 
-//        card_must_go_Lists
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Image image = new Image(getClass().getResource("sugandha-beach-cox-s.png").openStream());
-                    Image image2 = new Image(getClass().getResource("image1.png").openStream());
-                    Image image3 = new Image(getClass().getResource("image2.jpg").openStream());
+//        card tours
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        }).start();
 
-                    must_go_list_card("Cox's Bazar", image);
-                    must_go_list_card("Sundarbans", image2);
-
-                    setHotels("AA", "BB", image3);
+        try {
 
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+            String url = "jdbc:mysql://127.0.0.1/wayout";
+            String username = "root";
+            String password = "";
+
+            try {
+                Connection conn = DriverManager.getConnection(url, username, password);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM packages_list");
+
+
+
+
+                while (rs.next()) {
+                    String name = rs.getString("Package_Name");
+                    InputStream image=rs.getBinaryStream("Image");
+
+
+                    Image img=new Image(image);
+
+                    must_go_list_card(name,img);
                 }
+
+                rs.close();
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println("Error retrieving data: " + e.getMessage());
             }
-        }).start();
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//guide cards
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//
+//
+//                    setHotels();
+//
+//
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+
+
+
+        try {
+
+
+            String url = "jdbc:mysql://127.0.0.1/wayout";
+            String username = "root";
+            String password = "";
+
+            try {
+                Connection conn = DriverManager.getConnection(url, username, password);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM guides_list");
+
+
+
+
+                while (rs.next()) {
+                    String name = rs.getString("Name");
+                    String loc = rs.getString("City");
+                    InputStream image=rs.getBinaryStream("image");
+
+
+                    Image img=new Image(image);
+
+                    setHotels(name,loc,img);
+                }
+
+                rs.close();
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println("Error retrieving data: " + e.getMessage());
+            }
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
 
 

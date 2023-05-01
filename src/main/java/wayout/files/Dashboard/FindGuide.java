@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import wayout.files.LoginPage.TemporaryData;
 
 import java.io.*;
 import java.net.URL;
@@ -34,7 +35,12 @@ public class FindGuide implements Initializable {
     private AnchorPane body;
 
     private Parent root;
+
     private void addGuide(Image image, String guideName, String days, String availArea, String guideDetails, String costHour) {
+
+
+
+
         HBox hBox = new HBox();
         hBox.setPrefHeight(300);
         hBox.setPrefWidth(1050);
@@ -76,18 +82,18 @@ public class FindGuide implements Initializable {
                         "");
 
 
-        Label feat=new Label(availArea);
+        Label feat = new Label(availArea);
         feat.setLayoutX(490);
         feat.setLayoutY(55);
         feat.setStyle(
                 "-fx-font-size: 14px;" +
                         "-fx-padding: 5px;" +
                         "-fx-background-color: #ffc600;" +
-                        "-fx-text-fill: black;"+
+                        "-fx-text-fill: black;" +
                         "");
 
 
-        Label detailS_lbl=new Label(guideDetails);
+        Label detailS_lbl = new Label(guideDetails);
         detailS_lbl.setLayoutX(400);
         detailS_lbl.setLayoutY(95);
         detailS_lbl.setMaxWidth(500);
@@ -96,7 +102,7 @@ public class FindGuide implements Initializable {
 
         detailS_lbl.setStyle("-fx-font-size: 14px;");
 
-        Label cost_package=new Label(costHour+" TK/Hour");
+        Label cost_package = new Label(costHour + " TK/Hour");
         cost_package.setLayoutX(400);
         cost_package.setLayoutY(240);
         cost_package.setStyle("-fx-background-color: #00ab71;" +
@@ -105,7 +111,7 @@ public class FindGuide implements Initializable {
                 "-fx-text-fill: white");
 
 
-        MFXButton viewDetailsButtn=new MFXButton("View details");
+        MFXButton viewDetailsButtn = new MFXButton("View details");
         viewDetailsButtn.setStyle("-fx-font-size: 14px;" +
                 "-fx-padding: 5 10 5 10px;" +
                 "-fx-text-fill: white;" +
@@ -115,7 +121,7 @@ public class FindGuide implements Initializable {
         viewDetailsButtn.setLayoutY(240);
         viewDetailsButtn.setLayoutX(505);
 
-        MFXButton hireNowButton=new MFXButton("Hire now");
+        MFXButton hireNowButton = new MFXButton("Hire now");
         hireNowButton.setStyle("-fx-font-size: 14px;" +
                 "-fx-padding: 5 10 5 10px;" +
                 "-fx-text-fill: white;" +
@@ -127,47 +133,33 @@ public class FindGuide implements Initializable {
 
 
         hireNowButton.setOnAction(event -> {
-            try {
 
-                Alert alertx=new Alert(Alert.AlertType.WARNING);
-                alertx.setContentText("Please wait for a second!");
-                alertx.show();
-                Thread thread=new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(1000);
+            hourly_Charge=costHour;
 
-                            Platform.runLater(()->{
-
-                                try {
-                                    alertx.hide();
-                                    root= FXMLLoader.load(getClass().getResource("guide_Schedule.fxml"));
-                                    body.getChildren().add(root);
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-
-                            });
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                thread.setDaemon(true);
-                thread.start();
-
-
-                File file=new File("src/main/resources/wayout/files/Dashboard/guide_book_info_temp.txt");
-                if(file.exists()){
-                    PrintWriter printWriter=new PrintWriter(new FileWriter(file));
-                    printWriter.print(guideName+"~"+days+"~"+costHour);
+            TemporaryInfo info=new TemporaryInfo();
+            info.setName(guideName);
+            System.out.println(hourly_Charge);
+            try{
+                File file = new File("src/main/resources/wayout/files/Dashboard/guide_name.txt");
+                if (file.exists()) {
+                    PrintWriter printWriter = new PrintWriter(new FileWriter(file));
+                    printWriter.print(guideName+"@"+hourly_Charge);
                     printWriter.close();
                 }
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            }catch (Exception e){
+                e.printStackTrace();
             }
+
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("guide_Schedule.fxml"));
+                body.getChildren().add(root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+
         });
         Thread t = new Thread(new Runnable() {
             @Override
@@ -179,7 +171,7 @@ public class FindGuide implements Initializable {
                     anchorPane.getChildren().add(feat);
                     anchorPane.getChildren().add(detailS_lbl);
                     anchorPane.getChildren().add(cost_package);
-                  // anchorPane.getChildren().add(viewDetailsButtn);
+                    // anchorPane.getChildren().add(viewDetailsButtn);
                     anchorPane.getChildren().add(hireNowButton);
 
                     hBox.getChildren().add(anchorPane);
@@ -218,18 +210,19 @@ public class FindGuide implements Initializable {
                             String availableTime = rs.getString("Available_time");
                             String Status = rs.getString("Status");
                             InputStream image = rs.getBinaryStream("image");
-
+//                            hourly_Charge=hourlyCharge;
+                            System.out.println(name);
 
                             Image img = new Image(image);
 
 
-                            if(Status.toLowerCase().equals("approved")){
-                                Platform.runLater(()->{
-                                    addGuide(img,name,availableTime,city,details,hourlyCharge);
+                            if (Status.toLowerCase().equals("approved")) {
+                                Platform.runLater(() -> {
+                                    addGuide(img, name, availableTime, city, details, hourlyCharge);
                                 });
                             }
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
@@ -240,4 +233,5 @@ public class FindGuide implements Initializable {
             }
         }).start();
     }
+    private String hourly_Charge;
 }
