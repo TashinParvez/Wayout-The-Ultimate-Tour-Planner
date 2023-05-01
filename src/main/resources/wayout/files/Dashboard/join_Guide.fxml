@@ -70,7 +70,7 @@
                 <Font name="Arial Rounded MT Bold" size="14.0" />
             </font>
         </Label>
-        <MFXTextField fx:id="bloodBox" floatMode="DISABLED" layoutX="265.0" layoutY="431.0" prefHeight="35.0" prefWidth="700.0" promptText="Details" style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;">
+        <MFXTextField fx:id="bloodBox" floatMode="DISABLED" layoutX="265.0" layoutY="431.0" prefHeight="35.0" prefWidth="700.0" promptText="Write your details within 100 words." style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;" textLimit="500">
             <contextMenu>
                 <ContextMenu>
                     <items>
