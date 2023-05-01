@@ -100,7 +100,7 @@ public class TourPackages implements Initializable {
 
         detailS_lbl.setStyle("-fx-font-size: 14px;");
 
-        Label cost_package = new Label(cost + " TK/=");
+        Label cost_package = new Label(cost + " TK/Person");
         cost_package.setLayoutX(400);
         cost_package.setLayoutY(240);
         cost_package.setStyle("-fx-background-color: #00ab71;" +
@@ -127,7 +127,7 @@ public class TourPackages implements Initializable {
                 "-fx-border-radius: 0px;" +
                 "-fx-background-radius: 0px");
         bookNowButton.setLayoutY(240);
-        bookNowButton.setLayoutX(505);
+        bookNowButton.setLayoutX(530);
 
         bookNowButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
