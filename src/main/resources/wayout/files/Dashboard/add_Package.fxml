@@ -43,12 +43,12 @@
             </font>
         </Label>
         <MFXTextField fx:id="durationBox" floatMode="DISABLED" layoutX="265.0" layoutY="390.0" prefHeight="35.0" prefWidth="700.0" promptText="How many days" style="-fx-border-color: Black; -fx-padding: 0 0 0 10px;" />
-        <MFXButton fx:id="cancelBtn" layoutX="788.0" layoutY="684.0" onAction="#cancelClicked" prefHeight="39.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" text="Cancel">
+        <MFXButton fx:id="cancelBtn" layoutX="788.0" layoutY="684.0" onAction="#cancelClicked" prefHeight="39.0" prefWidth="86.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-background-radius: 10;" text="Cancel">
             <font>
                 <Font name="Arial Rounded MT Bold" size="17.0" />
             </font>
         </MFXButton>
-        <MFXButton fx:id="addBtn" layoutX="885.0" layoutY="684.0" onAction="#addClicked" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #f9e45b; -fx-border-radius: 10; -fx-border-color: #ffca40; -fx-background-radius: 10;" text="Add">
+        <MFXButton fx:id="addBtn" layoutX="885.0" layoutY="684.0" onAction="#addClicked" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color:#ffca40; -fx-border-radius: 10; -fx-border-color: black; -fx-background-radius: 10;" text="Add">
             <font>
                 <Font name="Arial Rounded MT Bold" size="17.0" />
             </font>

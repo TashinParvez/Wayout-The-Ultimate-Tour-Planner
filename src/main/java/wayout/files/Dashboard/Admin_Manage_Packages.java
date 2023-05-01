@@ -55,7 +55,7 @@ public class Admin_Manage_Packages implements Initializable {
                 "");
 
 
-        Label duration = new Label(days);
+        Label duration = new Label(days+" Day/Days");
         duration.setLayoutX(400);
         duration.setLayoutY(55);
         duration.setMaxWidth(85);
@@ -70,7 +70,7 @@ public class Admin_Manage_Packages implements Initializable {
                         "");
 
 
-        Label feat = new Label(features);
+        Label feat = new Label("Area: "+features);
         feat.setLayoutX(490);
         feat.setLayoutY(55);
         feat.setStyle(
@@ -92,32 +92,32 @@ public class Admin_Manage_Packages implements Initializable {
 
         Label cost_package = new Label(cost + " TK/=");
         cost_package.setLayoutX(400);
-        cost_package.setLayoutY(240);
+        cost_package.setLayoutY(230);
         cost_package.setStyle("-fx-background-color: #00ab71;" +
                 "-fx-padding: 5px;" +
                 "-fx-font-size: 14px;" +
                 "-fx-text-fill: white");
 
 
-        MFXButton viewDetailsButtn = new MFXButton("View details");
-        viewDetailsButtn.setStyle("-fx-font-size: 14px;" +
-                "-fx-padding: 5 10 5 10px;" +
-                "-fx-text-fill: white;" +
-                "-fx-background-color: teal;" +
-                "-fx-border-radius: 0px;" +
-                "-fx-background-radius: 0px");
-        viewDetailsButtn.setLayoutY(240);
-        viewDetailsButtn.setLayoutX(505);
+//        MFXButton viewDetailsButtn = new MFXButton("View details");
+//        viewDetailsButtn.setStyle("-fx-font-size: 14px;" +
+//                "-fx-padding: 5 10 5 10px;" +
+//                "-fx-text-fill: white;" +
+//                "-fx-background-color: teal;" +
+//                "-fx-border-radius: 0px;" +
+//                "-fx-background-radius: 0px");
+//        viewDetailsButtn.setLayoutY(240);
+//        viewDetailsButtn.setLayoutX(505);
 
         MFXButton deletePackage = new MFXButton("Delete Package");
         deletePackage.setStyle("-fx-font-size: 14px;" +
                 "-fx-padding: 5 10 5 10px;" +
                 "-fx-text-fill: white;" +
-                "-fx-background-color: #ff0000;" +
+                "-fx-background-color: #7a0101;" +
                 "-fx-border-radius: 0px;" +
                 "-fx-background-radius: 0px");
-        deletePackage.setLayoutY(240);
-        deletePackage.setLayoutX(800);
+        deletePackage.setLayoutY(230);
+        deletePackage.setLayoutX(510);
 
 
         Platform.runLater(() -> {
@@ -127,7 +127,7 @@ public class Admin_Manage_Packages implements Initializable {
             anchorPane.getChildren().add(feat);
             anchorPane.getChildren().add(detailS_lbl);
             anchorPane.getChildren().add(cost_package);
-            anchorPane.getChildren().add(viewDetailsButtn);
+          //  anchorPane.getChildren().add(viewDetailsButtn);
             anchorPane.getChildren().add(deletePackage);
 
             hBox.getChildren().add(anchorPane);
