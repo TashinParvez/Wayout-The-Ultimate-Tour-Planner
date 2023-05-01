@@ -125,7 +125,7 @@ public class GuideLoginController implements Initializable {
 
         try {
 
-            String chk1 = "Select * from guide_info where email=?";
+            String chk1 = "Select * from guide_info where Email=?";
             String chk2 = "Select * from guide_info where username=?";
             Connection con;
             PreparedStatement pst1, pst2;
@@ -151,11 +151,8 @@ public class GuideLoginController implements Initializable {
             } else if (rs1.next()) {
                 String pas = rs1.getString("password");
                 if (pas.equals(pass)) {
-                    String fullName = rs1.getString("fullName");
-                    String em = rs1.getString("email");
-                    String datofBirth = rs1.getString("dob");
-                    String gend = rs1.getString("gender");
-                    String usern = rs1.getString("username");
+                    String fullName = rs1.getString("Name");
+
 
                     Parent root = FXMLLoader.load(UserDashboardController.class.getResource("guide_dashboard.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -174,11 +171,7 @@ public class GuideLoginController implements Initializable {
             } else if (rs2.next()) {
                 String pas = rs2.getString("password");
                 if (pas.equals(pass)) {
-                    String fullName = rs2.getString("fullName");
-                    String em = rs2.getString("email");
-                    String datofBirth = rs2.getString("dob");
-                    String gend = rs2.getString("gender");
-                    String usern = rs2.getString("username");
+                    String fullName = rs2.getString("Name");
 
 
                     File file = new File("src/main/resources/wayout/files/Dashboard/username.txt");
@@ -186,7 +179,7 @@ public class GuideLoginController implements Initializable {
 
                     if (file.exists()) {
                         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-                        bw.write(usern);
+                        bw.write(fullName);
                         System.out.println("Written");
                         bw.close();
                     } else System.out.println("File not found");
