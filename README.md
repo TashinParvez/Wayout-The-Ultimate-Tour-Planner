@@ -42,6 +42,6 @@ This project is licensed under the [MIT License](https://github.com/<username>/<
 If you have any questions or feedback, please contact the developers:
 
 - Kaium Al Limon: [Email](mailto:limon.3cs@gmail.com)  Github: [codewithLimon](https://github.com/codewithLimon)
-- Abdullah Al Masud
+- Abdullah Al Masud Bhuiyan [Email](masudbuiyan50@gmail.com)  Github: [staywithabdullah](https://github.com/staywithabdullah)
 - Tashin Parvez
 
