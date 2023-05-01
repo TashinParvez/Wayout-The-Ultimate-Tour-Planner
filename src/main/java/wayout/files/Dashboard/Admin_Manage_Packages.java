@@ -90,7 +90,7 @@ public class Admin_Manage_Packages implements Initializable {
 
         detailS_lbl.setStyle("-fx-font-size: 14px;");
 
-        Label cost_package = new Label(cost + " TK/=");
+        Label cost_package = new Label(cost + " TK/Person");
         cost_package.setLayoutX(400);
         cost_package.setLayoutY(230);
         cost_package.setStyle("-fx-background-color: #00ab71;" +
@@ -117,7 +117,7 @@ public class Admin_Manage_Packages implements Initializable {
                 "-fx-border-radius: 0px;" +
                 "-fx-background-radius: 0px");
         deletePackage.setLayoutY(230);
-        deletePackage.setLayoutX(510);
+        deletePackage.setLayoutX(540);
 
 
         Platform.runLater(() -> {
