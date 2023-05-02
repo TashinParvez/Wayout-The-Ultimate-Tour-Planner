@@ -15,7 +15,7 @@ public class Server {
     public Server() {
         clientMap = new HashMap<>();
         try {
-            serverSocket = new ServerSocket(33338);
+            serverSocket = new ServerSocket(33331);
             System.out.println("Server has started...");
             while (true) {
                 Socket clientSocket = serverSocket.accept();

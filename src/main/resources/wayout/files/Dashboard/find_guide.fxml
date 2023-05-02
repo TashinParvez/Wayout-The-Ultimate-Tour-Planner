@@ -18,7 +18,7 @@
          </children>
       </AnchorPane>
       <MFXScrollPane hbarPolicy="NEVER" layoutY="100.0" prefHeight="650.0" prefWidth="1020.0">
-      <VBox fx:id="guidebody" layoutX="2.5" prefHeight="2000" prefWidth="1015" />
+      <VBox fx:id="guidebody" layoutX="2.5" prefWidth="1015" />
       </MFXScrollPane>
    </children>
 </AnchorPane>

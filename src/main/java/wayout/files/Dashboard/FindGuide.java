@@ -67,10 +67,10 @@ public class FindGuide implements Initializable {
                 "");
 
 
-        Label duration = new Label(days);
+        Label duration = new Label("Time: "+days);
         duration.setLayoutX(400);
         duration.setLayoutY(55);
-        duration.setMaxWidth(85);
+
 //        duration.setWrapText(true);
 
 
@@ -82,8 +82,8 @@ public class FindGuide implements Initializable {
                         "");
 
 
-        Label feat = new Label(availArea);
-        feat.setLayoutX(490);
+        Label feat = new Label("Area: "+availArea);
+        feat.setLayoutX(600);
         feat.setLayoutY(55);
         feat.setStyle(
                 "-fx-font-size: 14px;" +

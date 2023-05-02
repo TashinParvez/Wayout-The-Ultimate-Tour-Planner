@@ -75,10 +75,10 @@ public class GuideSchedule implements Initializable {
                 "");
 
 
-        javafx.scene.control.Label duration = new javafx.scene.control.Label(days);
+        javafx.scene.control.Label duration = new javafx.scene.control.Label("Time: "+days);
         duration.setLayoutX(400);
         duration.setLayoutY(55);
-        duration.setMaxWidth(85);
+      //  duration.setMaxWidth(85);
 //        duration.setWrapText(true);
 
 
@@ -90,8 +90,8 @@ public class GuideSchedule implements Initializable {
                         "");
 
 
-        javafx.scene.control.Label feat = new javafx.scene.control.Label(availArea);
-        feat.setLayoutX(490);
+        javafx.scene.control.Label feat = new javafx.scene.control.Label("Area: "+availArea);
+        feat.setLayoutX(600);
         feat.setLayoutY(55);
         feat.setStyle(
                 "-fx-font-size: 14px;" +

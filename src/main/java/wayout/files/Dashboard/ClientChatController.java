@@ -189,6 +189,7 @@ public class ClientChatController implements Initializable {
                     String to = extracted_message[0];
                     String message = extracted_message[1];
 
+
                     Message msg = new Message();
 
                     msg.setFrom(name);
@@ -198,11 +199,14 @@ public class ClientChatController implements Initializable {
                     try {
                         networkUtil.write(msg);
                         sendMessage(message,msg.getFrom(), msg.getTo(),false);
+                        messageBox.clear();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                 }
             }).start();
+
         });
 
         TextInputDialog dialog = new TextInputDialog();
@@ -214,7 +218,7 @@ public class ClientChatController implements Initializable {
         if (result.isPresent()) {
             name = result.get();
             try{
-                networkUtil=new NetworkUtil("127.0.0.1",33338);
+                networkUtil=new NetworkUtil("127.0.0.1",33331);
                 networkUtil.write(name);
 
                 clientName.setText(name);
