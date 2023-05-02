@@ -164,7 +164,7 @@
 <!--                            </StackPane>-->
 
 
-                            <Label layoutX="10" layoutY="390" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Where to go, right now" />
+                            <Label layoutX="10" layoutY="390" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Where to go, right now!" />
                             <Label layoutX="10" layoutY="420" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Spots at the top of travelers’ must-go lists" />
 
                             <MFXScrollPane hbarPolicy="AS_NEEDED" layoutX="10" layoutY="450" maxHeight="300" prefWidth="990" vbarPolicy="NEVER">
@@ -173,8 +173,8 @@
                             </MFXScrollPane>
 
 
-                            <Label layoutX="10" layoutY="820" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="You might like this" />
-                            <Label layoutX="10" layoutY="850" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Popular places to stay" />
+                            <Label layoutX="10" layoutY="820" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 18px" text="Meet with our Experts!" />
+                            <Label layoutX="10" layoutY="850" style="-fx-font-family: 'Arial Rounded MT';-fx-text-fill: gray; -fx-font-size: 12px" text="Those are well known in their area." />
 
                             <MFXScrollPane hbarPolicy="AS_NEEDED" layoutX="10" layoutY="890" prefHeight="300" prefWidth="990" vbarPolicy="NEVER">
                                 <!--                               <AnchorPane prefWidth="30000" prefHeight="200" style="-fx-background-color: blue"></AnchorPane>-->

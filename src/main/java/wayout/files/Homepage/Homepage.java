@@ -22,7 +22,5 @@ public class Homepage extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
-        Server server=new Server();
     }
 }

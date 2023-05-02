@@ -5,11 +5,16 @@ import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.enums.FloatMode;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -20,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -103,7 +109,7 @@ public class BookGuideController implements Initializable {
         packageT2.setStyle("-fx-font-size: 15px;" +
                 "-fx-font-family: 'Arial Rounded MT Bold'");
 
-        Label packageN2 = new Label(duration);
+        Label packageN2 = new Label(duration+" Hour/Hours");
         packageN2.setLayoutX(600);
         packageN2.setLayoutY(70);
         packageN2.setPrefWidth(400);
@@ -282,13 +288,14 @@ public class BookGuideController implements Initializable {
         mfxCheckbox.setLayoutY(380);
 
 
-        MFXButton bookNow = new MFXButton("Book package");
+        MFXButton bookNow = new MFXButton("Book Guide");
         bookNow.setLayoutY(440);
         bookNow.setLayoutX(800);
         bookNow.setStyle("-fx-font-size: 14px;" +
                 "-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-padding: 0 10 0 10px;" +
                 "-fx-border-color: #0066ff;" +
+                "-fx-background-color: #ecbf2a;"+
                 "-fx-border-width: 2px");
         bookNow.setPrefHeight(50);
         bookNow.setPrefWidth(150);
@@ -381,6 +388,33 @@ public class BookGuideController implements Initializable {
                     alert.setHeaderText("Request sent successfully");
                     alert.setContentText("Guide will contact you later on the email you provided, Thanks from wayout!");
                     alert.showAndWait();
+
+                    try {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                synchronized (this) {
+                                    Platform.runLater(() -> {
+                                        try {
+                                           Parent root = FXMLLoader.load(getClass().getResource("user_dashboard.fxml"));
+                                           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                           Scene scene = new Scene(root);
+                                            stage.setScene(scene);
+                                            stage.show();
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+
+                                    });
+                                }
+
+
+                            }
+                        }).start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();

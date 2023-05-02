@@ -249,7 +249,7 @@ public class UserDashboardController
     }
 
 
-    public void setHotels(String name, String loc, Image image) {
+    public void setHotels(String G_name, String loc, Image image) {
         try {
             new Thread(new Runnable() {
                 @Override
@@ -290,6 +290,28 @@ public class UserDashboardController
                     placeName.setPrefWidth(280);
                     placeName.setAlignment(Pos.CENTER);
                     stackAncor.getChildren().add(placeName);
+
+
+
+
+                    MFXButton name = new MFXButton();
+//                    stackAncor.setLayoutX(10);
+                    name.setText(G_name);
+                    name.setLayoutX(10);
+                   name.setStyle("-fx-font-size: 14px;" +
+                            "-fx-font-family: 'Arial Black';" +
+                            "-fx-background-color: Black;" +
+                            "-fx-padding: 5px;" +
+                            "-fx-text-fill: white");
+
+
+
+                    name.setLayoutY(215);
+                    name.setPadding(new Insets(0, 5, 0, 5));
+                    name.setPrefWidth(280);
+                    name.setAlignment(Pos.CENTER);
+                    stackAncor.getChildren().add(name);
+
 
 
 

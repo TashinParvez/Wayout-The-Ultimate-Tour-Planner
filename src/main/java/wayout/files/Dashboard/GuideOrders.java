@@ -35,12 +35,12 @@ public class GuideOrders implements Initializable {
     public void add_orders(String hired_by, String hire_date, String hire_hours, String starting_time, String email, String phone, String notes) {
         HBox hBox = new HBox();
         hBox.setPrefWidth(1020);
-        hBox.setPrefHeight(300);
+        hBox.setPrefHeight(260);
 
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setPrefWidth(1020);
-        anchorPane.setPrefHeight(250);
-        anchorPane.setStyle("-fx-background-color: #8ebb9a;");
+        anchorPane.setPrefHeight(240);
+        anchorPane.setStyle("-fx-background-color: #ccdcd5;");
 
         AnchorPane anchorPane1 = new AnchorPane();
         anchorPane1.setPrefWidth(1020);
@@ -48,36 +48,36 @@ public class GuideOrders implements Initializable {
 
         Label user = new Label("Traveller Name: " + hired_by);
         user.setLayoutX(40);
-        user.setLayoutY(50);
+        user.setLayoutY(30);
         user.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
         Label date = new Label("Hired date: " + hire_date);
         date.setLayoutX(40);
-        date.setLayoutY(80);
+        date.setLayoutY(60);
         date.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
-        Label hours = new Label("Hired for: " + hire_hours + " hours");
+        Label hours = new Label("Hired for: " + hire_hours + " hours, From "+starting_time  );
         hours.setLayoutX(40);
-        hours.setLayoutY(110);
+        hours.setLayoutY(90);
         hours.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
-        Label S_time = new Label("Hired for: " + hire_hours + " hours");
-        S_time.setLayoutX(40);
-        S_time.setLayoutY(140);
-        S_time.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
+        Label u_num = new Label("Phone: " + phone );
+        u_num.setLayoutX(40);
+        u_num.setLayoutY(120);
+        u_num.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
 
-        Label u_email = new Label("Traveller Contact: \nEmail:" + email + ",\tPhone number: " + phone);
+        Label u_email = new Label("Email:" + email );
         u_email.setLayoutX(40);
-        u_email.setLayoutY(170);
+        u_email.setLayoutY(150);
         u_email.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold;" +
@@ -85,15 +85,15 @@ public class GuideOrders implements Initializable {
 
         Label special_notes = new Label("Order notes: " + notes);
         special_notes.setLayoutX(40);
-        special_notes.setLayoutY(220);
+        special_notes.setLayoutY(180);
         special_notes.setStyle("-fx-font-family: 'Arial Rounded MT Bold';" +
                 "-fx-font-size: 18px;" +
                 "-fx-font-weight: bold");
 
 
         MFXButton accept = new MFXButton("Accept order");
-        accept.setLayoutX(640);
-        accept.setLayoutY(220);
+        accept.setLayoutX(700);
+        accept.setLayoutY(210);
         accept.setStyle("-fx-font-size: 13px;" +
                 "-fx-padding: 7 15 7 15px;" +
                 "-fx-background-color: #008f61;" +
@@ -101,8 +101,8 @@ public class GuideOrders implements Initializable {
 
 
         MFXButton reject = new MFXButton("Reject order");
-        reject.setLayoutX(800);
-        reject.setLayoutY(220);
+        reject.setLayoutX(815);
+        reject.setLayoutY(210);
         reject.setStyle("-fx-font-size: 13px;" +
                 "-fx-padding: 7 15 7 15px;" +
                 "-fx-background-color: #8c0000;" +
@@ -113,7 +113,7 @@ public class GuideOrders implements Initializable {
         anchorPane.getChildren().add(accept);
         anchorPane.getChildren().add(special_notes);
         anchorPane.getChildren().add(u_email);
-        anchorPane.getChildren().add(S_time);
+        anchorPane.getChildren().add(u_num);
         anchorPane.getChildren().add(hours);
         anchorPane.getChildren().add(date);
         anchorPane.getChildren().add(user);
@@ -175,9 +175,9 @@ public class GuideOrders implements Initializable {
                 String url = "jdbc:mysql://127.0.0.1/wayout";
                 String username = "root";
                 String password = "";
-
+                System.out.println(hired_by);
                 Connection conn = DriverManager.getConnection(url, username, password);
-                String sql = "DELETE FROM guide_info WHERE User_Who_Hired = ?";
+                String sql = "DELETE FROM guide_hire_list WHERE User_Who_Hired = ?";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, hired_by);
 
