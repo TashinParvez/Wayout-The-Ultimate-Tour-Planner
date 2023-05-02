@@ -164,11 +164,30 @@ public class LoginController implements Initializable {
             rs2 = pst2.executeQuery();
 
             if (mail.equals("admin") && pass.equals("admin")) {
-                Parent root = FXMLLoader.load(Admin_Dashboard.class.getResource("admin_dashboard.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+
+                eraser.setVisible(true);
+               new Thread(new Runnable() {
+                   @Override
+                   public void run() {
+                       try {
+                           Thread.sleep(300);
+                       }catch (Exception e){
+                           e.printStackTrace();
+                       }
+
+                       Platform.runLater(()->{
+                           try{
+                               Parent root = FXMLLoader.load(Admin_Dashboard.class.getResource("admin_dashboard.fxml"));
+                               stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                               scene = new Scene(root);
+                               stage.setScene(scene);
+                               stage.show();
+                           }catch (Exception e){
+                               e.printStackTrace();
+                           }
+                       });
+                   }
+               }).start();
             } else if (rs1.next()) {
                 String pas = rs1.getString("password");
                 if (pas.equals(pass)) {

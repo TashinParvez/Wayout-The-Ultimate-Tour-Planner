@@ -5,11 +5,17 @@ import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.enums.FloatMode;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
@@ -19,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,6 +35,10 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class BookPackageController implements Initializable {
@@ -310,6 +321,160 @@ public class BookPackageController implements Initializable {
         anchorPane.getChildren().add(radioButton);
         anchorPane.getChildren().add(imageView);
         booking_vbox.getChildren().add(anchorPane);
+
+
+        bookNow.setOnAction(event -> {
+            String user_name=full_name.getText();
+            String user_phn=phn_num.getText();
+            String user_email=email.getText();
+            String book_notes=additional_message.getText();
+            String package_title="";
+            String package_duration="";
+            String Total_cost="";
+            String bKash_Num=bkshNumberofUser.getText();
+            String bKash_transaction=paymentTransaction.getText();
+
+
+            try{
+            File file=new File("src/main/resources/wayout/files/Dashboard/package_book_info_temp.txt");
+            if(file.exists()){
+                BufferedReader reader=new BufferedReader(new FileReader(file));
+
+                String line=reader.readLine();
+
+                String[] split=line.split("~");
+                package_title=split[0];
+                package_duration=split[1];
+                Total_cost=split[2];
+            }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+            System.out.println(user_name);
+            System.out.println(user_phn);
+            System.out.println(user_email);
+            System.out.println(book_notes);
+            System.out.println(package_title);
+            System.out.println(package_duration);
+            System.out.println(Total_cost);
+            System.out.println(bKash_Num);
+            System.out.println(bKash_transaction);
+
+
+
+            if (radioButton.isSelected() && mfxCheckbox.isSelected() && user_name != null && user_email != null && user_phn != null && bKash_Num != null && bKash_transaction != null && bKash_Num.length()>=11 && bKash_transaction.length()>10) {
+
+                Email_Validator emailValidator=new Email_Validator();
+
+
+                try {
+                    if(emailValidator.check_email(user_email).equals("valid")){
+                        String url = "jdbc:mysql://127.0.0.1/wayout";
+                        String username = "root";
+                        String password = "";
+
+                        System.out.println("Connecting database...");
+
+                        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+                            System.out.println("Database connected!");
+                        } catch (SQLException e) {
+                            throw new IllegalStateException("Cannot connect the database!", e);
+                        }
+
+
+
+
+                        Connection con;
+                        PreparedStatement pst;
+
+                        try {
+                            con = DriverManager.getConnection(url, username, password);
+                            pst = con.prepareStatement("INSERT INTO ordered_package(User_Name,User_Email,User_Phone,User_Note,Package_Title,Package_Duration_Days,Total_Cost,Payment_Number,Payment_Transaction_ID) VALUES(?,?,?,?,?,?,?,?,?)");
+                            pst.setString(1, user_name);
+                            pst.setString(2,user_email);
+                            pst.setString(3, user_phn);
+                            pst.setString(4,book_notes);
+                            pst.setString(5,package_title);
+                            pst.setString(6,package_duration);
+                            pst.setString(7,Total_cost);
+                            pst.setString(8,bKash_Num);
+                            pst.setString(9,bKash_transaction);
+                            pst.execute();
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setHeaderText("Tour Booked Successfully! ");
+                            alert.setContentText("Check your mail to see the details of the booked tour!");
+                            alert.showAndWait();
+
+                            // send mail with booked informations:
+
+                            String mail_subject="Regarding "+package_title+" tour booking";
+                            String mail_body="Dear "+user_name+",\n" +
+                                    "Thank you for booking "+package_title+" tour through wayout. We are excited to have you as a valued customer and look forward to providing you with an unforgettable experience.\n\n" +
+                                    "Please find below the details of your booking:\n\n" +
+                                    "Package name: "+package_title+" Tour\n" +
+                                    "Package Duration: "+package_duration+" Days\n" +
+                                    "Total tour cost: "+Total_cost+"/= TK.\n\n" +
+                                    "Please note that your booking is confirmed and your payment has been processed successfully. If you have any questions or concerns regarding your booking, please do not hesitate to contact us at +8801738439423\n" +
+                                    "Thank you for choosing wayout for your travel needs. We hope you have a great time on your tour.\n" +
+                                    "\n" +
+                                    "Best regards,\n" +
+                                    "wayout-admin";
+
+                            EmailSender emailSender=new EmailSender();
+                            emailSender.send_mail(user_email,mail_subject,mail_body);
+
+
+                            //
+
+                            try {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        synchronized (this) {
+                                            Platform.runLater(() -> {
+                                                try {
+                                                    Parent root = FXMLLoader.load(getClass().getResource("user_dashboard.fxml"));
+                                                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                                    Scene scene = new Scene(root);
+                                                    stage.setScene(scene);
+                                                    stage.show();
+                                                } catch (IOException e) {
+                                                    throw new RuntimeException(e);
+                                                }
+
+                                            });
+                                        }
+
+
+                                    }
+                                }).start();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        Alert alert=new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText("Incorrect email address provided");
+                        alert.setContentText("Email not found, please provide a valid email address that exists!");
+                        alert.showAndWait();
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            } else {
+                Alert alert=new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Please fill all the informations correctly");
+                alert.showAndWait();
+            }
+        });
     }
 
     @Override

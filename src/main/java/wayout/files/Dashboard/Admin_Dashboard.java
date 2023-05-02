@@ -16,6 +16,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import wayout.files.LoginPage.LoginController;
 
 import java.io.IOException;
@@ -26,6 +30,13 @@ import java.util.Vector;
 public class Admin_Dashboard implements Initializable {
     @FXML
     private Label add_package;
+    @FXML
+    private Label tour_package_count;
+
+    @FXML
+    private Label user_count;
+    @FXML
+    private Label guides_count;
 
     @FXML
     private Circle profile_pic;
@@ -135,8 +146,69 @@ public class Admin_Dashboard implements Initializable {
 //        nodesVector.add(edit_profile);
     }
 
+    @FXML
+    private Label weather;
+    @FXML
+    private Label location_info;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            String url = "https://www.tomorrow.io/weather/";
+            Document doc = Jsoup.connect(url).get();
+
+            Elements weatherElements = doc.select("div.fvkAud span._3fQrr5");
+
+            for (Element weatherElement : weatherElements) {
+                String temperature = weatherElement.text();
+
+
+                String[] split = temperature.split("°");
+                int temp = Integer.parseInt(split[0]);
+
+                Platform.runLater(() -> {
+                    if (temp >= 45) {
+                        weather.setText(temperature + "F");
+                    } else {
+                        weather.setText(temperature + "C");
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+        try {
+            String url = "https://mylocation.org/";
+            Document doc = Jsoup.connect(url).get();
+            Element info = doc.selectFirst(".info");
+
+            String city = "";
+            String country = "";
+
+            if (info != null) {
+                Elements rows = info.select("table tr");
+                for (Element row : rows) {
+                    String label = row.selectFirst("td").text();
+                    String value = row.select("td").get(1).text();
+                    if (label.equals("City")) {
+                        city = value;
+                    } else if (label.equals("Country")) {
+                        country = value;
+                    }
+                }
+                location_info.setText(city + ", " + country);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
 
         try {
             profile_pic.setFill(new ImagePattern(new Image(getClass().getResource("software-engineer.png").openStream())));
@@ -324,6 +396,17 @@ public class Admin_Dashboard implements Initializable {
                 e.printStackTrace();
             }
         });
+
+        DatabaseUtils database=new DatabaseUtils();
+
+
+        try {
+            user_count.setText(""+database.getRowCount("accountinfo"));
+            guides_count.setText(""+database.getRowCount("guide_info"));
+            tour_package_count.setText(""+database.getRowCount("packages_list"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

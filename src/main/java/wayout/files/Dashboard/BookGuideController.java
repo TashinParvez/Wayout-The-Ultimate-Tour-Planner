@@ -397,9 +397,9 @@ public class BookGuideController implements Initializable {
                                 synchronized (this) {
                                     Platform.runLater(() -> {
                                         try {
-                                           Parent root = FXMLLoader.load(getClass().getResource("user_dashboard.fxml"));
-                                           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                           Scene scene = new Scene(root);
+                                            Parent root = FXMLLoader.load(getClass().getResource("user_dashboard.fxml"));
+                                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                            Scene scene = new Scene(root);
                                             stage.setScene(scene);
                                             stage.show();
                                         } catch (IOException e) {

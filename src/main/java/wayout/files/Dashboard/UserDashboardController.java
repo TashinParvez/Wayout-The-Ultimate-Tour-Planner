@@ -476,6 +476,17 @@ public class UserDashboardController
                 public void run() {
                     addAllSideNodes();
                     changeAllRemaining(cart);
+
+
+                    Platform.runLater(()->{
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("cart.fxml"));
+                            mainPanel.getChildren().add(root);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
             }).start();
         });
