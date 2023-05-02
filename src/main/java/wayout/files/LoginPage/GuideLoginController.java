@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import wayout.files.Dashboard.Admin_Dashboard;
 import wayout.files.Dashboard.UserDashboardController;
+import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import javax.swing.*;
 import java.awt.*;
@@ -354,5 +355,13 @@ public class GuideLoginController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void backButtonClicked(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(HomePage_2nd_Controller.class.getResource("HomePage_2nd.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

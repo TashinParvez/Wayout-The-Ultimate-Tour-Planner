@@ -24,7 +24,7 @@
       </ImageView>
       <ImageView fitHeight="95.0" fitWidth="98.0" layoutX="1054.0" layoutY="203.0" onMouseClicked="#transportClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/transportation.png" />
+            <Image url="@../images/transportation_2.png" />
          </image>
       </ImageView>
       <Label layoutX="836.0" layoutY="304.0" text="Explore">

@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
@@ -28,6 +29,7 @@ import java.sql.*;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -44,7 +46,9 @@ import java.security.GeneralSecurityException;
 
 import javafx.scene.web.WebView;
 import wayout.files.Dashboard.Admin_Dashboard;
+import wayout.files.Dashboard.ClientChatController;
 import wayout.files.Dashboard.UserDashboardController;
+import wayout.files.Dashboard.util.NetworkUtil;
 import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.util.Collections;
@@ -166,28 +170,28 @@ public class LoginController implements Initializable {
             if (mail.equals("admin") && pass.equals("admin")) {
 
                 eraser.setVisible(true);
-               new Thread(new Runnable() {
-                   @Override
-                   public void run() {
-                       try {
-                           Thread.sleep(300);
-                       }catch (Exception e){
-                           e.printStackTrace();
-                       }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(300);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                       Platform.runLater(()->{
-                           try{
-                               Parent root = FXMLLoader.load(Admin_Dashboard.class.getResource("admin_dashboard.fxml"));
-                               stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                               scene = new Scene(root);
-                               stage.setScene(scene);
-                               stage.show();
-                           }catch (Exception e){
-                               e.printStackTrace();
-                           }
-                       });
-                   }
-               }).start();
+                        Platform.runLater(() -> {
+                            try {
+                                Parent root = FXMLLoader.load(Admin_Dashboard.class.getResource("admin_dashboard.fxml"));
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }
+                }).start();
             } else if (rs1.next()) {
                 String pas = rs1.getString("password");
                 if (pas.equals(pass)) {
@@ -289,98 +293,149 @@ public class LoginController implements Initializable {
 
     @FXML
     void signinGoogleClicked(ActionEvent event) throws GeneralSecurityException, IOException, URISyntaxException {
-        // Generate the Google Authorization URL
-        String authorizationUrl = flow.newAuthorizationUrl().setRedirectUri(REDIRECT_URI).build();
 
-        // Open the Authorization URL in the user's default browser
-        Desktop.getDesktop().browse(new URI(authorizationUrl));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Generate the Google Authorization URL
+                    String authorizationUrl = flow.newAuthorizationUrl().setRedirectUri(REDIRECT_URI).build();
+
+                    // Open the Authorization URL in the user's default browser
+                    Desktop.getDesktop().browse(new URI(authorizationUrl));
+
+
+                    Thread.sleep(3000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                Platform.runLater(() -> {
+                    try {
+                        TextInputDialog dialog = new TextInputDialog();
+                        dialog.setTitle("Authorization code");
+                        dialog.setHeaderText("Enter your code:");
+                        dialog.setContentText("Code:");
+
+                        Optional<String> result = dialog.showAndWait();
+                        String authorizationCode = "";
+                        if (result.isPresent()) {
+                            authorizationCode = result.get();
+                            try {
+                                // Exchange the authorization code for an access token and a refresh token
+                                GoogleTokenResponse response = flow.newTokenRequest(authorizationCode).setRedirectUri(REDIRECT_URI).execute();
+
+                                // Use the access token to fetch the user's profile data
+                                GoogleCredential credential = new GoogleCredential.Builder().setTransport(GoogleNetHttpTransport.newTrustedTransport()).setJsonFactory(new GsonFactory()).setClientSecrets(CLIENT_ID, CLIENT_SECRET).build().setAccessToken(response.getAccessToken()).setRefreshToken(response.getRefreshToken());
+
+                                Oauth2 oauth2 = new Oauth2.Builder(GoogleNetHttpTransport.newTrustedTransport(), new GsonFactory(), credential).build();
+
+//                                String user_password = JOptionPane.showInputDialog("Enter a password: ");
+
+                                TextInputDialog password_box = new TextInputDialog();
+                                password_box.setTitle("Password");
+                                password_box.setHeaderText("Enter a password to login:");
+                                password_box.setContentText("Password:");
+
+                                Optional<String> password_result = password_box.showAndWait();
+
+                                if (password_result.isPresent()) {
+                                    Connection con;
+                                    PreparedStatement pst;
+
+                                    String url = "jdbc:mysql://127.0.0.1:3306/wayout";
+                                    String username = "root";
+                                    String password = "";
+
+                                    System.out.println("Connecting database...");
+
+                                    try (Connection connection = DriverManager.getConnection(url, username, password)) {
+                                        System.out.println("Database connected!");
+                                    } catch (SQLException e) {
+                                        throw new IllegalStateException("Cannot connect the database!", e);
+                                    }
+
+                                    try {
+
+
+                                        con = DriverManager.getConnection(url, username, password);
+
+
+                                        //extract data from json:
+
+                                        Userinfo user = oauth2.userinfo().get().execute();
+                                        String user_first_name = user.getGivenName();
+                                        String user_FullName = user.getName();
+                                        String[] splitName = user_FullName.split(" ");
+                                        int words = splitName.length;
+                                        int lastwordIndex = words - 1;
+                                        String user_last_name = splitName[lastwordIndex];
+
+
+                                        String query11 = "select count(*) from accountinfo";
+                                        Statement stmt = con.createStatement();
+                                        ResultSet rs = stmt.executeQuery(query11);
+                                        rs.next();
+                                        int count = rs.getInt(1);
+                                        System.out.println(count + 1);
+
+                                        // auto generate username
+
+                                        String lower_Firstname = user_first_name.toLowerCase();
+                                        char first_name_firstChar = lower_Firstname.charAt(0);
+                                        String[] lastnameX = user_last_name.split("\\s+");
+                                        String last = lastnameX[lastnameX.length - 1];
+                                        String lowerLastname = last.toLowerCase();
+                                        String generated_username = first_name_firstChar + lowerLastname + (count + 1);
+                                        System.out.println(generated_username);
+
+
+                                        pst = con.prepareStatement("INSERT INTO accountinfo(firstName,lastName,fullName,email,dob,gender,username,password) VALUES(?,?,?,?,?,?,?,?)");
+
+                                        pst.setString(1, user_first_name);
+                                        pst.setString(2, user_last_name);
+                                        pst.setString(3, user_FullName);
+                                        pst.setString(4, " ");
+                                        pst.setString(5, " ");
+                                        pst.setString(6, " ");
+                                        pst.setString(7, generated_username.trim());
+                                        pst.setString(8, password_result.get());
+                                        pst.execute();
+
+                                        System.out.println("Insert successful");
+
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setTitle("Welcome");
+                                        alert.setHeaderText("SignUP Successful");
+                                        alert.setContentText("Automatically Generated Username: " + generated_username + "\nUse this username to login into your account");
+                                        alert.showAndWait();
+
+                                    } catch (Exception e) {
+                                        e.getStackTrace();
+                                    }
+                                }else {
+
+                                }
+
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        }).start();
+
 
         // Prompt the user to enter the authorization code
-        String authorizationCode = JOptionPane.showInputDialog("Enter the authorization code:");
-
-
-        // Exchange the authorization code for an access token and a refresh token
-        GoogleTokenResponse response = flow.newTokenRequest(authorizationCode).setRedirectUri(REDIRECT_URI).execute();
-
-        // Use the access token to fetch the user's profile data
-        GoogleCredential credential = new GoogleCredential.Builder().setTransport(GoogleNetHttpTransport.newTrustedTransport()).setJsonFactory(new GsonFactory()).setClientSecrets(CLIENT_ID, CLIENT_SECRET).build().setAccessToken(response.getAccessToken()).setRefreshToken(response.getRefreshToken());
-
-        Oauth2 oauth2 = new Oauth2.Builder(GoogleNetHttpTransport.newTrustedTransport(), new GsonFactory(), credential).build();
-        String user_password = JOptionPane.showInputDialog("Enter a password: ");
-
-        Connection con;
-        PreparedStatement pst;
-
-        String url = "jdbc:mysql://127.0.0.1:3306/wayout";
-        String username = "root";
-        String password = "";
-
-        System.out.println("Connecting database...");
-
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Database connected!");
-        } catch (SQLException e) {
-            throw new IllegalStateException("Cannot connect the database!", e);
-        }
-
-        try {
-
-
-            con = DriverManager.getConnection(url, username, password);
-
-
-            //extract data from json:
-
-            Userinfo user = oauth2.userinfo().get().execute();
-            String user_first_name = user.getGivenName();
-            String user_FullName = user.getName();
-            String[] splitName = user_FullName.split(" ");
-            int words = splitName.length;
-            int lastwordIndex = words - 1;
-            String user_last_name = splitName[lastwordIndex];
-
-
-            String query11 = "select count(*) from accountinfo";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query11);
-            rs.next();
-            int count = rs.getInt(1);
-            System.out.println(count + 1);
-
-            // auto generate username
-
-            String lower_Firstname = user_first_name.toLowerCase();
-            char first_name_firstChar = lower_Firstname.charAt(0);
-            String[] lastnameX = user_last_name.split("\\s+");
-            String last = lastnameX[lastnameX.length - 1];
-            String lowerLastname = last.toLowerCase();
-            String generated_username = first_name_firstChar + lowerLastname + (count + 1);
-            System.out.println(generated_username);
-
-
-            pst = con.prepareStatement("INSERT INTO accountinfo(firstName,lastName,fullName,email,dob,gender,username,password) VALUES(?,?,?,?,?,?,?,?)");
-
-            pst.setString(1, user_first_name);
-            pst.setString(2, user_last_name);
-            pst.setString(3, user_FullName);
-            pst.setString(4, " ");
-            pst.setString(5, " ");
-            pst.setString(6, " ");
-            pst.setString(7, generated_username);
-            pst.setString(8, user_password);
-            pst.execute();
-
-            System.out.println("Insert successful");
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Welcome");
-            alert.setHeaderText("SignUP Successful");
-            alert.setContentText("Automatically Generated Username: " + generated_username + "\nUse this username to login into your account");
-            alert.showAndWait();
-
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
+//        String authorizationCode = JOptionPane.showInputDialog("Enter the authorization code:");
 
 
     }
