@@ -15,11 +15,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import wayout.files.Homepage.HomePage_2nd_Controller;
+
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
-
-import wayout.files.Homepage.HomePage_2nd_Controller;
 
 import java.io.IOException;
 
